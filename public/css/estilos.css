@@ -1,0 +1,19 @@
+
+
+body {
+    background-image: url(../imagen/fondo.jpeg); /* Color de fondo */
+    background-repeat: no-repeat;
+    
+}
+
+.card {
+    margin-top: 50px; /* Espacio superior entre la tarjeta y la parte superior de la página */
+}
+
+
+    
+
+.btn-info {
+    width: 50%;
+}
+
