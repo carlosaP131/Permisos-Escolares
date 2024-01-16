@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link href="{{ asset('Permisos-Escolares/public/css/secretaria.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

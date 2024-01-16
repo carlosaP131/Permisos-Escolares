@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('grupos', function (Blueprint $table) {
-            $table->id();
-            $table->string('carrera');
+            $table->increments('id');
+            $table->unsignedInteger('carrera_id');
+            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
             $table->string('grupo');
             $table->string('año_ciclo');
-            $table->string('semestre');
+            $table->unsignedInteger('semestre_id');
+            $table->foreign('semestre_id')->references('id')->on('semestres')->onDelete('cascade');
             $table->timestamps();
         });
     }

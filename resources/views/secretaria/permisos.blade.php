@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
@@ -14,11 +14,11 @@
 Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
 
 </form>
-<div class="table table-bordered    ">
-  <table class="table" id="datos">
+<div >
+    <table class="table table-hover table-bordered table-dark " id="datos">
     <thead>
       <tr>
-        
+
         <th>Id</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -28,14 +28,14 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
       </tr>
     </thead>
     <tbody>
-        
+
       <tr>
         <td>1</td>
         <td>John</td>
         <td>Enfermeria</td>
         <td>503 A</td>
         <td>quinto</td>
-        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
     </tr>
       <tr>
         <td>2</td>
@@ -43,7 +43,7 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>Medicina</td>
         <td>814</td>
         <td>octavo</td>
-        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
     </tr>
       <tr>
         <td>3</td>
@@ -51,7 +51,7 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>Informatica</td>
         <td>306</td>
         <td>tercero</td>
-        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
     </tr>
       </tr>
 
@@ -64,7 +64,7 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
     </tbody>
   </table>
 </div>
-<script> 
+<script>
 function doSearch()
 
 {

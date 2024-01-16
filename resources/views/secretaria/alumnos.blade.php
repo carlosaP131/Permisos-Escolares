@@ -14,11 +14,11 @@
 Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
 
 </form>
-<div class="table-responsive-sm">
-  <table class="table" id="datos">
+<div >
+    <table class="table table-hover table-bordered table-dark " id="datos">
     <thead>
       <tr>
-        
+
         <th>Id</th>
         <th>Nombre</th>
         <th>Carrera</th>
@@ -28,14 +28,14 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
       </tr>
     </thead>
     <tbody>
-        
+
       <tr>
         <td>1</td>
         <td>John</td>
         <td>Enfermeria</td>
         <td>503 A</td>
         <td>quinto</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
     </tr>
       <tr>
         <td>2</td>
@@ -43,7 +43,7 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>Medicina</td>
         <td>814</td>
         <td>octavo</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
     </tr>
       <tr>
         <td>3</td>
@@ -51,20 +51,20 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>Informatica</td>
         <td>306</td>
         <td>tercero</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>  
+        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
     </tr>
       </tr>
 
 <tr class='noSearch hide'>
 
-    <td colspan="5"></td>
+    <td colspan="6"></td>
 
 </tr>
 
     </tbody>
   </table>
 </div>
-<script> 
+<script>
 function doSearch()
 
 {
