@@ -44,7 +44,7 @@
                     <option>Odontologia</option>
                 </select>
             </div>
-            <div class="container-fluid">
+            <div class="mb-3">
                 <div class="row">
                     <div class="col">
                         <label for="Semestre_año">Año</label>
@@ -76,16 +76,69 @@
                     <!-- Opciones se agregarán dinámicamente -->
                 </select>
             </div>
-            <div class="row">
-                <label for="semestre">Rango de dias</label>
+            <div class="col">
+                <label for="sellist1">Tipo de Permiso:</label>
+                <select class="form-select" id="Dias_horas" name="sellist1" onchange="toggleInputs()">
+                    <option>Dias</option>
+                    <option>Horas</option>
+                </select>
+            </div>
+
+            <div class="mb-3 pd-1" id="dateRangeInputs" style="display: none;">
                 <div class="col">
-                    <label for="">del</label> <input type="date" class="form-control" placeholder=""
-                        name="email">
+                    <label for="Rango_Dias">Rango de dias</label>
                 </div>
-                <label for="">al</label>
+                <div class="row">
+                    <div class="col">
+                        <label for="Fechini">Inicio:</label>
+                    <input type="date" class="form-control" placeholder="" name="startDate">
+                    </div>
+                    <div class="col">
+                        <label for="Fechfin">Fin:</label>
+
+                        <input type="date" class="form-control" placeholder="" name="endDate">
+                    </div>
+                </div>
+            </div>
+
+            <div id="additionalInputs" style="display: none;">
+                <label for="additionalLabel">Rango Horas:</label>
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="" name="pswd">
+                    <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
+                        name="additionalDate">
                 </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="">Horas:</label>
+                    <div class="row">
+                        <div class="col">
+
+
+                            <label for="horaini">Inicio:</label>
+
+
+                            <div class="cs-form">
+                                <input type="time" class="form-control" value="10:05 AM" />
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="col">
+
+                            <label for="horafin">Fin:</label>
+                            <div class="cs-form">
+                                <input type="time" class="form-control" value="10:05 AM" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
             <div class="mb-3 mt-3">
                 <label for="comment">Motivo u Observaciones:</label>
@@ -188,6 +241,20 @@
             // Trigger para inicializar el estado del formulario
             carreraSelect.dispatchEvent(new Event('change'));
         });
+        //Horas dias filtro//
+        function toggleInputs() {
+            var selectElement = document.getElementById('Dias_horas');
+            var dateRangeInputs = document.getElementById('dateRangeInputs');
+            var additionalInputs = document.getElementById('additionalInputs');
+
+            if (selectElement.value === 'Dias') {
+                dateRangeInputs.style.display = 'block';
+                additionalInputs.style.display = 'none';
+            } else if (selectElement.value === 'Horas') {
+                dateRangeInputs.style.display = 'none';
+                additionalInputs.style.display = 'block';
+            }
+        }
     </script>
 </body>
 
