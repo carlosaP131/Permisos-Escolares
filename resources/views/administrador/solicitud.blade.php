@@ -15,7 +15,7 @@
             <th>Carrera</th>
             <th>Grupo</th>
             <th>Semestre</th>
-            <th>Generar</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
             <td>Enfermeria</td>
             <td>503 A</td>
             <td>quinto</td>
-            <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
+            <td> <button type="button" class="btn btn-danger">Espera</button></td>
         </tr>
           <tr>
             <td>2</td>
@@ -34,7 +34,7 @@
             <td>Medicina</td>
             <td>814</td>
             <td>octavo</td>
-            <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
+            <td> <button type="button" class="btn btn-danger">Espera</button></td>
         </tr>
           <tr>
             <td>3</td>
@@ -42,7 +42,7 @@
             <td>Informatica</td>
             <td>306</td>
             <td>tercero</td>
-            <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
+            <td> <button type="button" class="btn btn-danger">Espera</button></td>
         </tr>
           </tr>
 
