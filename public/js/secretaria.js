@@ -1,3 +1,111 @@
+/*===============fitro de grupo por semestre=============*/
+document.addEventListener('DOMContentLoaded', function() {
+    // Manejar el cambio en el primer select
+    document.getElementById('Semestre_tipo').addEventListener('change', function() {
+        actualizarGrupoSelect();
+    });
+
+    // Manejar el cambio en el segundo select (carrera)
+    document.getElementById('carrera').addEventListener('change', function() {
+        actualizarGrupoSelect();
+    });
+
+    // Función para actualizar el segundo select (grupo)
+    function actualizarGrupoSelect() {
+        // Obtener el valor seleccionado en el primer select
+        var semestreTipoValue = document.getElementById('Semestre_tipo').value;
+        var selectedCarrera = document.getElementById('carrera').value;
+        var carreraValues = {
+            'Administracion Publica': 5,
+            'Administracion Municipal': 1,
+            'Ciencias Empresariales': 4,
+            'Enfermeria': 3,
+            'Informatica': 6,
+            'Nutricion': 7,
+            'Medicina': 14,
+            'Odontologia': 13
+        };
+        var selectedCarreraValue = carreraValues[selectedCarrera];
+
+        // Limpiar opciones del segundo select
+        var grupoSelect = document.getElementById('grupo');
+        grupoSelect.innerHTML = '';
+
+        // Determinar rango de números a agregar en el segundo select
+        var startNumber = (semestreTipoValue === 'B') ? 2 : 1;
+        var endNumber = (semestreTipoValue === 'B') ? 10 : 9;
+
+        // Agregar opciones basadas en el valor del primer select
+        for (var i = startNumber; i <= endNumber; i += 2) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.text = i * 100 + selectedCarreraValue;
+            grupoSelect.appendChild(option);
+        }
+    }
+
+    // Trigger para inicializar el segundo select basado en el valor inicial del primer select
+    document.getElementById('Semestre_tipo').dispatchEvent(new Event('change'));
+});
+
+/*===========filtro de grupo por carrera==================*/
+document.addEventListener('DOMContentLoaded', function() {
+    var carreraSelect = document.getElementById('carrera');
+    var especialidadContainer = document.getElementById('especialidadContainer');
+    var especialidadSelect = document.getElementById('especialidad');
+
+    // Manejar el cambio en el primer select
+    carreraSelect.addEventListener('change', function() {
+        var carreraValue = carreraSelect.value;
+
+        // Limpiar opciones del segundo select
+        especialidadSelect.innerHTML = '';
+
+        // Mostrar o ocultar el segundo select según la opción seleccionada
+        if (carreraValue === 'Enfermeria' || carreraValue === 'Medicina' || carreraValue ==
+            'Odontologia') {
+            especialidadContainer.style.display = 'block';
+            // Agregar opciones basadas en la carrera seleccionada
+            if (carreraValue === 'Enfermeria') {
+                agregarOpcionesEspecialidad(['A', 'B', 'C']);
+            } else if (carreraValue === 'Medicina') {
+                agregarOpcionesEspecialidad([' A', ' B', ' C']);
+            } else if (carreraValue === 'Odontologia') {
+                agregarOpcionesEspecialidad([' A', ' B', ' C']);
+            }
+        } else {
+            especialidadContainer.style.display = 'none';
+        }
+    });
+
+    // Función para agregar opciones al segundo select
+    function agregarOpcionesEspecialidad(opciones) {
+        for (var i = 0; i < opciones.length; i++) {
+            var option = document.createElement('option');
+            option.value = opciones[i];
+            option.text = opciones[i];
+            especialidadSelect.appendChild(option);
+        }
+    }
+
+    // Trigger para inicializar el estado del formulario
+    carreraSelect.dispatchEvent(new Event('change'));
+});
+//Horas dias filtro//
+function toggleInputs() {
+    var selectElement = document.getElementById('Dias_horas');
+    var dateRangeInputs = document.getElementById('dateRangeInputs');
+    var additionalInputs = document.getElementById('additionalInputs');
+
+    if (selectElement.value === 'Dias') {
+        dateRangeInputs.style.display = 'block';
+        additionalInputs.style.display = 'none';
+    } else if (selectElement.value === 'Horas') {
+        dateRangeInputs.style.display = 'none';
+        additionalInputs.style.display = 'block';
+    }
+}
+//tablas secretaria
 function doSearch()
 
 {
