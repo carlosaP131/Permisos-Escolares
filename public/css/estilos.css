@@ -1,8 +1,12 @@
 
 
 body {
+    background-attachment: fixed;
     background-image: url(../imagen/fondo.jpeg); /* Color de fondo */
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
     
 }
 
@@ -15,5 +19,6 @@ body {
 
 .btn-info {
     width: 50%;
+    background-color: lightpink;
 }
 
