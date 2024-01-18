@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('Status', 10);
             $table->string('Motivo', 30);
             $table->string('Descripcion', 200);
-            $table->string('Tiempo', 5)->nullable()->default('text');
+            $table->string('Tiempo', 50);
+            $table->string('Tipo', 30);
+            $table->string('Editado', 25);
             $table->unsignedInteger('id_alumno');
-            $table->foreign('id_alumno')->references('Matricula')->on('alumnos')->onDelete('cascade');
+            $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
             $table->timestamps();
         });
     }
