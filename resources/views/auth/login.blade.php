@@ -43,7 +43,7 @@
                                 </label>
                                 <div class="col-md-6">
                                     <input id="password" type="password" placeholder="Ingrese su contraseña"
-                                        class=" rounded @error('password') is-invalid @enderror" name="password" required
+                                        class="rounded @error('password') is-invalid @enderror" name="password" required
                                         autocomplete="current-password">
 
                                     @error('password')
