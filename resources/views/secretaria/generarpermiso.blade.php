@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    {{-- ////////////////////////////////Form para generar un permiso/////////////////////////////////////////////// --}}
+    {{--Form para generar un permiso--}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
         <form action="">
