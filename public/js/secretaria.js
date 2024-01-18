@@ -1,12 +1,8 @@
-<<<<<<< HEAD
+
 /* fitro de grupo por semestre*/
  document.addEventListener('DOMContentLoaded', function() {
     // Manejar el cambio en el  select Semestre grupo
-=======
-/*===============fitro de grupo por semestre=============*/
-document.addEventListener('DOMContentLoaded', function() {
-    // Manejar el cambio en el primer select
->>>>>>> master
+
     document.getElementById('Semestre_tipo').addEventListener('change', function() {
         actualizarGrupoSelect();
     });
@@ -50,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-<<<<<<< HEAD
+
     // Trigger para inicializar el segundo select basado en el valor inicial del  select Semestre grupo
     document.getElementById('Semestre_tipo').dispatchEvent(new Event('change'));
 });
@@ -62,28 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var grupSelect = document.getElementById('especialidad');
 
     // Manejar el cambio en el primer select carrera
-=======
-    // Trigger para inicializar el segundo select basado en el valor inicial del primer select
-    document.getElementById('Semestre_tipo').dispatchEvent(new Event('change'));
-});
 
-/*===========filtro de grupo por carrera==================*/
-document.addEventListener('DOMContentLoaded', function() {
-    var carreraSelect = document.getElementById('carrera');
-    var especialidadContainer = document.getElementById('especialidadContainer');
-    var especialidadSelect = document.getElementById('especialidad');
-
-    // Manejar el cambio en el primer select
->>>>>>> master
     carreraSelect.addEventListener('change', function() {
         var carreraValue = carreraSelect.value;
 
         // Limpiar opciones del segundo select
-<<<<<<< HEAD
+
         grupSelect.innerHTML = '';
-=======
-        especialidadSelect.innerHTML = '';
->>>>>>> master
+
 
         // Mostrar o ocultar el segundo select según la opción seleccionada
         if (carreraValue === 'Enfermeria' || carreraValue === 'Medicina' || carreraValue ==
@@ -108,31 +90,25 @@ document.addEventListener('DOMContentLoaded', function() {
             var option = document.createElement('option');
             option.value = opciones[i];
             option.text = opciones[i];
-<<<<<<< HEAD
+
             grupSelect.appendChild(option);
-=======
-            especialidadSelect.appendChild(option);
->>>>>>> master
+
         }
     }
 
     // Trigger para inicializar el estado del formulario
     carreraSelect.dispatchEvent(new Event('change'));
 });
-<<<<<<< HEAD
+
 /*Horas dias filtro*/
-=======
-//Horas dias filtro//
->>>>>>> master
+
 function toggleInputs() {
     var selectElement = document.getElementById('Dias_horas');
     var dateRangeInputs = document.getElementById('dateRangeInputs');
     var additionalInputs = document.getElementById('additionalInputs');
-<<<<<<< HEAD
-    //filtro para ocultar segun la seleccion de dias y horas
-=======
 
->>>>>>> master
+    //filtro para ocultar segun la seleccion de dias y horas
+
     if (selectElement.value === 'Dias') {
         dateRangeInputs.style.display = 'block';
         additionalInputs.style.display = 'none';
@@ -141,11 +117,9 @@ function toggleInputs() {
         additionalInputs.style.display = 'block';
     }
 }
-<<<<<<< HEAD
+
 /*tablas secretaria*/
-=======
-//tablas secretaria
->>>>>>> master
+
 function doSearch()
 
 {
