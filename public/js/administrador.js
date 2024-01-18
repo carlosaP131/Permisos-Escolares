@@ -1,3 +1,6 @@
+/**
+ * Funcion de filtrado de datos
+ */
 function doSearch()
 
 {
