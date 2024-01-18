@@ -1,0 +1,24 @@
+
+
+body {
+    background-attachment: fixed;
+    background-image: url(../imagen/fondo.jpeg); /* Color de fondo */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    
+}
+
+.card {
+    margin-top: 50px; /* Espacio superior entre la tarjeta y la parte superior de la página */
+}
+
+
+    
+
+.btn-info {
+    width: 50%;
+    background-color: lightpink;
+}
+
