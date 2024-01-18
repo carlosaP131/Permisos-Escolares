@@ -24,6 +24,7 @@
     
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <link href="{{ asset('css/secretaria.css') }}" rel="stylesheet">
     <script src="{{ asset('js/secretaria.js') }}"></script>
 
