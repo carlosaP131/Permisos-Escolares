@@ -12,13 +12,19 @@ body {
 
 .card {
     margin-top: 50px; /* Espacio superior entre la tarjeta y la parte superior de la página */
+    border-radius: 20px;
+   /* background: rgba(0, 0, 0, .01);*/
 }
 
-
+input {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
     
 
 .btn-info {
     width: 50%;
-    background-color: lightpink;
+    background-color: #800020;
+    color: white;
 }
 
