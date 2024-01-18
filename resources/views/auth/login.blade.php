@@ -9,6 +9,7 @@
                 <h4>
                   <img src="{{ asset('imagen/logo.png') }}"  style="width: 200px; height: 200px; margin-right: 10px;">
                 </h4>
+
                 </div>
 
                 <div class="card-body">  <!-- Cuerpo de la tarjeta -->
@@ -20,6 +21,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">
                                 <i class="fa fa-user-circle" style="color: #800000;"></i> {{ __('Usuario') }}
                             </label>
+
                             <div class="col-md-6">
                                 <input id="email" type="email" placeholder="Ingrese su correo electrónico" class="form-control rounded @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -36,6 +38,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">
                                 <i class="fas fa-lock" style="color: #800000;"></i> {{ __('Contraseña') }}
                             </label>
+
                             <div class="col-md-6">
                                 <input id="password" type="password" placeholder="Ingrese su contraseña" class="form-control rounded @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
