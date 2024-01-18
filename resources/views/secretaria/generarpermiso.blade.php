@@ -3,7 +3,11 @@
     {{--Form para generar un permiso--}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="">
+        <form action="{{ route('genera')}}" method="POST">
+            @csrf
+            @if (session('success'))
+                <h6 class="alert alert-success">{{session('success')}}</h6>
+            @endif
             <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
                 <div class="row">
                     <div class="col">
@@ -113,10 +117,15 @@
                 </div>
             </div>
             {{-- Termina el div de las secciones de rango de dias u horas --}}
+            <label for="comment">Motivo u Observaciones:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
-                <label for="comment">Motivo u Observaciones:</label>
-                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+
+                <input class="form-control" type="text"  id="comment" name="motivo"/>
             </div>{{-- Termina seccion de motivo u observaciones --}}
+            <label for="comment">Descripción:</label>
+            <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
+                <textarea class="form-control"   id="comment" name="descripcion"></textarea>
+            </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
         </form>
     </div>
