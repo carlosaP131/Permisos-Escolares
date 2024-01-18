@@ -1,24 +1,40 @@
-
+/* Estilos del body*/
 
 body {
     background-attachment: fixed;
-    background-image: url(../imagen/fondo.jpeg); /* Color de fondo */
+    background-image: url(../imagen/fondo.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
-    
+
+
 }
+
+/* Estilos del card*/
 
 .card {
-    margin-top: 50px; /* Espacio superior entre la tarjeta y la parte superior de la página */
+    margin-top: 50px;
+    border-radius: 20px;
 }
 
+/* Estilos del input*/
 
-    
+input {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del info*/
+
 
 .btn-info {
     width: 50%;
-    background-color: lightpink;
+    background-color: #800020;
+    color: white;
+}
+
+/* Estilos del hover*/
+
+.btn:hover {
+    background-color: #af4660;
 }
 
