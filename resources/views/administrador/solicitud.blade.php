@@ -2,7 +2,7 @@
 @section('content')
 <form>
 
-    Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
+    Filtrar <input id="searchTerm" type="text" onkeyup="doSearch()" />
 
     </form>
     <div >
