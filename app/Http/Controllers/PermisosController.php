@@ -13,7 +13,16 @@ public function store(Request $request){
     $permiso =  new permiso();
     $permiso->Motivo = $request->motivo;
     $permiso->Descripcion = $request->descripcion;
-    $permiso->Tiempo = $request->tiempo;
+    $permiso->Tipo = $request->tipo;
+    $tipoaux = $request->tipo;
+    if ($tipoaux == "Dias" ) {
+        $permiso->Tiempo = $request-> startDate . "-" . endDate;
+    }else if($tipoaux == "Horas"){
+        $permiso->Tiempo = $request-> aditionalDate . "-" . aditionaldateini ."-". aditionaldatefin;
+    }
+    $permiso->Status = "Pendiente";
+    $permiso->Editado = Auth::user();
+
     $permiso->save();
     return redirect()->route('genera')->with('success','Permiso creado Exitosamente');
 

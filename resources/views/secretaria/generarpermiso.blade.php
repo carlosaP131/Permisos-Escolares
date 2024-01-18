@@ -65,7 +65,7 @@
             </div>{{-- Termina el div de la seleccion de grupo --}}
             <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                 <label for="sellist1">Tipo de Permiso:</label>
-                <select class="form-select" id="Dias_horas" name="sellist1" onchange="toggleInputs()">
+                <select class="form-select" id="Dias_horas" name="tipo" onchange="toggleInputs()">
                     <option>Dias</option>
                     <option>Horas</option>
                 </select>
@@ -102,7 +102,7 @@
                         <div class="col">
                             <label for="horaini">Inicio:</label>
                             <div class="cs-form">
-                                <input type="time" class="form-control" value="10:05 AM" />
+                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldateini"/>
                             </div>
 
                         </div>
@@ -110,7 +110,7 @@
 
                             <label for="horafin">Fin:</label>
                             <div class="cs-form">
-                                <input type="time" class="form-control" value="10:05 AM" />
+                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldatefin" />
                             </div>
                         </div>
                     </div>
