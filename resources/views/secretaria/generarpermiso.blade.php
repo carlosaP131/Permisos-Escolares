@@ -124,7 +124,7 @@
             </div>{{-- Termina seccion de motivo u observaciones --}}
             <label for="comment">Descripción:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
-                <textarea class="form-control"   id="comment" name="descripcion"></textarea>
+                <textarea class="form-control"   id="comment" rows="5" name="descripcion"></textarea>
             </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
         </form>
