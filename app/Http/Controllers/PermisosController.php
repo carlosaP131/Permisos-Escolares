@@ -21,8 +21,8 @@ public function store(Request $request){
         $permiso->Tiempo = $request-> aditionalDate . "-" . aditionaldateini ."-". aditionaldatefin;
     }
     $permiso->Status = "Pendiente";
-    $permiso->Editado = Auth::user();
-
+    $permiso->Editado = Auth::user()->name;
+    $permiso->id_alumno =
     $permiso->save();
     return redirect()->route('genera')->with('success','Permiso creado Exitosamente');
 

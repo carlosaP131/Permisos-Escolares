@@ -26,12 +26,7 @@
 
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-<<<<<<< HEAD
-    <link href="{{ asset('css/secretaria.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/secretaria.js') }}"></script>
 
-    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet"> 
-=======
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +34,7 @@
 
     <link href="{{ asset('css/secretaria.css') }}" rel="stylesheet">
     <script src="{{ asset('js/secretaria.js') }}"></script>
-    
+
     <!-- login -->
 
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
@@ -57,13 +52,13 @@
     <script src="{{ asset('js/popper.js') }}"></script>
 
 
->>>>>>> master
+
 
 </head>
 
 <body>
     <div id="app">
-<<<<<<< HEAD
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,11 +69,10 @@
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-=======
->>>>>>> master
 
 
-<<<<<<< HEAD
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -123,7 +117,7 @@
 
         <main class="py-4">
             @yield('content')
-=======
+
         @guest
         @else
             <!-- Section to show views and content -->
@@ -134,7 +128,7 @@
         <!-- Section to show login-->
         <main class="">
             @yield('login')
->>>>>>> master
+
         </main>
     </div>
     <!-- Scripts -->
