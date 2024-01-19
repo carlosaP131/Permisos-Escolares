@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('permisos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Status', 10);
-            $table->string('Motivo', 30);
-            $table->string('Descripcion', 200);
-            $table->string('Tiempo', 50);
-            $table->string('Tipo', 30);
-            $table->string('Editado', 25);
+            $table->string('status', 10);
+            $table->string('motivo', 30);
+            $table->string('descripcion', 200);
+            $table->string('tiempo', 100);
+            $table->string('tipo', 30);
+            $table->string('editado', 25);
             $table->unsignedInteger('id_alumno');
             $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
             $table->timestamps();
