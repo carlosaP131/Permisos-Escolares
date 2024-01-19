@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('home')
+@section('main')
 
     <body class="page-content">
 
@@ -507,6 +507,6 @@
             </div>
         </div>
 
-
+      
     </body>
 @endsection

@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('home')
+@section('main')
 <body>
 <form>
 
