@@ -31,7 +31,7 @@ class HomeController extends Controller
         return view('secretaria.alumnos');
     }
 
-    public function permission()
+    public function permission  ()
     {
         return view('secretaria.tabla');
     }
