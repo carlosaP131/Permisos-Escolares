@@ -17,10 +17,10 @@
                         <a href="#"><span class="fa fa-home mr-3"></span>{{ Auth::user()->name }}</a>
                     </li>
                     <li class="active">
-                        <a href="#"><span class="fa fa-home mr-3"></span> Inicio</a>
+                        <a href="{{ url('/alumno') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
                     </li>
                     <li>
-                        <a><span class="fa fa-user mr-3"></span> Permisos</a>
+                        <a href="{{ url('/permiso') }}"><span class="fa fa-user mr-3"></span> Permisos</a>
                     </li>
                     <li>
                         <a href="#"><span class="fa fa-sticky-note mr-3"></span> Historial</a>
@@ -41,14 +41,13 @@
             </nav>
 
             <!-- Contenido  -->
-            <div id="content" class="p-4 p-md-5 pt-5">
-                <h2 class="mb-4">Contenido</h2>
+            <div id="content" class="p-md-5">
+                @yield('main')
             </div>
-        </div>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+            <script src="js/jquery.min.js"></script>
+            <script src="js/popper.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/main.js"></script>
     </body>
 @endsection
