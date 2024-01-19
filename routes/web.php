@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PermisosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('tabla');
@@ -26,17 +28,18 @@ Route::get('/alumnos', function () {
 Route::get('/permisos', function () {
     return view('secretaria.permisos');
 });
-Route::get('/genera', function () {
+/* Route::get('/generar', function () {
     return view('secretaria.generarpermiso');
-});
-
-Route::get('/menu', function () {
-    return view('home');
-});
+}); */
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admi', function () {
-    return view('administrador.solicitud');
+Route::get('/', function () {
+    return view('auth.login');
 });
+
+Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-secretaria');
+Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
+Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
+
