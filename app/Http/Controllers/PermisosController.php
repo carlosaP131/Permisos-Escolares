@@ -52,7 +52,7 @@ public function show(Request $request,$id){
     $permiso->editado ="jose" /*Auth::user()->name*/;
     $permiso->id_alumno = "1"/*alumno::find($id)*/;
     $permiso->save();
-  return view('secretaria.generarpermiso',['alumno'=>$alumno])->with('success','Permiso creado Exitosamente');
+  return redirect()->route('vista-secretaria',['id'=>$alumno])->with('success','Permiso creado Exitosamente');
 }
 
 }

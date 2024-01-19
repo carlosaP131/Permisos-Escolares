@@ -4,7 +4,8 @@
     {{--Form para generar un permiso--}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="{{route('vista-secretaria',['id'=>$alumno->id])}}" method="get">
+        <form action="{{route('genera-alumno',['id'=>$alumno->id])}}" method="POST">
+            @method('PATCH')
             @if (session('success'))
             <h6 class="alert alert-success">{{session('success')}}</h6>
             @endif
@@ -65,8 +66,8 @@
 
                 </select>
             </div>{{-- Termina el div de la seleccion de grupo --}}
-        </form>
-            <form action="{{route('genera-secretaria')}}" method="POST">
+
+
             <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                 <label for="sellist1">Tipo de Permiso:</label>
                 <select class="form-select" id="Dias_horas" name="tipo" onchange="toggleInputs()">
