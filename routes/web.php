@@ -43,6 +43,3 @@ Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-sec
 Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
 Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
 
-
-
-
