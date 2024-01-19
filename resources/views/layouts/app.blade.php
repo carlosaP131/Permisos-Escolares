@@ -14,6 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css')}}">
 
 
@@ -50,13 +51,13 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
 
-
+    <link href="{{ asset('css/administrador.css') }}">
+    <script src="{{ asset('js/administrador.js') }}"></script>
 
 </head>
 
 <body>
     <div id="app">
-
 
         @guest
         @else

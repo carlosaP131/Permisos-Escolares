@@ -41,3 +41,6 @@ Route::get('/menu', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admi', function () {
+    return view('administrador.solicitud');
+});
