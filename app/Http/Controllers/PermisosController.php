@@ -11,6 +11,7 @@ use App\Models\Alumno;
 
 class PermisosController extends Controller
 {
+
     public function index($id){
         $alumno = alumno::find($id);
         return view('secretaria.generarpermiso',['alumno'=>$alumno]);
@@ -53,6 +54,11 @@ public function show(Request $request,$id){
     $permiso->id_alumno = "1"/*alumno::find($id)*/;
     $permiso->save();
   return redirect()->route('vista-secretaria',['id'=>$alumno])->with('success','Permiso creado Exitosamente');
+}
+public function destroy($id){
+    $permiso = permiso::find($id);
+    $permiso->delete();
+    return redirect()->route('alumno-permisos')->with('danger','Permiso eliminado Exitosamente');
 }
 
 }

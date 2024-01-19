@@ -28,4 +28,5 @@ Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'
 Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-secretaria');
 Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
 Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
+Route::delete('/permiso/{id}',[PermisosController::class,'destroy'])->name('permiso-destroy');
 
