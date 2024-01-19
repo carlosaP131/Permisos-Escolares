@@ -12,10 +12,8 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th>Nombre </th>
-                                        <th>Grupo</th>
-                                        <th>Semestre</th>
-                                        <th>Edad</th>
-                                        <th>Fecha</th>
+                                        <th>Matricula</th>
+                                        <th>Puesto</th>
                                         <th>Estado</th>
                                     </tr>
                                 </thead>
