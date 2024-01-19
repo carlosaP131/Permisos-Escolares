@@ -14,7 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('tabla');
+});
+
+Route::get('/tabla', function () {
+    return view('tabla');
+});
+Route::get('/alumnos', function () {
+    return view('secretaria.alumnos');
+});
+Route::get('/permisos', function () {
+    return view('secretaria.permisos');
+});
+Route::get('/genera', function () {
+    return view('secretaria.generarpermiso');
+});
+
+Route::get('/menu', function () {
+    return view('home');
 });
 
 Auth::routes();
