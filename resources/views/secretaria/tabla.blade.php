@@ -506,7 +506,14 @@
                 </div>
             </div>
         </div>
+    <!-- tambien para las tablas -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/pdfmake.min.js') }}"></script>
 
-      
+    <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+
     </body>
 @endsection
