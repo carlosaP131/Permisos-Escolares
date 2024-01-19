@@ -28,9 +28,9 @@ Route::get('/alumnos', function () {
 Route::get('/permisos', function () {
     return view('secretaria.permisos');
 });
-Route::get('/genera', function () {
+/* Route::get('/generar', function () {
     return view('secretaria.generarpermiso');
-});
+}); */
 
 Auth::routes();
 
@@ -39,8 +39,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/crearpermisos', [PermisosController::class,'index'])->name('genera');
-Route::post('/crearpermisos',[PermisosController::class,'store'])->name('generar');
+Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-secretaria');
+Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
+Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
 
 
 

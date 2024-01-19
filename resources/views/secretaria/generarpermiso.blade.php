@@ -1,28 +1,25 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
+
     {{--Form para generar un permiso--}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="{{ route('genera')}}" method="POST">
-            @csrf
+        <form action="{{route('vista-secretaria',['id'=>$alumno->id])}}" method="get">
             @if (session('success'))
-                <h6 class="alert alert-success">{{session('success')}}</h6>
+            <h6 class="alert alert-success">{{session('success')}}</h6>
             @endif
+            @csrf
             <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
-
                 <div class="row">
                     <div class="col">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre" value="{{$alumno->nombre}}">
                     </div>
                     <div class="col">
                         <label for="matricula">Matricula</label>
-                        <input type="text" class="form-control" placeholder="Ingrese la Matricula" name="matricula"
-                            required>
+                        <input type="text" class="form-control" placeholder="Ingrese la Matricula" name="matricula" value="{{$alumno->matricula}}">
                     </div>
                 </div>
-
             </div>{{-- Termina div de los inputs nombre y matricula --}}
             <div class="mb-3">{{-- Inicia div del select carrera tiene 8 opciones --}}
 
@@ -37,7 +34,6 @@
                     <option>Medicina</option>
                     <option>Odontologia</option>
                 </select>
-
             </div>{{-- Termina div del select carrera --}}
             <div class="mb-3">{{-- Inicia el div de la seccion de seleccion del año y de el ciclo escolar --}}
                 <div class="row">
@@ -55,7 +51,6 @@
                         </select>
                     </div>
                 </div>
-
             </div>{{-- Termina select de la seccion de año y ciclo --}}
             <div class="mb-3 mt-3">{{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
                 <label for="sel1" class="form-label">Semestre:</label>
@@ -70,6 +65,8 @@
 
                 </select>
             </div>{{-- Termina el div de la seleccion de grupo --}}
+        </form>
+            <form action="{{route('genera-secretaria')}}" method="POST">
             <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                 <label for="sellist1">Tipo de Permiso:</label>
                 <select class="form-select" id="Dias_horas" name="tipo" onchange="toggleInputs()">
@@ -140,7 +137,8 @@
                 <textarea class="form-control"   id="comment" rows="5" name="descripcion"></textarea>
             </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
-            <input type="text" name="idalumno" style="display: none">
+            <p name="idalumno" style="display: none"  ></p>
+
 
         </form>
     </div>
