@@ -32,7 +32,7 @@ class HomeController extends Controller
         return view('secretaria.alumnos');
     }
 
-    public function permission()
+    public function permission  ()
     {
         //$permiso = permiso::all();
         $permiso = DB::select('obtenerDatosAlumnosPermisos', [1]);
