@@ -7,7 +7,37 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
 
 </form>
 
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="clod-md-4"></div>
+        <div class="clod-md-6">
+            <div class="row">
+                <form action="{{ url('datos/importar') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="clod-md-6">
+                        <input type="file" name="documento">
+                    </div>
+                    <div class="clod-md-6">
+                        <button class="btn btn-primary" type="submit">Importar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
 <div >
     <table class="table table-hover table-bordered table-dark " id="datos">
     <thead>

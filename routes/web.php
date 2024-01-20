@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DatosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
 
@@ -36,3 +37,7 @@ Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-sec
 Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
 Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
 Route::delete('/permiso/{id}',[PermisosController::class,'destroy'])->name('permiso-destroy');
+
+//Rutas para Importar excel
+Route::get('datos', [DatosController::class, 'index']);
+Route::post('datos/importar',[DatosController::class, 'importar']);
