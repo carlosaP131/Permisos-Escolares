@@ -19,6 +19,13 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/admin', function () {
+    return view('administrador.administradorUsuarios');
+});
+Route::get('/crearUsuarios', function () {
+    return view('administrador.administradorCrearUsuarios');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->name('alumno-inicio');
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->name('alumno-permisos');
