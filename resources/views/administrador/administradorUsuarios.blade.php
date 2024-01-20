@@ -1,5 +1,6 @@
 @extends('home')
 @section('main')
+
     <body class="page-content">
         <link href="{{ asset('css/administrador.css') }}" rel="stylesheet">
         <div class="container">
@@ -16,74 +17,80 @@
                                     <th>Rol</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
-                                
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- ... (filas de la tabla) ... -->
                                 <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>john@example.com</td>
-                                <td>********</td>
-                                <td>Usuario</td>
-                                <td><span class="text-danger">Inactivo</span></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Mary Johnson</td>
-                                <td>mary@example.com</td>
-                                <td>********</td>
-                                <td>Administrador</td>
-                                <td><span class="text-danger">Inactivo</span></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>July Smith</td>
-                                <td>july@example.com</td>
-                                <td>********</td>
-                                <td>Usuario</td>
-                                <td><span class="text-success">Activo</span></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class='noSearch hide'>
-                                <td colspan="7"></td>
-                            </tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>********</td>
+                                    <td>Usuario</td>
+                                    <td><button type="button" class="btn btn-outline-secondary">Inactivo</button>
+
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Mary Johnson</td>
+                                    <td>mary@example.com</td>
+                                    <td>********</td>
+                                    <td>Administrador</td>
+                                    <td><button type="button" class="btn btn-outline-secondary">Activo</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>July Smith</td>
+                                    <td>july@example.com</td>
+                                    <td>********</td>
+                                    <td>Usuario</td>
+                                    <td><button type="button" class="btn btn-outline-secondary">Activo</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class='noSearch hide'>
+                                    <td colspan="7"></td>
+                                </tr>
                             </tbody>
                         </table>
 
                         <!-- Botón para abrir el modal -->
-                        <button class="btn btn-success" data-toggle="modal" data-target="#crearUsuarioModal">Crear Nuevo Usuario</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#crearUsuarioModal">Crear Nuevo
+                            Usuario</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal para crear nuevo usuario -->
-        <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+        <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
+            aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -102,7 +109,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Correo Electrónico</label>
+                                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Correo
+                                    Electrónico</label>
                                 <input type="email" name="email" id="email" class="custom-input" required>
                             </div>
 
@@ -112,8 +120,10 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="password_confirmation" class="form-label"><i class="fas fa-lock"></i> Confirmar Contraseña</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="custom-input" required>
+                                <label for="password_confirmation" class="form-label"><i class="fas fa-lock"></i> Confirmar
+                                    Contraseña</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation"
+                                    class="custom-input" required>
                             </div>
 
                             <div class="mb-3">
@@ -124,8 +134,9 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" style="background-color: #8B0000; border-color: #8B0000;">
-                                    <i class="fas fa-save"></i> Guardar
+                            <button type="submit" class="btn btn-primary"
+                                style="background-color: #8B0000; border-color: #8B0000;">
+                                <i class="fas fa-save"></i> Guardar
                             </button>
 
                         </form>

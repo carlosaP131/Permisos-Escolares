@@ -16,3 +16,19 @@
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+.boton-activo {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4caf50; /* Color verde - puedes cambiarlo */
+    color: #fff; /* Color blanco para el texto */
+    border: 2px solid #4caf50; /* Borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+.boton-activo:hover {
+    background-color: #45a049; /* Cambia el color al pasar el ratón sobre el botón */
+}
