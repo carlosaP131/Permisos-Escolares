@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function permission  ()
     {
         //$permiso = permiso::all();
-        $permiso = DB::select('obtenerDatosAlumnosPermisos', [1]);
+       // $permiso = DB::statement('call obtenerDatosAlumnosPermisos');
         return view('secretaria.tabla',['permisos'=>$permiso]);
     }
 }

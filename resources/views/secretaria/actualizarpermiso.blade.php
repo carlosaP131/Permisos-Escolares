@@ -1,25 +1,24 @@
 @extends('layouts.app')
 @section('content')
-    {{-- Form para generar un permiso --}}
+
+    {{--Form para generar un permiso--}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="{{ route('genera-alumno', ['id' => $alumno->id]) }}" method="POST">
-
+        <form action="{{route('genera-alumno',['idal'=>$alumno->id,'idper'=>$permiso->id])}}" method="POST">
+            @method('PATCH')
             @if (session('success'))
-                <h6 class="alert alert-success">{{ session('success') }}</h6>
+            <h6 class="alert alert-success">{{session('success')}}</h6>
             @endif
             @csrf
             <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
                 <div class="row">
                     <div class="col">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre"
-                            value="{{ $alumno->nombre }}">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre" value="{{$alumno->nombre}}">
                     </div>
                     <div class="col">
                         <label for="matricula">Matricula</label>
-                        <input type="text" class="form-control" placeholder="Ingrese la Matricula" name="matricula"
-                            value="{{ $alumno->matricula }}">
+                        <input type="text" class="form-control" placeholder="Ingrese la Matricula" name="matricula" value="{{$alumno->matricula}}">
                     </div>
                 </div>
             </div>{{-- Termina div de los inputs nombre y matricula --}}
@@ -27,21 +26,15 @@
 
                 <label for="sel1" class="form-label">Carrera:</label>
                 <select class="form-select" id="carrera" name="sellist1">
-                    <option>Administracion Publica</option>
-                    <option>Administracion Municipal</option>
-                    <option>Ciencias Empresariales</option>
-                    <option>Enfermeria</option>
-                    <option>Informatica</option>
-                    <option>Nutricion</option>
-                    <option>Medicina</option>
-                    <option>Odontologia</option>
+                    <option>{{$alumno->carrera}}</option>
+
                 </select>
             </div>{{-- Termina div del select carrera --}}
             <div class="mb-3">{{-- Inicia el div de la seccion de seleccion del año y de el ciclo escolar --}}
                 <div class="row">
                     <div class="col">
                         <label for="Semestre_año">Año</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año">
+                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año" value="{{$alumno->año}}">
 
                     </div>
                     <div class="col">
@@ -57,7 +50,7 @@
             <div class="mb-3 mt-3">{{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
                 <label for="sel1" class="form-label">Semestre:</label>
                 <select class="form-select" id="grupo" name="sellist1">
-
+                    <option >{{$alumno->semestre}}</option>
                 </select>
             </div>{{-- Termina el div del select semestre --}}
             <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
@@ -71,7 +64,7 @@
 
             <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                 <label for="sellist1">Tipo de Permiso:</label>
-                <select class="form-select" id="Dias_horas" name="tipo" onchange="toggleInputs()">
+                <select class="form-select" id="Dias_horas" name="tipo" onchange="toggleInputs()" >
                     <option>Dias</option>
                     <option>Horas</option>
                 </select>
@@ -112,7 +105,7 @@
 
                             <label for="horaini">Inicio:</label>
                             <div class="cs-form">
-                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldateini" />
+                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldateini"/>
                             </div>
 
                         </div>
@@ -132,15 +125,16 @@
             <label for="comment">Motivo u Observaciones:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
 
-                <input class="form-control" type="text" id="comment" name="motivo" />
+                <input class="form-control" type="text"  id="comment" name="motivo" value="{{$permiso->motivo}}"/>
             </div>{{-- Termina seccion de motivo u observaciones --}}
             <label for="comment">Descripción:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
-                <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
+                <textarea class="form-control"   id="comment" rows="5" name="descripcion" >{{$permiso->descripcion}}</textarea>
             </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
 
-            <p name="idalumno" style="display: none"></p>
+            <p name="idalumno" style="display: none"  ></p>
         </form>
     </div>
+
 @endsection

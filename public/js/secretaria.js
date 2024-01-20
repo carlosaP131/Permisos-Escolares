@@ -1,6 +1,7 @@
 
+
 /* fitro de grupo por semestre*/
- document.addEventListener('DOMContentLoaded', function() {
+/* document.addEventListener('DOMContentLoaded', function() {
     // Manejar el cambio en el  select Semestre grupo
 
     document.getElementById('Semestre_tipo').addEventListener('change', function() {
@@ -49,17 +50,17 @@
 
     // Trigger para inicializar el segundo select basado en el valor inicial del  select Semestre grupo
     document.getElementById('Semestre_tipo').dispatchEvent(new Event('change'));
-});
+});*/
 
 /*filtro de grupo por carrera*/
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var carreraSelect = document.getElementById('carrera');
     var especialidadContainer = document.getElementById('especialidadContainer');
     var grupSelect = document.getElementById('especialidad');
 
     // Manejar el cambio en el primer select carrera
 
-    carreraSelect.addEventListener('change', function() {
+    carreraSelect.addEventListener('change', function () {
         var carreraValue = carreraSelect.value;
 
         // Limpiar opciones del segundo select
@@ -102,13 +103,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*Horas dias filtro*/
 
+document.addEventListener('DOMContentLoaded', function () {
+    toggleInputs(); // Llama a la función al cargar la página
+});
+
 function toggleInputs() {
     var selectElement = document.getElementById('Dias_horas');
     var dateRangeInputs = document.getElementById('dateRangeInputs');
     var additionalInputs = document.getElementById('additionalInputs');
 
-    //filtro para ocultar segun la seleccion de dias y horas
-
+    // Filtro para ocultar según la selección de días y horas
     if (selectElement.value === 'Dias') {
         dateRangeInputs.style.display = 'block';
         additionalInputs.style.display = 'none';
@@ -117,12 +121,9 @@ function toggleInputs() {
         additionalInputs.style.display = 'block';
     }
 }
-
 /*tablas secretaria*/
 
-function doSearch()
-
-{
+function doSearch() {
 
     const tableReg = document.getElementById('datos');
 
@@ -188,9 +189,9 @@ function doSearch()
 
     // mostramos las coincidencias
 
-    const lastTR=tableReg.rows[tableReg.rows.length-1];
+    const lastTR = tableReg.rows[tableReg.rows.length - 1];
 
-    const td=lastTR.querySelector("td");
+    const td = lastTR.querySelector("td");
 
     lastTR.classList.remove("hide", "red");
 
@@ -200,13 +201,13 @@ function doSearch()
 
     } else if (total) {
 
-        td.innerHTML="Se ha encontrado "+total+" coincidencia"+((total>1)?"s":"");
+        td.innerHTML = "Se ha encontrado " + total + " coincidencia" + ((total > 1) ? "s" : "");
 
     } else {
 
         lastTR.classList.add("red");
 
-        td.innerHTML="No se han encontrado coincidencias";
+        td.innerHTML = "No se han encontrado coincidencias";
 
     }
 

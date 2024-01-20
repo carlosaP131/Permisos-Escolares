@@ -6,7 +6,7 @@
         <!-- =======  Data-Table  = Start  ========================== -->
         <div class="container">
             @if (session('success'))
-            <h6 class="alert alert-success">{{session('success')}}</h6>
+                <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
             <div class="row">
                 <div class="col-12">
@@ -26,21 +26,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($permisos as $permiso)
-                                <tr>
-                                    <td>{{$permiso->id}}</td>
-                                    <td>Pedro</td>
-                                    <td>705</td>
-                                    <td>Séptimo</td>
-                                    <td>19</td>
-                                    <td>2013/06/20</td>
-                                    <td>{{$permiso->status}}</td>
-                                    <td><form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-danger btn-sm">Eliminar</button>
-                                    </form>
-                                </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $permiso->id }}</td>
+                                        <td>Pedro</td>
+                                        <td>705</td>
+                                        <td>Séptimo</td>
+                                        <td>19</td>
+                                        <td>2013/06/20</td>
+                                        <td>{{ $permiso->status }}</td>
+                                        <td>
+                                            <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
