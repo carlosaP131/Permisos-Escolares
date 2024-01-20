@@ -12,6 +12,7 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
       <tr>
 
         <th>Id</th>
+        <th>Matricula</th>
         <th>Nombre</th>
         <th>Carrera</th>
         <th>Grupo</th>
@@ -20,32 +21,22 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
       </tr>
     </thead>
     <tbody>
-
-      <tr>
-        <td>1</td>
-        <td>John</td>
-        <td>Enfermeria</td>
-        <td>503 A</td>
-        <td>quinto</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
-    </tr>
-      <tr>
-        <td>2</td>
-        <td>Mary</td>
-        <td>Medicina</td>
-        <td>814</td>
-        <td>octavo</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
-    </tr>
-      <tr>
-        <td>3</td>
-        <td>July</td>
-        <td>Informatica</td>
-        <td>306</td>
-        <td>tercero</td>
-        <td> <button type="button" class="btn btn-danger">Generar Permiso</button></td>
-    </tr>
-      </tr>
+        @foreach ($alumnos as $alumno)
+        <tr>
+            <td>{{ $alumno->id }}</td>
+            <td>{{$alumno->matricula}}</td>
+            <td>{{$alumno->nombre}}</td>
+            <td>{{$alumno->carrera}}</td>
+            <td>{{$alumno->grupo}}</td>
+            <td>{{$alumno->semestre}}</td>
+            <td>
+                <form action="{{ route('vista-secretaria', [$alumno->id]) }}" method="GET">
+                    @csrf
+                    <button class="btn btn-danger btn-sm">Genera Permiso</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
 
 <tr class='noSearch hide'>
 

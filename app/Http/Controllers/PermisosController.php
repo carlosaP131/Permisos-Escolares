@@ -65,7 +65,7 @@ class PermisosController extends Controller
     $permiso->id_alumno = $alumno->id;//le pasamos el id del alumno para la
                                      //conexion con la llave foranea
     $permiso->save();
-    return redirect()->route('vista-secretaria',['id'=>$alumno])->with('success',
+    return redirect()->route('alumno-permisos')->with('success',
     'Permiso creado Exitosamente');
 
     }

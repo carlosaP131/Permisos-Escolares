@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="Semestre_año">Año</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año" value="{{$alumno->año}}">
+                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año" value="{{date('Y')}}">
 
                     </div>
                     <div class="col">
@@ -131,7 +131,7 @@
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
                 <textarea class="form-control"   id="comment" rows="5" name="descripcion" >{{$permiso->descripcion}}</textarea>
             </div>{{-- Termina seccion de Descripción --}}
-            <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
+            <button type="submit" class="btn btn-primary">Actualizar Permiso</button>{{-- boton para generar permisos --}}
 
             <p name="idalumno" style="display: none"  ></p>
         </form>

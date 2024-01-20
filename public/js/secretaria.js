@@ -69,15 +69,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // Mostrar o ocultar el segundo select según la opción seleccionada
-        if (carreraValue === 'Enfermeria' || carreraValue === 'Medicina' || carreraValue ==
-            'Odontologia') {
+        if ( carreraValue.toUpperCase() === 'ENFERMERIA' || carreraValue.toUpperCase() === 'MEDICINA' || carreraValue.toUpperCase() ==
+            'ODONTOLOGIA') {
             especialidadContainer.style.display = 'block';
             // Agregar opciones basadas en la carrera seleccionada
-            if (carreraValue === 'Enfermeria') {
+            if (carreraValue.toUpperCase() === 'ENFERMERIA') {
                 agregarOpcionesEspecialidad(['A', 'B', 'C']);
-            } else if (carreraValue === 'Medicina') {
+            } else if (carreraValue.toUpperCase() === 'MEDICINA') {
                 agregarOpcionesEspecialidad([' A', ' B', ' C']);
-            } else if (carreraValue === 'Odontologia') {
+            } else if (carreraValue.toUpperCase() === 'ODONTOLOGIA') {
                 agregarOpcionesEspecialidad([' A', ' B', ' C']);
             }
         } else {

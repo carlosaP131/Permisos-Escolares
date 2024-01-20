@@ -22,12 +22,14 @@
                                     <th>Fecha</th>
                                     <th>Estado</th>
                                     <th>Eliminar</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($permisos as $permiso)
                                     <tr>
                                         <td>{{ $permiso->id }}</td>
+
                                         <td>Pedro</td>
                                         <td>705</td>
                                         <td>Séptimo</td>
@@ -39,6 +41,12 @@
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                           <a href="{{route('vista-permiso',[$permiso->id_alumno,$permiso->id]) }}"
+
+                                                 class="btn btn-warning btn-sm">Editar</a>
                                             </form>
                                         </td>
                                     </tr>
