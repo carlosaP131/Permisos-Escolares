@@ -17,7 +17,7 @@ use App\Http\Controllers\PermisosController;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.register');
 });
 Route::get('/admin', function () {
     return view('administrador.administradorUsuarios');
