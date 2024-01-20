@@ -12,7 +12,8 @@ use App\Models\Alumno;
 class PermisosController extends Controller
 {
 
-    public function index($id){
+
+    public function vista($id){
         $alumno = alumno::find($id);
         return view('secretaria.generarpermiso',['alumno'=>$alumno]);
     }

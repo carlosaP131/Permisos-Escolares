@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Permiso;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,8 @@ class HomeController extends Controller
 
     public function permission()
     {
-        return view('secretaria.tabla');
+        //$permiso = permiso::all();
+        $permiso = DB::select('obtenerDatosAlumnosPermisos', [1]);
+        return view('secretaria.tabla',['permisos'=>$permiso]);
     }
 }
