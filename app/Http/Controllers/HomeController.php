@@ -36,9 +36,6 @@ class HomeController extends Controller
 
     public function permission()
     {
-<<<<<<< HEAD
-        return view('secretaria.tabla');
-=======
         $permisos = Permiso::all();
 
         // Crear una colección de PermisoDTO
@@ -49,6 +46,5 @@ class HomeController extends Controller
         }
 
         return view('secretaria.tabla', ['permisos' => $permisosDTO]);
->>>>>>> master
     }
 }

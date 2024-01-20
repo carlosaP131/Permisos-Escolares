@@ -52,11 +52,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-
-
-    </body>
-=======
         <!-- Fin de la tabla de datos -->
 
         <!-- Inclusión de scripts -->
@@ -69,5 +64,4 @@
 
     </body>
     <!-- Fin del cuerpo de la página -->
->>>>>>> master
 @endsection
