@@ -135,7 +135,7 @@
                 <textarea class="form-control" id="comment" rows="5" name="descripcion">{{ $permiso->descripcion }}</textarea>
             </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Actualizar Permiso</button>{{-- boton para generar permisos --}}
-
+            <a href="{{ route('alumno-inicio') }}" class="btn btn-danger">Cancelar</a>
             <p name="idalumno" style="display: none"></p>
         </form>
     </div>

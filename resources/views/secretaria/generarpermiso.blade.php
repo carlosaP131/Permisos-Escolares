@@ -133,8 +133,10 @@
                 <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
             </div>{{-- Termina seccion de Descripción --}}
             <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
-
             <p name="idalumno" style="display: none"></p>
+            <a href="{{ route('alumno-inicio') }}" class="btn btn-danger">Cancelar</a>
+
         </form>
+
     </div>
 @endsection
