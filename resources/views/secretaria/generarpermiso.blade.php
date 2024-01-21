@@ -4,11 +4,38 @@
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
         <form action="{{ route('crear-permiso') }}" method="POST">
-
+            @csrf
+            @error('motivo')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('descripcion')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('tipo')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('Fecha_Inicial')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('Fecha_Final')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('Fecha_Horas')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('Hora_Inicial')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
+            @error('Hora_Final')
+                <h6 class="alert alert-danger">{{ $message }}</h6>
+            @enderror
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
+            @else
             @endif
-            @csrf
+
+
+
             <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
                 <div class="row">
                     <div class="col">
@@ -82,13 +109,13 @@
                     <div class="col">
                         <label for="Fechini">Inicio:</label>
 
-                        <input type="date" class="form-control" placeholder="" name="startDate">
+                        <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
 
                     </div>
                     <div class="col">
                         <label for="Fechfin">Fin:</label>
 
-                        <input type="date" class="form-control" placeholder="" name="endDate">
+                        <input type="date" class="form-control" placeholder="" name="Fecha_Final">
                     </div>
                 </div>
             </div>
@@ -97,7 +124,7 @@
                 <label for="additionalLabel">Rango Horas:</label>
                 <div class="col">
                     <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                        name="additionalDate">
+                        name="Fecha_horas">
                 </div>
 
                 <div class="mb-3 mt-3">
@@ -107,7 +134,7 @@
 
                             <label for="horaini">Inicio:</label>
                             <div class="cs-form">
-                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldateini" />
+                                <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
                             </div>
 
                         </div>
@@ -117,7 +144,7 @@
                             <label for="horafin">Fin:</label>
                             <div class="cs-form">
 
-                                <input type="time" class="form-control" value="10:05 AM" name="aditionaldatefin" />
+                                <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
                             </div>
                         </div>
                     </div>
@@ -133,14 +160,11 @@
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
                 <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
             </div>{{-- Termina seccion de Descripción --}}
-
             <div class="d-flex justify-content-between  ">
                 <button type="submit" class="btn btn-primary mb-2 mt-1">Generar Permiso</button>
                 <a href="{{ route('alumno-inicio') }}" class="btn btn-danger ml-5 mt-2  ">Cancelar</a>
             </div>
-
-
+            <p name="idalumno" style="display: none"></p>
         </form>
-
     </div>
 @endsection
