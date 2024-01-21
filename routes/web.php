@@ -57,3 +57,7 @@ Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('pe
 
 Route::get('datos', [DatosController::class, 'index']);
 Route::post('datos/importar',[DatosController::class, 'importar']);
+
+Route::get('/sol', function () {
+    return view('administrador.solicitud');
+});
