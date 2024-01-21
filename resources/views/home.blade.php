@@ -17,7 +17,7 @@
                         <a href="#"><span class="fa fa-user-circle mr-3"></span>{{ Auth::user()->name }}</a>
                     </li>
                     <li class="active">
-                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
+                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
@@ -26,7 +26,7 @@
                         <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fas fa-graduation-cap mr-3"></span> Alumnos</a>
+                        <a href="{{route('vista-cargar-excel')}}"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

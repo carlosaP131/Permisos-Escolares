@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\DatosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +49,14 @@ Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->name(
 Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
-
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios-destroy');
 
-/*Rutas para Importar excel
-Route::get('datos', [DatosController::class, 'index']);
-Route::post('datos/importar',[DatosController::class, 'importar']);*/
+/**
+ * rutas para vargar los datos desde un archivo excel
+ * 1.- Muestra la vista de con la opcioón de cargar un archivo
+ * 2.- Acción del botón importar, accede a la clase importar
+ *      que ejecuta la acción de poblar la base y redireccciona a la vista principal de alumnos
+ */
+Route::get('/data', [DatosController::class, 'index'])->name('vista-cargar-excel');
+Route::post('/data', [DatosController::class, 'importar'])->name('poblar-alumnos');
