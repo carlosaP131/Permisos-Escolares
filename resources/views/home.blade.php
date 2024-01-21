@@ -17,13 +17,13 @@
                         <a href="#"><span class="fa fa-user-circle mr-3"></span>{{ Auth::user()->name }}</a>
                     </li>
                     <li class="active">
-                        <a href="{{ url('/alumno') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
+                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
                     </li>
                     <li>
-                        <a href="{{ url('/permiso') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
+                        <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                        <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
                     </li>
                     <li>
                         <a href="#"><span class="fa fa-sticky-note mr-3"></span> Alumnos</a>
