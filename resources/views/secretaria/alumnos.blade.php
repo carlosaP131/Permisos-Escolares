@@ -1,6 +1,12 @@
 @extends('home')
 @section('main')
     <!-- Inicio del cuerpo de la página -->
+    <style>
+        .container-center {
+            text-align: center;
+        }
+
+    </style>
 
     <body class="page-content">
 
@@ -49,7 +55,14 @@
                 </div>
             </div>
         </div>
+        <!-- resources/views/tu_vista.blade.php -->
+        <div class="container container-center">
+            <a href="{{ route('borrar-alumnos') }}" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">Borrar
+                Todos los Alumnos</a>
+        </div>
+
         <!-- Fin de la tabla de datos -->
     </body>
+
     <!-- Fin del cuerpo de la página -->
 @endsection

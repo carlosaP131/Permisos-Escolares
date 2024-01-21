@@ -61,3 +61,8 @@ Route::post('datos/importar',[DatosController::class, 'importar']);
 Route::get('/sol', function () {
     return view('administrador.solicitud');
 });
+
+// routes/web.php
+
+
+Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->name('borrar-alumnos');

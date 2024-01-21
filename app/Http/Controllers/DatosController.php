@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Datos;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpParser\Node\Expr\Cast\Object_;
 use App\Imports\YourImportClass; // Asegúrate de crear esta clase
+use App\Models\Datos;
 
 class DatosController extends Controller
 {
@@ -70,20 +69,35 @@ class DatosController extends Controller
 
 
     public function importar(Request $request)
-    {
-        // Verifica si se ha cargado un archivo
-        if (!$request->hasFile('documento')) {
-            return redirect('/datos')->with('error', 'Por favor, carga un archivo antes de intentar importar.');
-        }
+{
+    // Verifica si se ha cargado un archivo
+    if (!$request->hasFile('documento')) {
+        return redirect('/datos')->with('error', 'Por favor, carga un archivo antes de intentar importar.');
+    }
 
-        $file = $request->file('documento');
+    $file = $request->file('documento');
 
-        // Especifica el tipo de archivo (por ejemplo, xlsx)
-        $type = 'xlsx';
+    // Especifica el tipo de archivo (por ejemplo, xlsx)
+    $type = 'xlsx';
 
+    try {
+        // Intenta importar el archivo
         Excel::import(new YourImportClass, $file, $type);
+    } catch (ValidationException $e) {
+        // Maneja la excepción de validación y redirige con un mensaje de error personalizado
+        return redirect('/datos')->with('error', 'El archivo Excel no cumple con los campos requeridos.');
+    }
 
-        return redirect('/alumno')->with('success', 'Importación exitosa');
+    // Redirige a la vista "alumno" después de importar si no hay errores de validación
+    return redirect('/alumno')->with('success', 'Importación exitosa');
+}
+
+
+ public function borrarAlumnos()
+    {
+        Datos::truncate();
+
+        return redirect()->route('alumno-inicio')->with('success', '¡Se borraron todos los registros de alumnos!');
     }
 
 }
