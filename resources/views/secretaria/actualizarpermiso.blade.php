@@ -134,8 +134,10 @@
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
                 <textarea class="form-control" id="comment" rows="5" name="descripcion">{{ $permiso->descripcion }}</textarea>
             </div>{{-- Termina seccion de Descripción --}}
-            <button type="submit" class="btn btn-primary">Actualizar Permiso</button>{{-- boton para generar permisos --}}
-            <a href="{{ route('alumno-inicio') }}" class="btn btn-danger">Cancelar</a>
+            <div class="d-flex justify-content-between  ">
+                <button type="submit" class="btn btn-primary mb-2 mt-1">Generar Permiso</button>
+                <a href="{{ route('alumno-permisos') }}" class="btn btn-danger ml-5 mt-2  ">Cancelar</a>
+            </div>
             <p name="idalumno" style="display: none"></p>
         </form>
     </div>
