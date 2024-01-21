@@ -2,9 +2,9 @@
 @section('main')
     {{-- Form para generar un permiso --}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
-        <h2>Generar Permiso</h2>
-        <form action="{{ route('crear-permiso') }}" method="POST">
-
+        <h2>Actualizar Permiso</h2>
+        <form action="{{ route('actualizar-permiso', ['idPermiso' => $permiso->id]) }}" method="POST">
+            @method('PATCH')
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
@@ -27,7 +27,7 @@
 
                 <label for="sel1" class="form-label">Carrera:</label>
                 <select class="form-select" id="carrera" name="sellist1">
-                    <option>{{$alumno->carrera}}</option>
+                    <option>{{ $alumno->carrera }}</option>
 
                 </select>
             </div>{{-- Termina div del select carrera --}}
@@ -35,7 +35,8 @@
                 <div class="row">
                     <div class="col">
                         <label for="Semestre_año">Año</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año" value="{{date('Y')}}">
+                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año"
+                            value="{{ date('Y') }}">
 
                     </div>
                     <div class="col">
@@ -51,7 +52,7 @@
             <div class="mb-3 mt-3">{{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
                 <label for="sel1" class="form-label">Semestre:</label>
                 <select class="form-select" id="grupo" name="sellist1">
-                    <option>{{$alumno->grupo}}</option>
+                    <option>{{ $alumno->semestre }}</option>
                 </select>
             </div>{{-- Termina el div del select semestre --}}
             <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
@@ -126,13 +127,14 @@
             <label for="comment">Motivo u Observaciones:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
 
-                <input class="form-control" type="text" id="comment" name="motivo" />
+                <input class="form-control" type="text" id="comment" name="motivo"
+                    value="{{ $permiso->motivo }}" />
             </div>{{-- Termina seccion de motivo u observaciones --}}
             <label for="comment">Descripción:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
-                <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
+                <textarea class="form-control" id="comment" rows="5" name="descripcion">{{ $permiso->descripcion }}</textarea>
             </div>{{-- Termina seccion de Descripción --}}
-            <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
+            <button type="submit" class="btn btn-primary">Actualizar Permiso</button>{{-- boton para generar permisos --}}
 
             <p name="idalumno" style="display: none"></p>
         </form>

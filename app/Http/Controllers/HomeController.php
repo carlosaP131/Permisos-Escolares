@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Dtos\PermisosDTO;
 use Illuminate\Http\Request;
 use App\Models\Permiso;
+use App\Models\Alumno;
 
 
 class HomeController extends Controller
@@ -31,7 +32,8 @@ class HomeController extends Controller
 
     public function student()
     {
-        return view('secretaria.alumnos');
+        $alumno = alumno::all();
+        return view('secretaria.alumnos',['alumnos'=>$alumno]);
     }
 
     public function permission()

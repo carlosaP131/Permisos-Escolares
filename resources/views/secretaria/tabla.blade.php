@@ -6,6 +6,9 @@
 
         <!-- Inicio de la tabla de datos -->
         <div class="container">
+            @if (session('success'))
+                <h6 class="alert alert-success">{{ session('success') }}</h6>
+            @endif
             <div class="row">
                 <div class="col-12">
                     <div class="data_table">
@@ -22,13 +25,14 @@
                                     <th>Fecha</th>
                                     <th>Estado</th>
                                     <th>Eliminar</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <!-- Cuerpo de la tabla con datos dinámicos -->
                             <tbody>
-                                @foreach ($permisos as $permiso)
+                                @foreach ($permisos as $index => $permiso)
                                     <tr>
-                                        <td>{{ $permiso->id }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
                                         <td>{{ $permiso->carrera }}</td>
@@ -44,8 +48,13 @@
                                                 <button class="btn btn-danger btn-sm">Eliminar</button>
                                             </form>
                                         </td>
+                                        <td>
+                                            <a href="{{ route('vista-permiso', [$permiso->id]) }}"
+                                                class="btn btn-warning btn-sm">Editar</a>
+                                        </td>
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
