@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
+use App\Http\Controllers\DatosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,5 @@ Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name
 
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
 
-/*Rutas para Importar excel
 Route::get('datos', [DatosController::class, 'index']);
-Route::post('datos/importar',[DatosController::class, 'importar']);*/
+Route::post('datos/importar',[DatosController::class, 'importar']);
