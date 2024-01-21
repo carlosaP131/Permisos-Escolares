@@ -14,16 +14,16 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-home mr-3"></span>{{ Auth::user()->name }}</a>
+                        <a href="#"><span class="fa fa-user-circle mr-3"></span>{{ Auth::user()->name }}</a>
                     </li>
                     <li class="active">
-                        <a href="{{ url('/alumno') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
+                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
                     </li>
                     <li>
-                        <a href="{{ url('/permiso') }}"><span class="fa fa-user mr-3"></span> Permisos</a>
+                        <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                        <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
                     </li>
                     <li>
                         <a href="#"><span class="fa fa-sticky-note mr-3"></span> Alumnos</a>
@@ -32,7 +32,7 @@
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                            <span class="fa fa-sticky-note mr-3"></span>
+                            <span class="fa fa-times mr-3"></span>
                             {{ __('Salir') }}
                         </a>
 

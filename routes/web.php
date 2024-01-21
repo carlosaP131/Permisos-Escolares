@@ -21,6 +21,13 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/admin', function () {
+    return view('administrador.administradorUsuarios');
+});
+Route::get('/crearUsuarios', function () {
+    return view('administrador.administradorCrearUsuarios');
+});
+
 /**
  * Rutas para la vista principal en el siguiente orden
  * 1. Muestra la vista principal de la aplicación
