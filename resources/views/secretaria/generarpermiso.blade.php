@@ -3,7 +3,7 @@
     {{-- Form para generar un permiso --}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="{{ route('genera-secretaria', ['id' => $alumno->id]) }}" method="POST">
+        <form action="{{ route('crear-permiso') }}" method="POST">
 
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>

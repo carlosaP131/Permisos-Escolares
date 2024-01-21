@@ -25,8 +25,8 @@ Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->name('alumno-permisos');
 
 
-Route::get('/genera/{id}', [PermisosController::class,'vista'])->name('vista-secretaria');
-Route::post('/genera/{id}',[PermisosController::class,'store'])->name('genera-secretaria');
+Route::get('/genera/{id}', [PermisosController::class,'formulario'])->name('formulario-permiso');
+Route::post('/genera',[PermisosController::class,'store'])->name('crear-permiso');
 Route::get('/actual/{idal}/{idper}', [PermisosController::class,'vistaActualizar'])->name('vista-permiso');
 
 Route::patch('/generar/{idal}/{idper}',[PermisosController::class,'show'])->name('genera-alumno');
