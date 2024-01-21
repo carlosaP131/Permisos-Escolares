@@ -14,22 +14,25 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-home mr-3"></span>{{ Auth::user()->name }}</a>
+                        <a href="#"><span class="fa fa-user-circle mr-3"></span>{{ Auth::user()->name }}</a>
                     </li>
                     <li class="active">
-                        <a href="{{ url('/alumno') }}"><span class="fa fa-home mr-3"></span> Inicio</a>
+                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
                     </li>
                     <li>
-                        <a href="{{ url('/permiso') }}"><span class="fa fa-user mr-3"></span> Permisos</a>
+                        <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Historial</a>
+                        <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                            <span class="fa fa-sticky-note mr-3"></span>
+                            <span class="fa fa-times mr-3"></span>
                             {{ __('Salir') }}
                         </a>
 
@@ -44,6 +47,14 @@
             <div id="content" class="p-md-5">
                 @yield('main')
             </div>
+
+            <!-- Inclusión de scripts -->
+            <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+            <script src="{{ asset('js/datatables.min.js') }}"></script>
+            <script src="{{ asset('js/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('js/custom.js') }}"></script>
 
             <script src="js/popper.js"></script>
             <script src="js/bootstrap.min.js"></script>

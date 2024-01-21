@@ -8,34 +8,51 @@ use App\Http\Controllers\PermisosController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| En este archivo, puedes registrar las rutas web para tu aplicación. Estas
+| rutas son cargadas por RouteServiceProvider y todas se asignarán al grupo de
+| middleware "web". ¡Haz algo grandioso!
 |
 */
 
+// Rutas para la autenticación
 Auth::routes();
 
+// Ruta principal, muestra la vista de registro de autenticación
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/admin', function () {
+    return view('administrador.administradorUsuarios');
+});
+Route::get('/crearUsuarios', function () {
+    return view('administrador.administradorCrearUsuarios');
+});
+
 /**
- * Rutas principales
- * 1.-Vista home, o login si no ha iniciado sesion
- * 2.-Vista de todos los alumnos en la base de datos
- * 3.-Vista para los permisos que ha generado cada secretaria, para el caso de secretaria
- *      y vista de todos los permisos generados para el usuario administrador
+ * Rutas para la vista principal en el siguiente orden
+ * 1. Muestra la vista principal de la aplicación
+ * 2. Muestra a todos los alumnos en la base de datos
+ * 3. Muestra los permisos filtrado por roles
  */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->name('inicio-alumnos');
-Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->name('permisos-creados');
-/**
- * Rutas para permisos hechos por la secretaria
- * 1.- Muestra un  formulario con los datos precargados del alumno
- * 2.- Crea el permiso y lo guarda en la base de datos
- * 3.-
- */
-Route::get('/genera/{id}', [PermisosController::class,'index'])->name('vista-secretaria');
-Route::post('/genera',[PermisosController::class,'store'])->name('genera-secretaria');
-Route::patch('/generar/{id}',[PermisosController::class,'show'])->name('genera-alumno');
+Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->name('alumno-inicio');
+Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->name('alumno-permisos');
 
+/**
+ * Rutas para interactuar con permisos enel diguiente orden
+ * 1. Muestra un formulario para generar un permiso
+ * 2. Ruta para crear el permiso en la base de datos
+ * 3. Ruta para mostrar un formulario de edición de un permiso específico
+ * 4. Ruta para actualizar la información del permiso en la DB
+ * 5. Ruta que elimina el permiso en la base de datos
+ */
+Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->name('formulario-permiso');
+Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permiso');
+Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
+Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
+
+Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
+
+/*Rutas para Importar excel
+Route::get('datos', [DatosController::class, 'index']);
+Route::post('datos/importar',[DatosController::class, 'importar']);*/

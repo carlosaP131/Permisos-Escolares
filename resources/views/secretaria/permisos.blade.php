@@ -18,6 +18,8 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <th>Grupo</th>
         <th>Semestre</th>
         <th>Generar</th>
+        <th>Modificar</th>
+        <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +31,8 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>503 A</td>
         <td>quinto</td>
         <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
+        <td> <button type="button" class="btn btn-danger">Editar Permiso</button></td>
+        <td> <button type="button" class="btn btn-danger">Eliminar Permiso</button></td>
     </tr>
       <tr>
         <td>2</td>
@@ -37,6 +41,8 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>814</td>
         <td>octavo</td>
         <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
+        <td> <button type="button" class="btn btn-danger">Editar Permiso</button></td>
+        <td> <button type="button" class="btn btn-danger">Eliminar Permiso</button></td>
     </tr>
       <tr>
         <td>3</td>
@@ -45,6 +51,8 @@ Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
         <td>306</td>
         <td>tercero</td>
         <td> <button type="button" class="btn btn-danger">Mostrar Permiso</button></td>
+        <td> <button type="button" class="btn btn-danger">Editar Permiso</button></td>
+        <td> <a href="" class="btn btn-danger">Eliminar Permiso</a></td>
     </tr>
       </tr>
 
