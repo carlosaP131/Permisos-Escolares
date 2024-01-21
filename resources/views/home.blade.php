@@ -26,7 +26,7 @@
                         <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
+                        <a href="{{route('vista-cargar-excel')}}"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
