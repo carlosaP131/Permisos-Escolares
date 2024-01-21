@@ -27,7 +27,7 @@
 
                 <label for="sel1" class="form-label">Carrera:</label>
                 <select class="form-select" id="carrera" name="sellist1">
-                    <option>{{$alumno->carrera}}</option>
+                    <option>{{ $alumno->carrera }}</option>
 
                 </select>
             </div>{{-- Termina div del select carrera --}}
@@ -35,7 +35,8 @@
                 <div class="row">
                     <div class="col">
                         <label for="Semestre_año">Año</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año" value="{{date('Y')}}">
+                        <input type="text" class="form-control" placeholder="Ingrese el semestre" name="Semestre_año"
+                            value="{{ date('Y') }}">
 
                     </div>
                     <div class="col">
@@ -51,7 +52,7 @@
             <div class="mb-3 mt-3">{{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
                 <label for="sel1" class="form-label">Semestre:</label>
                 <select class="form-select" id="grupo" name="sellist1">
-                    <option>{{$alumno->grupo}}</option>
+                    <option>{{ $alumno->grupo }}</option>
                 </select>
             </div>{{-- Termina el div del select semestre --}}
             <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
@@ -132,9 +133,14 @@
             <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
                 <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
             </div>{{-- Termina seccion de Descripción --}}
-            <button type="submit" class="btn btn-primary">Generar Permiso</button>{{-- boton para generar permisos --}}
 
-            <p name="idalumno" style="display: none"></p>
+            <div class="d-flex justify-content-between  ">
+                <button type="submit" class="btn btn-primary mb-2 mt-1">Generar Permiso</button>
+                <a href="{{ route('alumno-inicio') }}" class="btn btn-danger ml-5 mt-2  ">Cancelar</a>
+            </div>
+
+
         </form>
+
     </div>
 @endsection
