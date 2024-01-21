@@ -64,16 +64,16 @@ class PermisosController extends Controller
         if ($request->tipo == "Dias") {
             $permiso->tiempo = $request->startDate . "-" . $request->endDate;
             $request->validate([
-                      'startDate'=>'required',
-                      'endDate'=>'required'
+                      'Fecha_Inicial'=>'required',
+                      'Fecha_Final'=>'required'
             ]);
         } else {
             $permiso->tiempo = $request->aditionalDate . $request->aditionaldateini
                 . "-" . $request->aditionaldatefin;
             $request->validate([
-                    'aditionalDate'=>'required',
-                    'aditionaldateini'=>'required',
-                    'aditionaldatefin'=>'required'
+                    'Fecha_Horas'=>'required',
+                    'Hora_Inicial'=>'required',
+                    'Hora_Final'=>'required'
           ]);
         }
 

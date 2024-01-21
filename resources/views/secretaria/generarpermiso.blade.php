@@ -11,15 +11,15 @@
              @enderror
              @error('tipo')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
-             @error('startDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @error('Fecha_Inicial')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
-             @error('endDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @error('Fecha_Final')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
-             @error('aditionalDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @error('Fecha_Horas')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
-             @error('aditionalDateini')<h6 class="alert alert-danger">{{$message}}</h6>
+             @error('Hora_Inicial')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
-             @error('aditionalDatefin')<h6 class="alert alert-danger">{{$message}}</h6>
+             @error('Hora_Final')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
                 @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
@@ -102,13 +102,13 @@
                         <div class="col">
                             <label for="Fechini">Inicio:</label>
 
-                            <input type="date" class="form-control" placeholder="" name="startDate">
+                            <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
 
                         </div>
                         <div class="col">
                             <label for="Fechfin">Fin:</label>
 
-                            <input type="date" class="form-control" placeholder="" name="endDate">
+                            <input type="date" class="form-control" placeholder="" name="Fecha_Final">
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     <label for="additionalLabel">Rango Horas:</label>
                     <div class="col">
                         <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                            name="additionalDate">
+                            name="Fecha_horas">
                     </div>
 
                     <div class="mb-3 mt-3">
@@ -127,7 +127,7 @@
 
                                 <label for="horaini">Inicio:</label>
                                 <div class="cs-form">
-                                    <input type="time" class="form-control" value="10:05 AM" name="aditionaldateini" />
+                                    <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
                                 </div>
 
                             </div>
@@ -137,7 +137,7 @@
                                 <label for="horafin">Fin:</label>
                                 <div class="cs-form">
 
-                                    <input type="time" class="form-control" value="10:05 AM" name="aditionaldatefin" />
+                                    <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
                                 </div>
                             </div>
                         </div>
