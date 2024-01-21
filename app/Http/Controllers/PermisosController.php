@@ -47,7 +47,9 @@ class PermisosController extends Controller
          */
         $request->validate([
             'motivo' => 'required|min:5',
-            'descripcion' => 'required|min:5'
+            'descripcion' => 'required|min:5',
+            'tipo'=>'required',
+
         ]);
 
         //$alumno = alumno::find($request->matricula); //buscamos al alumno por matrícula
@@ -61,9 +63,18 @@ class PermisosController extends Controller
 
         if ($request->tipo == "Dias") {
             $permiso->tiempo = $request->startDate . "-" . $request->endDate;
+            $request->validate([
+                      'startDate'=>'required',
+                      'endDate'=>'required'
+            ]);
         } else {
             $permiso->tiempo = $request->aditionalDate . $request->aditionaldateini
                 . "-" . $request->aditionaldatefin;
+            $request->validate([
+                    'aditionalDate'=>'required',
+                    'aditionaldateini'=>'required',
+                    'aditionaldatefin'=>'required'
+          ]);
         }
 
         $permiso->editado = "jose"; /*Auth::user()->name*/
