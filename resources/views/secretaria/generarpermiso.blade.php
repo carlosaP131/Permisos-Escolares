@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('home')
+@section('main')
     {{-- Form para generar un permiso --}}
     <div class="container p-5 my-5 border bg-dark text-white">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
