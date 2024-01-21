@@ -23,7 +23,10 @@
                         <a href="{{ url('/permiso') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-history mr-3"></span> Historial</a>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
@@ -44,6 +47,14 @@
             <div id="content" class="p-md-5">
                 @yield('main')
             </div>
+
+            <!-- Inclusión de scripts -->
+            <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+            <script src="{{ asset('js/datatables.min.js') }}"></script>
+            <script src="{{ asset('js/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('js/custom.js') }}"></script>
 
             <script src="js/popper.js"></script>
             <script src="js/bootstrap.min.js"></script>
