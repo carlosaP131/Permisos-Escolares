@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
+use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DatosController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +23,7 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/admin', function () {
-    return view('administrador.administradorUsuarios');
-});
-Route::get('/crearUsuarios', function () {
-    return view('administrador.administradorCrearUsuarios');
-});
+
 
 /**
  * Rutas para la vista principal en el siguiente orden
@@ -39,6 +34,8 @@ Route::get('/crearUsuarios', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->name('alumno-inicio');
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->name('alumno-permisos');
+Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultarUsuario'])->name('administrador-usuarios');
+
 
 /**
  * Rutas para interactuar con permisos enel diguiente orden
@@ -53,6 +50,7 @@ Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permi
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
+Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios-destroy');
 
 /**
  * rutas para vargar los datos desde un archivo excel
