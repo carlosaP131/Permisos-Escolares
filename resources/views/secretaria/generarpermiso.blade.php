@@ -5,8 +5,21 @@
         <h2>Generar Permiso</h2>
         <form action="{{ route('crear-permiso') }}" method="POST">
             @csrf
-            @error('motivo', 'descripcion', 'tipo', 'startDate', 'endDate', 'aditionalDate', 'aditionaldateini',
-            'aditionaldatefin')<h6 class="alert alert-danger">{{$message}}</h6>
+            @error('motivo')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('descripcion')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('tipo')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('startDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('endDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('aditionalDate')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('aditionalDateini')<h6 class="alert alert-danger">{{$message}}</h6>
+             @enderror
+             @error('aditionalDatefin')<h6 class="alert alert-danger">{{$message}}</h6>
              @enderror
                 @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
