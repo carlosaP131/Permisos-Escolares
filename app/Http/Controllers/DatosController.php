@@ -14,10 +14,11 @@ class DatosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function insertD()
     {
         //
-        return view('datos');
+        return view('administrador.datos');
+
     }
 
     /**

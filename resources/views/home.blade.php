@@ -26,7 +26,7 @@
                         <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
+                        <a href="{{route('poblar-alumnos')}}"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

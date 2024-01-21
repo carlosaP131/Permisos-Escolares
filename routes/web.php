@@ -52,8 +52,12 @@ Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->name(
 Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
-
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
 
-Route::get('datos', [DatosController::class, 'index']);
+/**
+ * rutas para datos 
+ * 1.- cargar datos, poblar la DB
+ */
+Route::get('/data', [App\Http\Controllers\DatosController::class, 'insertD'])->name('poblar-alumnos');
+
 Route::post('datos/importar',[DatosController::class, 'importar']);
