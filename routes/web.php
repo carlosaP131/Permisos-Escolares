@@ -8,15 +8,16 @@ use App\Http\Controllers\PermisosController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| En este archivo, puedes registrar las rutas web para tu aplicación. Estas
+| rutas son cargadas por RouteServiceProvider y todas se asignarán al grupo de
+| middleware "web". ¡Haz algo grandioso!
 |
 */
 
-
+// Rutas para la autenticación
 Auth::routes();
 
+// Ruta principal, muestra la vista de registro de autenticación
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -44,3 +45,7 @@ Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
 
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
+
+/*Rutas para Importar excel
+Route::get('datos', [DatosController::class, 'index']);
+Route::post('datos/importar',[DatosController::class, 'importar']);*/

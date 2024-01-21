@@ -4,7 +4,13 @@
     <body>
         <form>
 
-            Texto a buscar <input id="searchTerm" type="text" onkeyup="doSearch()" />
+</form>
+
+
+<div >
+    <table class="table table-hover table-bordered table-dark " id="datos">
+    <thead>
+      <tr>
 
         </form>
         <div>

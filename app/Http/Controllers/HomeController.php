@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Dtos\PermisosDTO;
 use Illuminate\Http\Request;
 use App\Models\Permiso;
 use App\Models\Alumno;
@@ -35,10 +36,17 @@ class HomeController extends Controller
         return view('secretaria.alumnos',['alumnos'=>$alumno]);
     }
 
-    public function permission  ()
+    public function permission()
     {
-        $permiso = permiso::all();
-       // $permiso = DB::statement('call obtenerDatosAlumnosPermisos');
-        return view('secretaria.tabla',['permisos'=>$permiso]);
+        $permisos = Permiso::all();
+
+        // Crear una colección de PermisoDTO
+        $permisosDTO = collect();
+
+        foreach ($permisos as $permiso) {
+            $permisosDTO->push(new PermisosDTO($permiso));
+        }
+
+        return view('secretaria.tabla', ['permisos' => $permisosDTO]);
     }
 }
