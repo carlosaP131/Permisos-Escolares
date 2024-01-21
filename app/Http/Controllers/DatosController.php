@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Datos;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpParser\Node\Expr\Cast\Object_;
 use App\Imports\YourImportClass; // Asegúrate de crear esta clase
 
 class DatosController extends Controller
@@ -14,7 +11,7 @@ class DatosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function insertD()
+    public function index()
     {
         //
         return view('administrador.datos');
@@ -70,13 +67,16 @@ class DatosController extends Controller
     }
 
 
+    /**
+     * Acción del botón importar para que interactue con la bd e inserte los datos
+     */
     public function importar(Request $request)
     {
         // Verifica si se ha cargado un archivo
         if (!$request->hasFile('documento')) {
-            return redirect('/datos')->with('error', 'Por favor, carga un archivo antes de intentar importar.');
+            return redirect()->route('vista-cargar-excel')->with('error',
+            'Por favor, carga un archivo antes de intentar importar.');
         }
-
         $file = $request->file('documento');
 
         // Especifica el tipo de archivo (por ejemplo, xlsx)
@@ -84,7 +84,7 @@ class DatosController extends Controller
 
         Excel::import(new YourImportClass, $file, $type);
 
-        return redirect('/alumno')->with('success', 'Importación exitosa');
+        return redirect()->route('alumno-inicio')->with('success','Importación exitosa');
     }
 
 }
