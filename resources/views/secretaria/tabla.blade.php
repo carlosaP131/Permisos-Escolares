@@ -26,10 +26,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($permisos as $permiso)
+                                @foreach ($permisos as $index => $permiso)
                                     <tr>
-                                        <td>{{ $permiso->id }}</td>
-
+                                        <td>{{ $index + 1 }}</td>
                                         <td>Pedro</td>
                                         <td>705</td>
                                         <td>Séptimo</td>
@@ -46,10 +45,10 @@
                                         <td>
                                             <a href="{{ route('vista-permiso', [$permiso->id]) }}"
                                                 class="btn btn-warning btn-sm">Editar</a>
-                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
