@@ -23,7 +23,10 @@
                         <a href="{{ url('/permiso') }}"><span class="fa fa-user mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Historial</a>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
