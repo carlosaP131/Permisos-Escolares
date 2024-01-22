@@ -45,7 +45,7 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  * 4. Ruta para actualizar la información del permiso en la DB
  * 5. Ruta que elimina el permiso en la base de datos
  */
-Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->name('formulario-permiso');
+Route::post('/formulario/{id}', [PermisosController::class, 'formulario'])->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');

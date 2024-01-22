@@ -41,9 +41,9 @@
                                         <td>{{ $alumno->grupo }}</td>
                                         <td>{{ $alumno->semestre }}</td>
                                         <td>
-                                            <form action="{{ route('formulario-permiso', [$alumno->id]) }}" method="GET">
+                                            <form method="POST" action="{{ route('formulario-permiso', [$alumno->id]) }}">
                                                 @csrf
-                                                <button class="btn btn-warning btn-sm">Genera Permiso</button>
+                                                <button class="btn btn-warning btn-sm" type="submit">Generar Permiso</button>
                                             </form>
                                         </td>
                                     </tr>
