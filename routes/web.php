@@ -53,7 +53,7 @@ Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('pe
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios-destroy');
 //para crear usuarios
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->name('crear-usuario');
-
+Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->name('actualizar-usuario');
 /**
  * rutas para vargar los datos desde un archivo excel
  * 1.- Muestra la vista de con la opcioón de cargar un archivo

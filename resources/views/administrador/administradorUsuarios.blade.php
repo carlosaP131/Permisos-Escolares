@@ -40,18 +40,19 @@
                                         </td>
 
                                         <td class="d-flex flex-row">
-                                        <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
-    @method('DELETE')
-    @csrf
-    <button type="submit" class="btn btn-danger"
-        @if ($usuario->name === 'admin') disabled @endif>
-        <i class="fa fa-trash" aria-hidden="true"></i> 
-    </button>
-</form>
+                                            <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger"
+                                                    @if ($usuario->name === 'admin') disabled @endif>
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </form>
 
-<button class="btn btn-warning" data-toggle="modal" data-target="#actualizarUsuarioModal">
-    <i class="fa fa-pencil" aria-hidden="true"></i> 
-</button>
+                                            <button class="btn btn-warning" data-toggle="modal"
+                                                data-target="#actualizarUsuarioModal">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
 
                                         </td>
 
