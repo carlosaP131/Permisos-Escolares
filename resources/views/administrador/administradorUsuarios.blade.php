@@ -104,11 +104,27 @@
 
                             <div class="mb-3">
                                 <label for="role" class="form-label"><i class="fas fa-user-tag"></i> Rol</label>
-                                <select name="role" id="role" class="custom-input" required>
+                                <select name="role" id="role" class="custom-input" required
+                                    onchange="toggleOptionsContainer()">
                                     <option value="Secretaria">Secretaria</option>
                                     <option value="Profesor">Profesor</option>
                                 </select>
                             </div>
+
+                            <div class="mb-3" id="optionsContainer" style="display: none;">
+                                <label for="subject" class="form-label"><i class="fas fa-book"></i> Carrera</label>
+                                <select name="subject" id="subject" class="custom-input">
+                                    <option value="Medicina">Medicina</option>
+                                    <option value="Enfermeria">Enfermería</option>
+                                    <option value="Informatica">Informatica</option>
+                                    <option value="Odontologia">Odontologia</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label"><i class="fas fa-info-circle"></i> Estatus</label>
+                                <input type="text" name="status" id="status" class="custom-input" required>
+                            </div>
+
 
                             <button type="submit" class="btn btn-primary"
                                 style="background-color: #8B0000; border-color: #8B0000;">
@@ -125,6 +141,7 @@
         <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/usuariosAdmin.js') }}"></script>
         <!-- Agrega aquí tus otros scripts si los tienes -->
     </body>
 @endsection
