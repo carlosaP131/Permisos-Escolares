@@ -42,51 +42,56 @@ class PermisosController extends Controller
      */
     public function store(Request $request)
     {
-        /**
-         * Validacion de campos del formulario
-         */
+        // Validación de campos del formulario
         $request->validate([
             'motivo' => 'required|min:5',
             'descripcion' => 'required|min:5',
-            'tipo'=>'required',
-
+            'tipoPermiso' => 'required',
+            'matricula' => 'required', // Añade validación para la matrícula si es necesario
         ]);
 
-        //$alumno = alumno::find($request->matricula); //buscamos al alumno por matrícula
-        $alumno = Alumno::where('matricula', $request->matricula)->first();
+        // Buscamos al alumno por matrícula
+        $alumno = Alumno::where('matricula', $request->matricula)->firstOrFail();
 
-        $permiso = new Permiso();
-        $permiso->status = "Pendiente";
-        $permiso->motivo = $request->motivo;
-        $permiso->descripcion = $request->descripcion;
-        $permiso->tipo = $request->tipo;
+        // Creamos un nuevo permiso
+        $permiso = new Permiso([
+            'status' => 'Pendiente',
+            'motivo' => $request->motivo,
+            'descripcion' => $request->descripcion,
+            'tipo' => $request->input('tipoPermiso'),
+            'editado' => 'jose', // Auth::user()->name
+        ]);
 
-        if ($request->tipo == "Dias") {
-            $permiso->tiempo = $request->startDate . "-" . $request->endDate;
+        // Validaciones adicionales dependiendo del tipo de permiso
+        if ($request->input('tipoPermiso') == 'Dias') {
             $request->validate([
-                      'Fecha_Inicial'=>'required',
-                      'Fecha_Final'=>'required'
+                'Fecha_Inicial' => 'required',
+                'Fecha_Final' => 'required',
             ]);
+
+            // Asignamos valores para permisos por días
+            $permiso->fecha_inicio = $request->Fecha_Inicial;
+            $permiso->fecha_fin = $request->Fecha_Final;
         } else {
-            $permiso->tiempo = $request->aditionalDate . $request->aditionaldateini
-                . "-" . $request->aditionaldatefin;
             $request->validate([
-                    'Fecha_Horas'=>'required',
-                    'Hora_Inicial'=>'required',
-                    'Hora_Final'=>'required'
-          ]);
+                'Fecha_Horas' => 'required',
+                'Hora_Inicial' => 'required',
+                'Hora_Final' => 'required',
+            ]);
+
+            // Asignamos valores para permisos por horas
+            $permiso->fecha_inicio = $request->Fecha_Horas;
+            $permiso->hora_inicio = $request->Hora_Inicial;
+            $permiso->hora_fin = $request->Hora_Final;
         }
 
-        $permiso->editado = "jose"; /*Auth::user()->name*/
-
-        // No necesitas asignar manualmente el id_alumno
+        // Guardamos el permiso utilizando la relación definida en el modelo Alumno
         $alumno->permisos()->save($permiso);
 
-        return redirect()->route('alumno-permisos')->with(
-            'success',
-            'Permiso creado Exitosamente'
-        );
+        return redirect()->route('alumno-permisos')->with('success', 'Permiso creado Exitosamente');
     }
+
+
     /**
      * Esta funcion se encarga de actualizar los permisos tiene la misma logica que
      *  la funcion store pero con la exepcion de que este carga el permiso
@@ -96,31 +101,52 @@ class PermisosController extends Controller
         /**
          * Validar aquí
          */
-        $request->validate(['motivo' => 'required|min:5']);
+        $request->validate([
+            'motivo' => 'required|min:5',
+            // agregar otras reglas de validación
+        ]);
+
         /**
-         * Búsqueda del permiso y setéo de valores para actualizar
+         * Búsqueda del permiso y seteo de valores para actualizar
          */
         $permiso = Permiso::with('alumno')->find($idPermiso);
 
         $permiso->motivo = $request->motivo;
         $permiso->descripcion = $request->descripcion;
-        $permiso->tipo = $request->tipo;
+        $permiso->tipo = $request->input('tipoPermiso');
 
-        if ($request->tipo == "Dias") {
-            $permiso->tiempo = $request->startDate . "-" . $request->endDate;
+        if ($request->input('tipoPermiso') == 'Dias') {
+            $request->validate([
+                'Fecha_Inicial' => 'required',
+                'Fecha_Final' => 'required',
+            ]);
+
+            // Asignamos valores para permisos por días
+            $permiso->fecha_inicio = $request->Fecha_Inicial;
+            $permiso->fecha_fin = $request->Fecha_Final;
         } else {
-            $permiso->tiempo = $request->aditionalDate . $request->aditionaldateini
-                . "-" . $request->aditionaldatefin;
+            $request->validate([
+                'Fecha_Horas' => 'required',
+                'Hora_Inicial' => 'required',
+                'Hora_Final' => 'required',
+            ]);
+
+            // Asignamos valores para permisos por horas
+            $permiso->fecha_inicio = $request->Fecha_Horas;
+            $permiso->hora_inicio = $request->Hora_Inicial;
+            $permiso->hora_fin = $request->Hora_Final;
         }
-        /*****************************************************************************
+
+        /**
          * Revisar quien lo actualizó y guardarlo
-         ************************************************************************** */
-        $permiso->editado = "jose";
+         */
+        $permiso->editado = "jose"; // Auth::user()->name;
 
         $permiso->save();
 
         return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
     }
+
 
 
     public function destroy($id)

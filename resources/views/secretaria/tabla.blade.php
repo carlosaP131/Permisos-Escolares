@@ -22,7 +22,10 @@
                                     <th>Carrera</th>
                                     <th>Semestre</th>
                                     <th>Grupo</th>
+                                    <th>Tipo</th>
                                     <th>Fecha</th>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
                                     <th>Estado</th>
                                     <th>Eliminar</th>
                                     <th>Editar</th>
@@ -38,7 +41,10 @@
                                         <td>{{ $permiso->carrera }}</td>
                                         <td>{{ $permiso->semestre }}</td>
                                         <td>{{ $permiso->grupo }}</td>
-                                        <td>2013/06/20</td> <!-- Nota: Considera usar datos reales aquí -->
+                                        <td>{{ $permiso->tipo }}</td>
+                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}</td>
+                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}</td>
+                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>{{ $permiso->status }}</td>
                                         <!-- Formulario para eliminar un permiso -->
                                         <td>
@@ -54,9 +60,9 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
