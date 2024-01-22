@@ -23,10 +23,10 @@
                         <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                        <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
+                        <a href="{{route('vista-cargar-excel')}}"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

@@ -56,7 +56,7 @@
         </div>
         <!-- resources/views/tu_vista.blade.php -->
         <div class="container container-center">
-            <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal" >Borrar alumnos</button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
 
         </div>
 

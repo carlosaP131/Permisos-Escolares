@@ -15,6 +15,7 @@
                                     <th>Email</th>
                                     <th>Contraseña</th>
                                     <th>Rol</th>
+                                    <th>Carrera</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
 
@@ -22,61 +23,36 @@
                             </thead>
                             <tbody>
                                 <!-- ... (filas de la tabla) ... -->
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td>john@example.com</td>
-                                    <td>********</td>
-                                    <td>Usuario</td>
-                                    <td><button type="button" class="btn btn-outline-secondary">Inactivo</button>
+                                @foreach ($usuarios as $usuario)
+                                    <tr>
+                                        <td>{{ $usuario->id }}</td>
+                                        <td>{{ $usuario->name }}</td>
+                                        <td>{{ $usuario->email }}</td>
+                                        <td>{{ $usuario->password }}</td>
+                                        <td>pendiente</td>
+                                        <td>{{ $usuario->carrera_nombre }}</td>
+                                        <td>
+                                            @if ($usuario->status)
+                                                <button type="button" class="btn btn-success" disabled>Activo</button>
+                                            @else
+                                                <button type="button" class="btn btn-danger">Inactivo</button>
+                                            @endif
+                                        </td>
 
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Mary Johnson</td>
-                                    <td>mary@example.com</td>
-                                    <td>********</td>
-                                    <td>Administrador</td>
-                                    <td><button type="button" class="btn btn-outline-secondary">Activo</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>July Smith</td>
-                                    <td>july@example.com</td>
-                                    <td>********</td>
-                                    <td>Usuario</td>
-                                    <td><button type="button" class="btn btn-outline-secondary">Activo</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class='noSearch hide'>
-                                    <td colspan="7"></td>
-                                </tr>
+                                        <td>
+                                            <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger"
+                                                    @if ($usuario->name === 'admin') disabled @endif>
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+
+
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
