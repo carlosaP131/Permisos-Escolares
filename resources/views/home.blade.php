@@ -14,19 +14,25 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-user-circle mr-3"></span>{{ Auth::user()->name }}</a>
+                        <a href="#"><span class="fa fa-user-circle mr-3"></span>
+                            @if (Auth::check())
+                                {{ Auth::user()->name }}
+                            @endif
+                        </a>
                     </li>
                     <li class="active">
                         <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
                     </li>
                     <li>
-                        <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span> Permisos</a>
+                        <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
+                            Permisos</a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin') }}"><span class="fa fa-sticky-note mr-3"></span> Usuarios</a>
+                        <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos</a>
+                        <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar
+                            Alumnos</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"
