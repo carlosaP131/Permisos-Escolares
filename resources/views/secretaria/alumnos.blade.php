@@ -1,6 +1,11 @@
 @extends('home')
 @section('main')
     <!-- Inicio del cuerpo de la página -->
+    <style>
+        .container-center {
+            text-align: center;
+        }
+    </style>
 
     <body class="page-content">
 
@@ -38,7 +43,7 @@
                                         <td>
                                             <form action="{{ route('formulario-permiso', [$alumno->id]) }}" method="GET">
                                                 @csrf
-                                                <button class="btn btn-danger btn-sm">Genera Permiso</button>
+                                                <button class="btn btn-warning btn-sm">Genera Permiso</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -49,6 +54,32 @@
                 </div>
             </div>
         </div>
+        <!-- resources/views/tu_vista.blade.php -->
+        <div class="container container-center">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
+
+        </div>
+
+        <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
+            aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de borrar alumnos?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario para crear nuevo usuario -->
+                        <form>
+                            <a href="{{ route('borrar-alumnos') }}" class="btn btn-danger">Confirmar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Fin de la tabla de datos -->
     </body>
     <!-- Fin del cuerpo de la página -->

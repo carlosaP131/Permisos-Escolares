@@ -57,6 +57,9 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('u
  * 1.- Muestra la vista de con la opcioón de cargar un archivo
  * 2.- Acción del botón importar, accede a la clase importar
  *      que ejecuta la acción de poblar la base y redireccciona a la vista principal de alumnos
+ * 3.- Ruta para borrar los datos de alumnos
  */
 Route::get('/data', [DatosController::class, 'index'])->name('vista-cargar-excel');
 Route::post('/data', [DatosController::class, 'importar'])->name('poblar-alumnos');
+
+Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->name('borrar-alumnos');

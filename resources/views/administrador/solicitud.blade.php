@@ -1,59 +1,57 @@
-@extends('layouts.app')
-@section('content')
-    <form>
-        {{-- Input para el filtro de la tabla --}}
-        Filtrar <input id="searchTerm" type="text" onkeyup="doSearch()" />
-    </form>
-    <div>{{--Inicia div de la tabla de datos
-             Esta tabla tiene un id que se usara en el js para el fitro
-             de datos--}}
-        <table class="table table-hover table-bordered table-dark " id="datos">
-            <thead>
-                <tr>
+@extends('home')
+@section('main')
+    <!-- Inicio del cuerpo de la página -->
 
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Carrera</th>
-                    <th>Grupo</th>
-                    <th>Semestre</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
+    <body class="page-content">
 
-                <tr>
-                    <td>1</td>
-                    <td>John</td>
-                    <td>Enfermeria</td>
-                    <td>503 A</td>
-                    <td>quinto</td>
-                    <td> <button type="button" class="btn btn-danger">Espera</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Mary</td>
-                    <td>Medicina</td>
-                    <td>814</td>
-                    <td>octavo</td>
-                    <td> <button type="button" class="btn btn-danger">Espera</button></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>July</td>
-                    <td>Informatica</td>
-                    <td>306</td>
-                    <td>tercero</td>
-                    <td> <button type="button" class="btn btn-danger">Espera</button></td>
-                </tr>
-                </tr>
+        <!-- Inicio de la tabla de datos -->
+        <div class="container">
+            @if (session('success'))
+                <h6 class="alert alert-success">{{ session('success') }}</h6>
+            @endif
+            <div class="row">
+                <div class="col-12">
+                    <div class="data_table">
+                        <table id="example" class="table table-striped table-bordered">
+                            <!-- Encabezado de la tabla -->
+                            <thead class="table-dark">
+                                <tr>
 
-                <tr class='noSearch hide'>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Carrera</th>
+                                    <th>Grupo</th>
+                                    <th>Semestre</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    <td colspan="6"></td>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John</td>
+                                    <td>Enfermeria</td>
+                                    <td>503 A</td>
+                                    <td>quinto</td>
+                                    <td> <button type="button" class="btn btn-danger">Espera</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Mary</td>
+                                    <td>Medicina</td>
+                                    <td>814</td>
+                                    <td>octavo</td>
+                                    <td> <button type="button" class="btn btn-danger">Espera</button></td>
+                                </tr>
+                            </tbody>
+                            <!-- Cuerpo de la tabla con datos dinámicos -->
 
-                </tr>
-
-            </tbody>
-        </table>
-    </div>{{--termina div de la tabla--}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin de la tabla de datos -->
+    </body>
+    <!-- Fin del cuerpo de la página -->
 @endsection
