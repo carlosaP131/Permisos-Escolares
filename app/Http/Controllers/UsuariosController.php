@@ -6,6 +6,8 @@ use App\Http\Dtos\UsuariosDTO;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use PhpParser\Node\Expr\Assign;
+
 
 class UsuariosController extends Controller
 {
@@ -22,8 +24,10 @@ class UsuariosController extends Controller
 
         $carrerasController = new CarrerasController();
         $carrerasDTO = $carrerasController->show();
-        //return view('administrador.administradorUsuarios', compact('usuarios'));
-        return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO]);
+
+        $roleController = new RoleController();
+        $rolesDTO = $roleController->findAll();
+        return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
 
     }
     //método para eliminar
@@ -32,33 +36,23 @@ class UsuariosController extends Controller
         $usuarios = User::find($id);
         $usuarios->delete();
         return redirect()->route('administrador-usuarios')->with('danger', 'Usuario eliminado
-    Exitosamente');
+        Exitosamente');
     }
 
     //Método para crear un usuario
     public function store(Request $request)
     {
         // Crear el usuario en la base de datos
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->input('password'));
-        $user->status = $request->input('status');
-        $user->id_carrera = $request;
+        $user = UsuariosDTO::assignValues($request);
 
-        // Verificar el rol y asignar la carrera si es necesario
-        if ($request->input('role') == 'Profesor') {
-            $user->id_carrera = $request->input('carrera');
-        } else {
-            $user->id_carrera = 1;
-        }
         $user->save();
 
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario creado exitosamente');
     }
     public function update(Request $request, $idUsuarios)
-{
-    /* Validación de datos
+    {
+        /* Validación de datos
+
     $request->validate([
         'name' => 'required',
         'email' => 'required|email',
@@ -68,28 +62,27 @@ class UsuariosController extends Controller
         'status' => 'required',
     ]);*/
 
-    // Obtener el usuario existente
-    $usuario = User::findOrFail($idUsuarios);
+        // Obtener el usuario existente
+        $usuario = User::findOrFail($idUsuarios);
 
-    // Actualizar los datos del usuario
-    $data = [
-        'name' => $request->input('name'),
-        'email' => $request->input('email'),
-        'role' => $request->input('role'),
-        'carrera' => $request->input('carrera'),
-        'status' => $request->input('status'),
-    ];
+        // Actualizar los datos del usuario
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+            'carrera' => $request->input('carrera'),
+            'status' => $request->input('status'),
+        ];
 
-    // Actualizar la contraseña solo si se proporciona
-    if ($request->has('password')) {
-        $data['password'] = bcrypt($request->input('password'));
+        // Actualizar la contraseña solo si se proporciona
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->input('password'));
+        }
+
+        $usuario->update($data);
+
+        // Redireccionar con un mensaje de éxito
+        return redirect()->route('administrador-usuarios')->with('success', 'Usuario actualizado exitosamente');
     }
-
-    $usuario->update($data);
-
-    // Redireccionar con un mensaje de éxito
-    return redirect()->route('administrador-usuarios')->with('success', 'Usuario actualizado exitosamente');
-}
-
 }
 

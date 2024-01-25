@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
 function toggleOptionsContainer() {
     var roleSelect = document.getElementById('role');
     var optionsContainer = document.getElementById('optionsContainer');
-
+    // Obtener el texto (name) de la opción seleccionada
+    var selectedRoleName = roleSelect.options[roleSelect.selectedIndex].text;
     // Muestra u oculta el contenedor de opciones según el rol seleccionado
-    if (roleSelect.value === 'Profesor') {
+    if (selectedRoleName === 'Profesor') {
+
         optionsContainer.style.display = 'block';
     } else {
         optionsContainer.style.display = 'none';
