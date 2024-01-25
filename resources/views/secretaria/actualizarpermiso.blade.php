@@ -128,24 +128,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="Fechini">Inicio:</label>
-                        <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
-                    </div>
-                    <div class="col">
-                        <label for="Fechfin">Fin:</label>
-                        <input type="date" class="form-control" placeholder="" name="Fecha_Final">
-                    </div>
-                </div>
-                <div class="col">
-                    <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                        name="Fecha_Horas">
-                </div>
+
+
             </div>
-
-    </div>
-
     <div id="additionalInputs" style="display: none;">
         <label for="additionalLabel">Rango Horas:</label>
         <div class="col">
@@ -174,7 +159,7 @@
             </div>
         </div>
     </div>
-    </div>
+
     {{-- Termina el div de las secciones de rango de dias u horas --}}
     <label for="comment">Motivo u Observaciones:</label>
     <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
