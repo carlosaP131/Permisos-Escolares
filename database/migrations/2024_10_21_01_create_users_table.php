@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreign('id_carrera')->references('id')->on('carreras')->onDelete('cascade');
             $table->bigInteger('id_rol')->unsigned();
             $table->foreign('id_rol')->references('id')->on('roles')->onDelete('cascade');
-
             $table->rememberToken();
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Carrera;
 
 class CarrerasController extends Controller
-
+{
     
     public function show(){
         $carreras = Carrera::all();
