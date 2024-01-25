@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use PhpParser\Node\Expr\Assign;
 
+
 class UsuariosController extends Controller
 {
     //método de consultar usuario
@@ -27,6 +28,7 @@ class UsuariosController extends Controller
         $roleController = new RoleController();
         $rolesDTO = $roleController->findAll();
         return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
+
     }
     //método para eliminar
     public function destroy($id)
@@ -42,6 +44,7 @@ class UsuariosController extends Controller
     {
         // Crear el usuario en la base de datos
         $user = UsuariosDTO::assignValues($request);
+
         $user->save();
 
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario creado exitosamente');
@@ -49,6 +52,7 @@ class UsuariosController extends Controller
     public function update(Request $request, $idUsuarios)
     {
         /* Validación de datos
+
     $request->validate([
         'name' => 'required',
         'email' => 'required|email',
@@ -81,3 +85,4 @@ class UsuariosController extends Controller
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario actualizado exitosamente');
     }
 }
+

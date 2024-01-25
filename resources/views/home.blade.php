@@ -35,6 +35,7 @@
                         @endcan
                     </li>
                     <li>
+
                         <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar
                             Alumnos</a>
                     </li>

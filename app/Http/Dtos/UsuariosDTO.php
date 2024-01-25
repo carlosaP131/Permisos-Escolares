@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Dtos\RolesDTO;
 
+
 class UsuariosDTO
 {
     public $id;
@@ -16,6 +17,7 @@ class UsuariosDTO
 
     public $carrera_nombre;
     public $rol_nombre;
+
 
     public function __construct(User $user)
     {
@@ -52,5 +54,6 @@ class UsuariosDTO
         } else {
             return 1; // Asignar el valor 1 para Admin
         }
+
     }
 }

@@ -36,7 +36,6 @@ Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->Middleware('can:alumno-permisos')->name('alumno-permisos');
 Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultarUsuario'])->Middleware('can:administrador-usuarios')->name('administrador-usuarios');
 
-
 /**
  * Rutas para interactuar con permisos enel diguiente orden
  * 1. Muestra un formulario para generar un permiso
@@ -54,6 +53,7 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middlew
 
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
 Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->Middleware('can:actualizar-usuario')->name('actualizar-usuario');
+
 /**
  * rutas para vargar los datos desde un archivo excel
  * 1.- Muestra la vista de con la opcioón de cargar un archivo
@@ -65,3 +65,4 @@ Route::get('/data', [DatosController::class, 'index'])->Middleware('can:vista-ca
 Route::post('/data', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
 Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
+

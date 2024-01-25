@@ -9,6 +9,7 @@ function toggleOptionsContainer() {
     var selectedRoleName = roleSelect.options[roleSelect.selectedIndex].text;
     // Muestra u oculta el contenedor de opciones según el rol seleccionado
     if (selectedRoleName === 'Profesor') {
+
         optionsContainer.style.display = 'block';
     } else {
         optionsContainer.style.display = 'none';
