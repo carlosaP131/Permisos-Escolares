@@ -22,12 +22,15 @@
                     </li>
                     <li class="active">
                         @can('alumno-inicio')
-                        <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
+                            <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
                         @endcan
                     </li>
                     <li>
+                        @can('alumno-permisos')
                         <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
                             Permisos</a>
+                        @endcan
+                        
                     </li>
                     <li>
                         @can('administrador-usuarios')
@@ -35,8 +38,11 @@
                         @endcan
                     </li>
                     <li>
+                        @can('vista-cargar-excel')
                         <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar
                             Alumnos</a>
+                        @endcan
+                        
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

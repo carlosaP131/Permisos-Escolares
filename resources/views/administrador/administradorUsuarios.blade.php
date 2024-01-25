@@ -30,6 +30,7 @@
                                         <td>{{ $usuario->email }}</td>
                                         <td>{{ $usuario->password }}</td>
                                         <td>{{ $usuario->rol_nombre }}</td>
+
                                         <td>{{ $usuario->carrera_nombre }}</td>
                                         <td>
                                             @if ($usuario->status)

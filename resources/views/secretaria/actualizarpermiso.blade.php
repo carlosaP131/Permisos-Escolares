@@ -143,31 +143,33 @@
                         name="Fecha_Horas">
                 </div>
             </div>
-    </div>
 
-    <div id="additionalInputs" style="display: none;">
-        <label for="additionalLabel">Rango Horas:</label>
-        <div class="col">
-            <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                name="additionalDate">
         </div>
 
-        <div class="mb-3 mt-3">
-            <label for="">Horas:</label>
-            <div class="row">
-                <div class="col">
-                    <label for="horaini">Inicio:</label>
-                    <div class="cs-form">
-                        <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
+        <div id="additionalInputs" style="display: none;">
+            <label for="additionalLabel">Rango Horas:</label>
+            <div class="col">
+                <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
+                    name="additionalDate">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label for="">Horas:</label>
+                <div class="row">
+                    <div class="col">
+                            <label for="horaini">Inicio:</label>
+                            <div class="cs-form">
+                                <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
+                            </div>
+
                     </div>
 
-                </div>
+                    <div class="col">
 
-                <div class="col">
-
-                    <label for="horafin">Fin:</label>
-                    <div class="cs-form">
-                        <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
+                        <label for="horafin">Fin:</label>
+                        <div class="cs-form">
+                                <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,3 +193,4 @@
     </form>
     </div>
 @endsection
+

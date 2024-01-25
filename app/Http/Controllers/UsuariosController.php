@@ -6,7 +6,6 @@ use App\Http\Dtos\UsuariosDTO;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use PhpParser\Node\Expr\Assign;
 
 class UsuariosController extends Controller
 {
@@ -49,14 +48,14 @@ class UsuariosController extends Controller
     public function update(Request $request, $idUsuarios)
     {
         /* Validación de datos
-    $request->validate([
+        $request->validate([
         'name' => 'required',
         'email' => 'required|email',
         'password' => 'nullable|min:6|confirmed',
         'role' => 'required',
         'carrera' => 'required_if:role,Profesor', // Solo si el rol es Profesor
         'status' => 'required',
-    ]);*/
+        ]);*/
 
         // Obtener el usuario existente
         $usuario = User::findOrFail($idUsuarios);
