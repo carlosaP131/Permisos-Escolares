@@ -2,22 +2,23 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-Use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
-class CarrerasTableSeeder extends Seeder
+class CarreraSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
+
     public function run()
     {
-        // Puedes ajustar los datos según tus necesidades
+        // Declaración de datos a insertar
         $carreras = [
             ['nombre' => 'All'],
+            ['nombre' => 'Partial'],
             ['nombre' => 'Administración Municipal'],
             ['nombre' => 'Administración Pública'],
             ['nombre' => 'Ciencias Empresariales'],
@@ -26,9 +27,6 @@ class CarrerasTableSeeder extends Seeder
             ['nombre' => 'Medicina'],
             ['nombre' => 'Nutrición'],
             ['nombre' => 'Odontología'],
-            
-
-            // Agrega más carreras según sea necesario
         ];
 
         // Insertar datos en la tabla

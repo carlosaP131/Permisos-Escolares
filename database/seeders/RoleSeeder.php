@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -28,9 +27,21 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'home'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'inicio-alumnos'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'permisos-creados'])->syncRoles([$role1, $role2, $role3]);
-        dd('Roles y permisos creados exitosamente.');
+        Permission::create(['name' => 'alumno-permisos'])->syncRoles([$role1, $role2, $role3]);
+        Permission::create(['name' => 'administrador-usuarios'])->syncRoles([$role1]);
 
+        Permission::create(['name' => 'formulario-permiso'])->syncRoles([$role2]);
+        Permission::create(['name' => 'crear-permiso'])->syncRoles([$role2]);
+        Permission::create(['name' => 'vista-permiso'])->syncRoles([$role2]);
+        Permission::create(['name' => 'actualizar-permiso'])->syncRoles([$role2]);
+        Permission::create(['name' => 'permiso-destroy'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'crear-usuario'])->syncRoles([$role1]);
+        Permission::create(['name' => 'actualizar-usuario'])->syncRoles([$role1]);
+        Permission::create(['name' => 'usuarios-destroy'])->syncRoles([$role1]);
+
+        Permission::create(['name' => 'vista-cargar-excel'])->syncRoles([$role1]);
+        Permission::create(['name' => 'poblar-alumnos'])->syncRoles([$role1]);
+        Permission::create(['name' => 'borrar-alumnos'])->syncRoles([$role1]);
     }
-
 }

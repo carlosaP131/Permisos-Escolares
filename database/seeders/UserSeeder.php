@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -10,18 +9,24 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * *
+     * @return void
      */
     public function run(): void
     {
         // Crear un usuario por defecto
-        if (!User::where('email', 'usuario@ejemplo.com')->exists()) {
-            User::create([
-                'name' => 'oscar',
-                'email' => 'usuario@ejemplo.com',
-                'password' => bcrypt('contraseña'),
-            ])->assignRole('Admin');
-        }else{
-            dd('El usuario ya existe');
+        try {
+            if (!User::where('email', 'usuario@ejemplo.co')->exists()) {
+                User::create([
+                    'name' => 'oscar',
+                    'email' => 'usuario@ejemplo.com',
+                    'password' => bcrypt('12121212'),
+                    'status' => 1,
+                    'id_carrera' => 1,
+                    'id_rol' => 1,
+                ])->assignRole('Admin'); //rol 1 es de admin
+            }
+        } catch (\Throwable $th) {
         }
     }
 }

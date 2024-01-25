@@ -26,7 +26,6 @@
                                     <th>Nombre</th>
                                     <th>Carrera</th>
                                     <th>Grupo</th>
-                                    <th>Semestre</th>
                                     <th>Generar</th>
                                 </tr>
                             </thead>
@@ -38,12 +37,12 @@
                                         <td>{{ $alumno->matricula }}</td>
                                         <td>{{ $alumno->nombre }}</td>
                                         <td>{{ $alumno->carrera }}</td>
-                                        <td>{{ $alumno->grupo }}</td>
-                                        <td>{{ $alumno->semestre }}</td>
+                                        <td>{{ $alumno->semestre . $alumno->grupo }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('formulario-permiso', [$alumno->id]) }}">
                                                 @csrf
-                                                <button class="btn btn-warning btn-sm" type="submit">Generar Permiso</button>
+                                                <button class="btn btn-warning btn-sm" type="submit">Generar
+                                                    Permiso</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -21,14 +21,18 @@
                         </a>
                     </li>
                     <li class="active">
+                        @can('alumno-inicio')
                         <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
+                        @endcan
                     </li>
                     <li>
                         <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
                             Permisos</a>
                     </li>
                     <li>
-                        <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
+                        @can('administrador-usuarios')
+                            <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
+                        @endcan
                     </li>
                     <li>
                         <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar

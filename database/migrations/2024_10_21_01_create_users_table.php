@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             // Cambié el tipo de datos a bigInteger y añadí unsigned
             $table->bigInteger('id_carrera')->unsigned();
             $table->foreign('id_carrera')->references('id')->on('carreras')->onDelete('cascade');
+            $table->bigInteger('id_rol')->unsigned();
+            $table->foreign('id_rol')->references('id')->on('roles')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
