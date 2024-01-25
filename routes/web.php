@@ -51,6 +51,9 @@ Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->name('permiso-destroy');
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios-destroy');
+//para crear usuarios
+Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->name('crear-usuario');
+Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->name('actualizar-usuario');
 
 /**
  * rutas para vargar los datos desde un archivo excel

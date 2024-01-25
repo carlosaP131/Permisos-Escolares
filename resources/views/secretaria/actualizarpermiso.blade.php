@@ -79,20 +79,25 @@
                         <select class="form-select" id="Semestre_tipo" name="semestre" disabled>
                             <option>A</option>
                             <option>B</option>
-
-                        </select>
-                    </div>
+                    </select>
                 </div>
-            </div>{{-- Termina select de la seccion de año y ciclo --}}
+            </div>
+        </div>{{-- Termina select de la seccion de año y ciclo --}}
+        <div class="mb-3 mt-3">
+            {{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
+            <label for="sel1" class="form-label">Semestre:</label>
+            <select class="form-select" id="grupo" name="grupo">
+                <option>{{ $alumno->semestre }}</option>
+            </select>
+        </div>{{-- Termina select de la seccion de año y ciclo --}}
 
-            <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
+        <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
                                                                                              solo se mostrara si en carrera se selecciona Enfermeria Odontologia u Medicina --}}
-                <label for="especialidad" class="form-label">Grupo</label>
-                <select class="form-select" id="especialidad" name="especialidad">
+            <label for="especialidad" class="form-label">Grupo</label>
+            <select class="form-select" id="especialidad" name="especialidad">
 
-                </select>
-            </div>{{-- Termina el div de la seleccion de grupo --}}
-
+            </select>
+        </div>{{-- Termina el div de la seleccion de grupo --}}
 
             <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                 <label for="sellist1">Tipo de Permiso:</label>
@@ -102,58 +107,59 @@
                 </select>
             </div>{{-- Termina div de la seleccion de tipo de permiso --}}
             {{-- Estas secciones estaran ocultas mientras no se seleccione una opcion en Tipo de permiso si se selecciona dias se mostrara la siguiente
+
                     si no y se selecciona horas se mostrara el siguiente --}}
 
-            <div class="mb-3 pd-1" id="dateRangeInputs" style="display: none;">
-                <div class="col">
-                    <label for="Rango_Dias">Rango de dias</label>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label for="Fechini">Inicio:</label>
-
-                        <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
-
-                    </div>
-                    <div class="col">
-                        <label for="Fechfin">Fin:</label>
-
-                        <input type="date" class="form-control" placeholder="" name="Fecha_Final">
-                    </div>
-                </div>
+        <div class="mb-3 pd-1" id="dateRangeInputs" style="display: none;">
+            <div class="col">
+                <label for="Rango_Dias">Rango de dias</label>
             </div>
-
-            <div id="additionalInputs" style="display: none;">
-                <label for="additionalLabel">Rango Horas:</label>
+            <div class="row">
+                <div class="col">
+                    <label for="Fechini">Inicio:</label>
+                    <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
+                </div>
+                <div class="col">
+                    <label for="Fechfin">Fin:</label>
+                    <input type="date" class="form-control" placeholder="" name="Fecha_Final">
+                </div>
+                </div>
                 <div class="col">
                     <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
                         name="Fecha_Horas">
                 </div>
+            </div>
+        </div>
 
-                <div class="mb-3 mt-3">
-                    <label for="">Horas:</label>
-                    <div class="row">
-                        <div class="col">
+        <div id="additionalInputs" style="display: none;">
+            <label for="additionalLabel">Rango Horas:</label>
+            <div class="col">
+                <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
+                    name="additionalDate">
+            </div>
 
+            <div class="mb-3 mt-3">
+                <label for="">Horas:</label>
+                <div class="row">
+                    <div class="col">
                             <label for="horaini">Inicio:</label>
                             <div class="cs-form">
                                 <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
                             </div>
 
-                        </div>
+                    </div>
 
-                        <div class="col">
+                    <div class="col">
 
-                            <label for="horafin">Fin:</label>
-                            <div class="cs-form">
-
+                        <label for="horafin">Fin:</label>
+                        <div class="cs-form">
                                 <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- Termina el div de las secciones de rango de dias u horas --}}
+        </div>
+                    {{-- Termina el div de las secciones de rango de dias u horas --}}
             <label for="comment">Motivo u Observaciones:</label>
             <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
 
@@ -172,3 +178,4 @@
         </form>
     </div>
 @endsection
+

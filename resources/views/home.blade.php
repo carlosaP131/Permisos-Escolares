@@ -31,6 +31,7 @@
                         <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
                     </li>
                     <li>
+
                         <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar
                             Alumnos</a>
                     </li>
