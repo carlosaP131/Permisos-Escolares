@@ -7,7 +7,6 @@ use App\Http\Dtos\UsuariosDTO;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
 class UsuariosController extends Controller
 {
     //método de consultar usuario
@@ -25,6 +24,7 @@ class UsuariosController extends Controller
         $carrerasDTO = $carrerasController->show();
         //return view('administrador.administradorUsuarios', compact('usuarios'));
         return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO]);
+
     }
     //método para eliminar
     public function destroy($id)
@@ -92,3 +92,4 @@ class UsuariosController extends Controller
 }
 
 }
+

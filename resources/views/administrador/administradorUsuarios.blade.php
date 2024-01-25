@@ -40,6 +40,7 @@
                                         </td>
 
                                         <td class="d-flex flex-row">
+
                                             <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf

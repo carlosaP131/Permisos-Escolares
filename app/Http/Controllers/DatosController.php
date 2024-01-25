@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\YourImportClass; // Asegúrate de crear esta clase
+use App\Models\Datos;
 
 class DatosController extends Controller
 {
@@ -85,6 +87,14 @@ class DatosController extends Controller
         Excel::import(new YourImportClass, $file, $type);
 
         return redirect()->route('alumno-inicio')->with('success','Importación exitosa');
+    }
+
+
+ public function borrarAlumnos()
+    {
+        Datos::truncate();
+
+        return redirect()->route('alumno-inicio')->with('success', '¡Se borraron todos los registros de alumnos!');
     }
 
 }

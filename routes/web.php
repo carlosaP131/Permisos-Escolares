@@ -45,7 +45,7 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  * 4. Ruta para actualizar la información del permiso en la DB
  * 5. Ruta que elimina el permiso en la base de datos
  */
-Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->name('formulario-permiso');
+Route::post('/formulario/{id}', [PermisosController::class, 'formulario'])->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->name('actualizar-permiso');
@@ -54,11 +54,15 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('u
 //para crear usuarios
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->name('crear-usuario');
 Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->name('actualizar-usuario');
+
 /**
  * rutas para vargar los datos desde un archivo excel
  * 1.- Muestra la vista de con la opcioón de cargar un archivo
  * 2.- Acción del botón importar, accede a la clase importar
  *      que ejecuta la acción de poblar la base y redireccciona a la vista principal de alumnos
+ * 3.- Ruta para borrar los datos de alumnos
  */
 Route::get('/data', [DatosController::class, 'index'])->name('vista-cargar-excel');
 Route::post('/data', [DatosController::class, 'importar'])->name('poblar-alumnos');
+
+Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->name('borrar-alumnos');

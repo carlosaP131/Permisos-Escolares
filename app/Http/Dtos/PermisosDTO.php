@@ -12,15 +12,21 @@ class PermisosDTO
     public $status;
     public $motivo;
     public $descripcion;
-    public $tiempo;
     public $tipo;
     public $editado;
 
+    // Propiedades adicionales para el modelo Alumno
     public $matricula;
     public $nombre;
     public $carrera;
     public $semestre;
     public $grupo;
+
+    // Nuevos campos para manejar el tiempo según el tipo de permiso
+    public $fechaInicio;
+    public $fechaFin;
+    public $horaInicio;
+    public $horaFin;
 
     // Constructor de la clase que recibe un objeto Permiso como parámetro
     public function __construct(Permiso $permiso)
@@ -30,7 +36,6 @@ class PermisosDTO
         $this->status = $permiso->status;
         $this->motivo = $permiso->motivo;
         $this->descripcion = $permiso->descripcion;
-        $this->tiempo = $permiso->tiempo;
         $this->tipo = $permiso->tipo;
         $this->editado = $permiso->editado;
 
@@ -40,5 +45,11 @@ class PermisosDTO
         $this->carrera = $permiso->Alumno->carrera;
         $this->semestre = $permiso->Alumno->semestre;
         $this->grupo = $permiso->Alumno->grupo;
+
+        // Asignación de valores para los nuevos campos de tiempo según el tipo de permiso
+        $this->fechaInicio = $permiso->fecha_inicio;
+        $this->fechaFin = $permiso->fecha_fin;
+        $this->horaInicio = $permiso->hora_inicio;
+        $this->horaFin = $permiso->hora_fin;
     }
 }
