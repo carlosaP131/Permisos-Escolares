@@ -47,6 +47,7 @@ class PermisosController extends Controller
         $alumno = Alumno::where('matricula', $request->matricula)->firstOrFail();
 
 
+
         // Creamos un nuevo permiso
         $permiso = new Permiso([
             'status' => 'Pendiente',
@@ -77,15 +78,10 @@ class PermisosController extends Controller
      * Esta funcion se encarga de actualizar los permisos tiene la misma logica que
      *  la funcion store pero con la exepcion de que este carga el permiso
      */
-    public function update(Request $request, $idPermiso)
+    public function update(CrearPermisoRequest $request, $idPermiso)
     {
-        /**
-         * Validar aquí
-         */
-        $request->validate([
-            'motivo' => 'required|min:5',
-            // agregar otras reglas de validación
-        ]);
+
+
 
         /**
          * Búsqueda del permiso y seteo de valores para actualizar
@@ -97,20 +93,11 @@ class PermisosController extends Controller
         $permiso->tipo = $request->input('tipoPermiso');
 
         if ($request->input('tipoPermiso') == 'Dias') {
-            $request->validate([
-                'Fecha_Inicial' => 'required',
-                'Fecha_Final' => 'required',
-            ]);
 
             // Asignamos valores para permisos por días
             $permiso->fecha_inicio = $request->Fecha_Inicial;
             $permiso->fecha_fin = $request->Fecha_Final;
         } else {
-            $request->validate([
-                'Fecha_Horas' => 'required',
-                'Hora_Inicial' => 'required',
-                'Hora_Final' => 'required',
-            ]);
 
             // Asignamos valores para permisos por horas
             $permiso->fecha_inicio = $request->Fecha_Horas;
