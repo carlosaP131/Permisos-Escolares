@@ -48,9 +48,9 @@ class UsuariosDTO
         if ($role == 'Profesor') {
             return $carrera;
         } elseif ($role == 'Secretaria') {
-            return 2; // Asignar el valor 2 para Secretaria
+            return 10001; // Asignar el valor 2 para Secretaria
         } else {
-            return 1; // Asignar el valor 1 para Admin
+            return 1000; // Asignar el valor 1 para Admin
         }
     }
 }

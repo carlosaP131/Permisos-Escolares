@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
                                         <td>{{ $alumno->matricula }}</td>
-                                        <td>{{ $alumno->nombre }}</td>
+                                        <td>{{ $alumno->nombre . $alumno->apellido }}</td>
                                         <td>{{ $alumno->carrera }}</td>
                                         <td>{{ $alumno->semestre . $alumno->grupo }}</td>
                                         <td>

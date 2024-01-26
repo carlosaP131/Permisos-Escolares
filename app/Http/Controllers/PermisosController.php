@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Dtos\AlumnosDTO;
 use App\Models\Permiso;
 use App\Http\Controllers\Auth;
 use App\Http\Requests\CrearPermisoRequest;
@@ -20,7 +21,7 @@ class PermisosController extends Controller
     public function formulario($id)
     {
         $alumno = alumno::find($id); //obtenemos los datos apartir del id del
-        //alumno traido de la tabla
+        $alumno=new AlumnosDTO($alumno);
         return view('secretaria.generarpermiso', ['alumno' => $alumno]);
     }
     /**
@@ -34,7 +35,7 @@ class PermisosController extends Controller
 
         // Accedemos al alumno relacionado
         $alumno = $permiso->alumno;
-
+        $alumno=new AlumnosDTO($alumno);
         return view('secretaria.actualizarpermiso', ['alumno' => $alumno, 'permiso' => $permiso]);
     }
 

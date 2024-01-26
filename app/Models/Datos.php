@@ -12,12 +12,12 @@ class Datos extends Model
     protected $fillable = [
         'matricula',
         'nombre',
+        'apellido', // Asegúrate de que 'apellido' esté presente en los campos fillable
         'semestre',
-        'carrera',
-        'grupo'
-
-
+        'id_carrera',
+        'grupo',
     ];
+
 
     public $timestamps = false;
 

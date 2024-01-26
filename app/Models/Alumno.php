@@ -13,4 +13,9 @@ class Alumno extends Model
     {
         return $this->hasMany(Permiso::class, 'id_alumno');
     }
+
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'id_carrera');
+    }
 }

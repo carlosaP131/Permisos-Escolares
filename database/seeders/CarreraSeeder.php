@@ -17,16 +17,16 @@ class CarreraSeeder extends Seeder
     {
         // Declaración de datos a insertar
         $carreras = [
-            ['nombre' => 'All'],
-            ['nombre' => 'Partial'],
-            ['nombre' => 'Administración Municipal'],
-            ['nombre' => 'Administración Pública'],
-            ['nombre' => 'Ciencias Empresariales'],
-            ['nombre' => 'Enfermería'],
-            ['nombre' => 'Informática'],
-            ['nombre' => 'Medicina'],
-            ['nombre' => 'Nutrición'],
-            ['nombre' => 'Odontología'],
+            ['id'=> 10000,'nombre' => 'All'],
+            ['id'=> 10001,'nombre' => 'Partial'],
+            ['id'=> 1,'nombre' => 'Administración Municipal'],
+            ['id'=> 5,'nombre' => 'Administración Pública'],
+            ['id'=> 4,'nombre' => 'Ciencias Empresariales'],
+            ['id'=> 3,'nombre' => 'Enfermería'],
+            ['id'=> 6,'nombre' => 'Informática'],
+            ['id'=> 14,'nombre' => 'Medicina'],
+            ['id'=> 7,'nombre' => 'Nutrición'],
+            ['id'=> 13,'nombre' => 'Odontología'],
         ];
 
         // Insertar datos en la tabla

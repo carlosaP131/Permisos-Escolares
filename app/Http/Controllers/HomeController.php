@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Dtos\PermisosDTO;
-use Illuminate\Http\Request;
+use App\Http\Dtos\AlumnosDTO;
 use App\Models\Permiso;
 use App\Models\Alumno;
 
@@ -32,8 +32,14 @@ class HomeController extends Controller
 
     public function student()
     {
-        $alumno = alumno::all();
-        return view('secretaria.alumnos',['alumnos'=>$alumno]);
+        $alumnos = Alumno::all();
+        $alumnosDTO = collect();
+
+        foreach ($alumnos as $alumno) {
+            $alumnosDTO->push(new AlumnosDTO($alumno));
+        }
+
+        return view('secretaria.alumnos',['alumnos'=>$alumnosDTO]);
     }
 
     public function permission()

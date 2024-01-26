@@ -15,8 +15,10 @@ return new class extends Migration
             $table->increments('id');
             $table->string('matricula');
             $table->string('nombre', 100);
+            $table->string('apellido', 100);
             $table->string('semestre', 100);
-            $table->string('carrera', 100);
+            $table->bigInteger('id_carrera')->unsigned();
+            $table->foreign('id_carrera')->references('id')->on('carreras')->onDelete('cascade');
             $table->string('grupo', 100);
             $table->timestamps();
         });

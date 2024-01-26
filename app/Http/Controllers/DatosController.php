@@ -74,18 +74,25 @@ class DatosController extends Controller
      */
     public function importar(Request $request)
     {
+        set_time_limit(300);
         // Verifica si se ha cargado un archivo
         if (!$request->hasFile('documento')) {
-            return redirect()->route('vista-cargar-excel')->with('error',
-            'Por favor, carga un archivo antes de intentar importar.');
+            return redirect('/data')->with('error', 'Por favor, carga un archivo antes de intentar importar.');
         }
+
         $file = $request->file('documento');
 
         // Especifica el tipo de archivo (por ejemplo, xlsx)
         $type = 'xlsx';
 
-        Excel::import(new YourImportClass, $file, $type);
+        try {
+            // Intenta importar el archivo
+            Excel::import(new YourImportClass, $file, $type);
+        } catch (\Exception $e) {
+            return redirect('/data')->with('error', 'Error durante la importación: ' . $e->getMessage());
+        }
 
+        // Redirige a la vista "alumno" después de importar si no hay errores
         return redirect()->route('alumno-inicio')->with('success','Importación exitosa');
     }
 
@@ -98,3 +105,7 @@ class DatosController extends Controller
     }
 
 }
+
+
+
+

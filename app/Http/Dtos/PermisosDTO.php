@@ -18,7 +18,9 @@ class PermisosDTO
     // Propiedades adicionales para el modelo Alumno
     public $matricula;
     public $nombre;
+
     public $carrera;
+
     public $semestre;
     public $grupo;
 
@@ -42,7 +44,7 @@ class PermisosDTO
         // Acceso a propiedades del modelo relacionado Alumno
         $this->matricula = $permiso->Alumno->matricula;
         $this->nombre = $permiso->Alumno->nombre;
-        $this->carrera = $permiso->Alumno->carrera;
+        $this->carrera = $permiso->Alumno->Carrera->nombre;
         $this->semestre = $permiso->Alumno->semestre;
         $this->grupo = $permiso->Alumno->grupo;
 
