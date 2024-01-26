@@ -44,7 +44,7 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  * 4. Ruta para actualizar la información del permiso en la DB
  * 5. Ruta que elimina el permiso en la base de datos
  */
-Route::post('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
+Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->Middleware('can:vista-permiso')->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->Middleware('can:actualizar-permiso')->name('actualizar-permiso');
@@ -63,4 +63,4 @@ Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->Mid
 Route::get('/data', [DatosController::class, 'index'])->Middleware('can:vista-cargar-excel')->name('vista-cargar-excel');
 Route::post('/data', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
-Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
+Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
