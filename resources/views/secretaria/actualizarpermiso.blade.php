@@ -135,7 +135,7 @@
         <label for="additionalLabel">Rango Horas:</label>
         <div class="col">
             <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                name="additionalDate">
+                name="Fecha_Horas">
         </div>
 
         <div class="mb-3 mt-3">
