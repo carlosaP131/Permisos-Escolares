@@ -39,8 +39,7 @@
                                         <td>{{ $alumno->carrera }}</td>
                                         <td>{{ $alumno->semestre . $alumno->grupo }}</td>
                                         <td>
-                                            <form method="POST" action="{{ route('formulario-permiso', [$alumno->id]) }}">
-                                                @csrf
+                                            <form action="{{ route('formulario-permiso', [$alumno->id]) }}">
                                                 <button class="btn btn-warning btn-sm" type="submit">Generar
                                                     Permiso</button>
                                             </form>
@@ -71,8 +70,9 @@
                     </div>
                     <div class="modal-body">
                         <!-- Formulario para crear nuevo usuario -->
-                        <form>
-                            <a href="{{ route('borrar-alumnos') }}" class="btn btn-danger">Confirmar</a>
+                        <form action="{{ route('borrar-alumnos') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Confirmar</button>
                         </form>
                     </div>
                 </div>

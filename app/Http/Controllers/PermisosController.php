@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Permiso;
 use App\Http\Controllers\Auth;
+use App\Http\Requests\CrearPermisoRequest;
 use App\Models\Alumno;
 
 
@@ -40,16 +41,8 @@ class PermisosController extends Controller
     /**
      * Esta funcion sirve para crear un permio se le inyectan los datos
      */
-    public function store(Request $request)
+    public function store(CrearPermisoRequest $request)
     {
-        // Validación de campos del formulario
-        $request->validate([
-            'motivo' => 'required|min:5',
-            'descripcion' => 'required|min:5',
-            'tipoPermiso' => 'required',
-            'matricula' => 'required', // Añade validación para la matrícula si es necesario
-        ]);
-
         // Buscamos al alumno por matrícula
         $alumno = Alumno::where('matricula', $request->matricula)->firstOrFail();
 
@@ -64,22 +57,9 @@ class PermisosController extends Controller
 
         // Validaciones adicionales dependiendo del tipo de permiso
         if ($request->input('tipoPermiso') == 'Dias') {
-            $request->validate([
-                'Fecha_Inicial' => 'required',
-                'Fecha_Final' => 'required',
-            ]);
-
-            // Asignamos valores para permisos por días
             $permiso->fecha_inicio = $request->Fecha_Inicial;
             $permiso->fecha_fin = $request->Fecha_Final;
         } else {
-            $request->validate([
-                'Fecha_Horas' => 'required',
-                'Hora_Inicial' => 'required',
-                'Hora_Final' => 'required',
-            ]);
-
-            // Asignamos valores para permisos por horas
             $permiso->fecha_inicio = $request->Fecha_Horas;
             $permiso->hora_inicio = $request->Hora_Inicial;
             $permiso->hora_fin = $request->Hora_Final;

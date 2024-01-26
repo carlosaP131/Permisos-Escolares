@@ -11,7 +11,7 @@
             @error('descripcion')
                 <h6 class="alert alert-danger">{{ $message }}</h6>
             @enderror
-            @error('tipo')
+            @error('tipoPermiso')
                 <h6 class="alert alert-danger">{{ $message }}</h6>
             @enderror
             @error('Fecha_Inicial')
@@ -99,8 +99,8 @@
                 <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
                     <label for="sellist1">Tipo de Permiso:</label>
                     <select class="form-select" id="Dias_horas" name="tipoPermiso" onchange="toggleInputs()">
-                        <option>Dias</option>
-                        <option>Horas</option>
+                        <option value="Dias">Días</option>
+                        <option value="Horas">Horas</option>
                     </select>
                 </div>{{-- Termina div de la seleccion de tipo de permiso --}}
                 {{-- Estas secciones estaran ocultas mientras no se seleccione una opcion en Tipo de permiso si se selecciona dias se mostrara la siguiente
@@ -159,11 +159,11 @@
                 <label for="comment">Motivo u Observaciones:</label>
                 <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
 
-                    <input class="form-control" type="text" id="comment" name="motivo" />
+                    <input class="form-control" type="text" id="comment" name="motivo" required/>
                 </div>{{-- Termina seccion de motivo u observaciones --}}
                 <label for="comment">Descripción:</label>
                 <div class="mb-3 mt-3">{{-- Inicia la seccion de Descripción --}}
-                    <textarea class="form-control" id="comment" rows="5" name="descripcion"></textarea>
+                    <textarea class="form-control" id="comment" rows="5" name="descripcion" required></textarea>
                 </div>{{-- Termina seccion de Descripción --}}
                 <div class="d-flex justify-content-between  ">
                     <a href="{{ route('alumno-inicio') }}" class="btn btn-danger mb-2 mt-1">Cancelar</a>
