@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permiso;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CrearPermisoRequest;
 use App\Models\Alumno;
-
+use App\Models\User;
 
 
 class PermisosController extends Controller
@@ -46,13 +46,14 @@ class PermisosController extends Controller
         // Buscamos al alumno por matrícula
         $alumno = Alumno::where('matricula', $request->matricula)->firstOrFail();
 
+
         // Creamos un nuevo permiso
         $permiso = new Permiso([
             'status' => 'Pendiente',
             'motivo' => $request->motivo,
             'descripcion' => $request->descripcion,
             'tipo' => $request->input('tipoPermiso'),
-            'editado' => 'jose', // Auth::user()->name
+            'editado' => Auth::id() , //
         ]);
 
         // Validaciones adicionales dependiendo del tipo de permiso

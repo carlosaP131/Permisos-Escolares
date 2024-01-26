@@ -170,7 +170,7 @@
                     <button type="submit" class="btn btn-primary ml-5 mt-2  ">Generar Permiso</button>
 
                 </div>
-                <p name="idalumno" style="display: none"></p>
+
         </form>
     </div>
 @endsection
