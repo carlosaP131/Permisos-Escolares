@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/inicio', function () {
+    return view('inicio');
+});
 
 
 /**
