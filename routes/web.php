@@ -64,3 +64,7 @@ Route::get('/data', [DatosController::class, 'index'])->Middleware('can:vista-ca
 Route::post('/data', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
 Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
+/**
+ * Solicitudes
+ */
+Route::get('/solicitudes', [App\Http\Controllers\HomeController::class, 'permission_solicitud'])->name('solicitud');
