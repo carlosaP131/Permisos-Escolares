@@ -25,6 +25,11 @@
                             <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
                         @endcan
                     </li>
+                    <li class="active">
+
+                            <a href="{{ route('solicitud') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
+
+                    </li>
                     <li>
                         @can('alumno-permisos')
                             <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
