@@ -15,7 +15,7 @@ class CarrerasController extends Controller
         $carrerasDTO = collect();
         foreach ($carreras as $carrera) {
             // Aplicar condición de filtro
-            if ($carrera->id > 2) {
+            if ($carrera->id < 10000) {
                 $carrerasDTO->push(new CarrerasDTO($carrera));
             }
         }
