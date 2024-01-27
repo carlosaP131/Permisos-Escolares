@@ -56,9 +56,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="status" class="form-label"><i class="fas fa-info-circle"></i>
-                            Estatus</label>
-                        <input type="text" name="status" id="status" class="custom-input" required>
+                        <label for="status" class="form-label"><i class="fas fa-info-circle"></i> Estatus</label>
+                        <select name="status" id="status" class="custom-input" required>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+
                     </div>
 
                     <button type="submit" class="btn btn-primary"

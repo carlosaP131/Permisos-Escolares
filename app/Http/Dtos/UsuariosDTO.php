@@ -50,7 +50,7 @@ class UsuariosDTO
         } elseif ($role == 'Secretaria') {
             return 10001; // Asignar el valor 2 para Secretaria
         } else {
-            return 1000; // Asignar el valor 1 para Admin
+            return 10000; // Asignar el valor 1 para Admin
         }
     }
 }
