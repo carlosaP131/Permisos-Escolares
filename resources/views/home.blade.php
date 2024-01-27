@@ -21,7 +21,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse">
+                        <a href="#submenu1" data-bs-toggle="collapse" >
                             <span class="fa fa-home mr-3"></span>Alumnos
                         </a>
 
@@ -40,12 +40,11 @@
                                     </a>
                                 @endcan
                             </li>
+                            <li>
+
+                                <a href="{{ route('solicitud') }}"><span class="fa fa-home mr-3"></span> Solicitudes</a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="active">
-
-                            <a href="{{ route('solicitud') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
-
                     </li>
                     <li>
                         @can('alumno-permisos')
