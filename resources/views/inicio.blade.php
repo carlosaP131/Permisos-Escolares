@@ -8,7 +8,7 @@
         </div>
       </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5 w-50">
         <div id="miCarrusel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -30,14 +30,7 @@
                 <img src="{{ asset('/imagen/G.JPG') }}" class="d-block w-100" alt="Imagen 6">
               </div>
           </div>
-          <a class="carousel-control-prev" href="#miCarrusel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-          </a>
-          <a class="carousel-control-next" href="#miCarrusel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-          </a>
+
         </div>
       </div>
 

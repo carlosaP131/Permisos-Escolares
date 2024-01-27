@@ -67,3 +67,7 @@ Route::get('/data', [DatosController::class, 'index'])->Middleware('can:vista-ca
 Route::post('/data', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
 Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
+/**
+ * Ruta para cambiar a inicio
+ */
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio');
