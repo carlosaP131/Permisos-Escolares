@@ -1,7 +1,7 @@
 @extends('home')
 @section('main')
     {{-- Form para generar un permiso --}}
-    <div class="formulario-permiso container p-5 my-5  text-dark">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
+    <div class="page-content formulario-permiso container p-5 my-5  text-dark">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Actualizar Permiso</h2>
         <form action="{{ route('actualizar-permiso', ['idPermiso' => $permiso->id]) }}" method="POST">
             @csrf

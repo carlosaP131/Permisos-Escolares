@@ -14,7 +14,7 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-user-circle mr-3"></span>
+                        <a href="{{route('home')}}"><span class="fa fa-user-circle mr-3"></span>
                             @if (Auth::check())
                                 {{ Auth::user()->name }}
                             @endif
