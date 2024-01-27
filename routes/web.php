@@ -46,13 +46,17 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  */
 Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
-Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->Middleware('can:vista-permiso')->name('vista-permiso');
+
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->Middleware('can:actualizar-permiso')->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->Middleware('can:permiso-destroy')->name('permiso-destroy');
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middleware('can:usuarios-destroy')->name('usuarios-destroy');
 
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
-Route::patch('/update/{idUsuarios}', [PermisosController::class, 'update'])->Middleware('can:actualizar-usuario')->name('actualizar-usuario');
+
+Route::patch('/update/{idUsuario}', [UsuariosController::class, 'update'])->name('actualizar-usuario');
+
+Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->name('modal-update');
+
 /**
  * rutas para vargar los datos desde un archivo excel
  * 1.- Muestra la vista de con la opcioón de cargar un archivo

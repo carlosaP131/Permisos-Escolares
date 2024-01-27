@@ -45,21 +45,9 @@ class UsuariosController extends Controller
 
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario creado exitosamente');
     }
-    public function update(Request $request, $idUsuarios)
+    public function update(Request $request, $id)
     {
-        /* Validación de datos
-        $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'password' => 'nullable|min:6|confirmed',
-        'role' => 'required',
-        'carrera' => 'required_if:role,Profesor', // Solo si el rol es Profesor
-        'status' => 'required',
-        ]);*/
-
-        // Obtener el usuario existente
-        $usuario = User::findOrFail($idUsuarios);
-
+        $usuario = User::findOrFail($id);
         // Actualizar los datos del usuario
         $data = [
             'name' => $request->input('name'),
@@ -74,9 +62,23 @@ class UsuariosController extends Controller
             $data['password'] = bcrypt($request->input('password'));
         }
 
-        $usuario->update($data);
+        $usuario->save($data);
 
         // Redireccionar con un mensaje de éxito
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario actualizado exitosamente');
+    }
+
+
+    public function modalUpdate($idUsuario){
+
+        $usuario=User::find($idUsuario);
+
+        $carrerasController = new CarrerasController();
+        $carrerasDTO = $carrerasController->show();
+
+        $roleController = new RoleController();
+        $rolesDTO = $roleController->findAll();
+
+  return view('administrador.actualizarUsuario',['usuario'=>$usuario,'carreras'=>$carrerasDTO,'roles' => $rolesDTO]);
     }
 }
