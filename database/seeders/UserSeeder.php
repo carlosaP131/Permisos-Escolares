@@ -22,9 +22,9 @@ class UserSeeder extends Seeder
                     'email' => 'usuario@ejemplo.com',
                     'password' => bcrypt('12121212'),
                     'status' => 1,
-                    'id_carrera' => 1,
+                    'id_carrera' => 10000,
                     'id_rol' => 1,
-                ])->assignRole('Admin'); //rol 1 es de admin
+                ])->assignRole('SuperAdmin'); //rol 1 es de admin
             }
         } catch (\Throwable $th) {
         }

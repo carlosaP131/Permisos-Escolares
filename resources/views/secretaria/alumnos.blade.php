@@ -35,9 +35,9 @@
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
                                         <td>{{ $alumno->matricula }}</td>
-                                        <td>{{ $alumno->nombre . $alumno->apellido }}</td>
+                                        <td>{{ $alumno->nombre . " " . $alumno->apellido }}</td>
                                         <td>{{ $alumno->carrera }}</td>
-                                        <td>{{ $alumno->semestre . $alumno->grupo }}</td>
+                                        <td>{{ $alumno->grupo }}</td>
                                         <td>
                                             <form action="{{ route('formulario-permiso', [$alumno->id]) }}">
                                                 <button class="btn btn-warning btn-sm" type="submit">Generar

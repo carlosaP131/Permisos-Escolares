@@ -14,16 +14,37 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="#"><span class="fa fa-user-circle mr-3"></span>
+                        <a href="{{route('home')}}"><span class="fa fa-user-circle mr-3"></span>
                             @if (Auth::check())
                                 {{ Auth::user()->name }}
                             @endif
                         </a>
                     </li>
-                    <li class="active">
-                        @can('alumno-inicio')
-                            <a href="{{ route('alumno-inicio') }}"><span class="fa fa-home mr-3"></span> Alumnos</a>
-                        @endcan
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" >
+                            <span class="fa fa-home mr-3"></span>Alumnos
+                        </a>
+
+                        <ul class="collapse nav flex-column ml-3" id="submenu1" data-bs-parent="#menu">
+                            <li>
+                                @can('alumno-inicio')
+                                    <a href="{{ route('alumno-inicio') }}">
+                                        <span class="fa fa-home mr-3"></span> Alumnos
+                                    </a>
+                                @endcan
+                            </li>
+                            <li class="w-100">
+                                @can('vista-cargar-excel')
+                                    <a href="{{ route('vista-cargar-excel') }}">
+                                        <span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos
+                                    </a>
+                                @endcan
+                            </li>
+                            <li>
+
+                                <a href="{{ route('solicitud') }}"><span class="fa fa-home mr-3"></span> Solicitudes</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         @can('alumno-permisos')
@@ -36,13 +57,6 @@
                         @can('administrador-usuarios')
                             <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
                         @endcan
-                    </li>
-                    <li>
-                        @can('vista-cargar-excel')
-                            <a href="{{ route('vista-cargar-excel') }}"><span class="fa fa-sticky-note mr-3"></span>Cargar
-                                Alumnos</a>
-                        @endcan
-
                     </li>
                     <li>
                         <a href="{{ route('logout') }}"

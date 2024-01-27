@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('inicio');
     }
 
     public function student()
@@ -54,5 +54,22 @@ class HomeController extends Controller
         }
 
         return view('secretaria.tabla', ['permisos' => $permisosDTO]);
+    }
+    public function permission_solicitud()
+    {
+        $permisos = Permiso::all();
+
+        // Crear una colección de PermisoDTO
+        $permisosDTO = collect();
+
+        foreach ($permisos as $permiso) {
+            $permiso = new PermisosDTO($permiso);
+            if ($permiso->status =='Pendiente') {
+                $permisosDTO->push($permiso);
+            }
+
+        }
+
+        return view('administrador.solicitudes', ['permisos' => $permisosDTO]);
     }
 }
