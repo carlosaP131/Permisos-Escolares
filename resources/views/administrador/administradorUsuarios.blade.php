@@ -33,26 +33,45 @@
 
                                 <td>{{ $usuario->carrera_nombre }}</td>
                                 <td>
-                                    @if ($usuario->status)
-                                    <button type="button" class="btn btn-success" disabled>Activo</button>
+                                    @if ($usuario->status == 'activo')
+                                    <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <button type="submit" class="btn btn-success"
+                                            {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>
+                                            Activo
+                                        </button>
+                                    </form>
                                     @else
-                                    <button type="button" class="btn btn-danger">Inactivo</button>
+                                    <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="post">
+                                        @csrf
+                                        @method('post')
+                                        <button type="submit" class="btn btn-danger"
+                                            {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>Inactivo</button>
+                                    </form>
                                     @endif
                                 </td>
+
 
                                 <td class="d-flex flex-row">
 
                                     <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn-danger" @if ($usuario->name === 'admin')
-                                            disabled @endif>
+                                        <button type="submit" class="btn btn-danger"
+                                            {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </form>
 
-                                    <a href="{{ route('modal-update', [$usuario->id]) }}"
-                                        class="btn btn-warning btn-sm">Editar</a>
+                                    <form action="{{ route('modal-update', [$usuario->id]) }}" method="GET"
+                                        style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning btn-sm"
+                                            {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>
+                                            Editar
+                                        </button>
+                                    </form>
                                 </td>
 
 
