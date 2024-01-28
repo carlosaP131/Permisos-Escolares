@@ -26,10 +26,9 @@ class UsuariosController extends Controller
         $carrerasDTO = $carrerasController->show();
 
         $roleController = new RoleController();
-        $usuario = auth()->user();
-        foreach ($usuario->roles as $role) {
-            $rol= $role->name;
-        }
+        //obtenemos el rol del usuario autenticado
+        $rol = $roleController->findRole(auth()->user());
+        
         // Filtrar roles según el rol del usuario logueado
         $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
             // Incluir el rol "Admin" solo si el usuario logueado tiene el rol "Admin"

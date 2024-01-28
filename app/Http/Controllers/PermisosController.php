@@ -55,7 +55,7 @@ class PermisosController extends Controller
             'motivo' => $request->motivo,
             'descripcion' => $request->descripcion,
             'tipo' => $request->input('tipoPermiso'),
-            'editado' => Auth::id() ,
+            'id_secretaria' => Auth::id() ,
         ]);
 
         // Validaciones adicionales dependiendo del tipo de permiso

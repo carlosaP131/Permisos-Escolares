@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('motivo', 30);
             $table->string('descripcion', 200);
             $table->string('tipo', 30);
-            $table->string('editado', 25);
+            //$table->string('editado', 25);
+            $table->unsignedInteger('id_secretaria');
+            $table->foreign('id_secretaria')->references('id')->on('users')->onDelete('cascade');
+            
             $table->unsignedInteger('id_alumno');
             $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
         
