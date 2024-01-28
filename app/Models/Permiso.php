@@ -18,7 +18,7 @@ class Permiso extends Model
 
     // Definición de los campos que pueden ser llenados mediante la función create
     protected $fillable = [
-        'status', 'motivo', 'descripcion', 'tiempo', 'tipo', 'editado', 'id_alumno',
+        'status', 'motivo', 'descripcion', 'tiempo', 'tipo', 'editado', 'id_secretaria', 'id_alumno',
     ];
 
     // Relación con el modelo de Alumno utilizando la función belongsTo
@@ -26,5 +26,10 @@ class Permiso extends Model
     {
         // Retorna la relación de pertenencia a través de la clave foránea 'id_alumno'
         return $this->belongsTo(Alumno::class, 'id_alumno');
+    }
+    public function usuario()
+    {
+        // Retorna la relación de pertenencia a través de la clave foránea 'id_alumno'
+        return $this->belongsTo(User::class, 'id_secretaria');
     }
 }

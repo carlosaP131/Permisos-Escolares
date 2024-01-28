@@ -22,20 +22,24 @@ class UsuariosDTO
         $this->id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->status = $user->status;
+
+        $this->status = $user->status ? 1 : 0;
+        
         $this->password = '******';
         $this->carrera_nombre = $user->carrera->nombre; // Accede al nombre de la carrera a través de la relación
         $this->rol_nombre = RolesDTO::getNameRol($user->id_rol);
     }
 
-    public static function assignValues(Request $request): User
+    public static function assignValues(Request $request, User $user): User
     {
-        $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->input('password'));
-        $user->status = $request->input('status');
 
+        if ($request->input('password') !== '******') {
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        $user->status = $request->input('status');
         $user->id_carrera = self::assignIdC(RolesDTO::getNameRol($request->input('role')), $request->input('carrera'));
         $user->id_rol = $request->input('role');
 
@@ -43,6 +47,7 @@ class UsuariosDTO
         return $user;
     }
 
+    // Método estático para asignar ID de carrera según el rol
     public static function assignIdC($role, $carrera): int
     {
         if ($role == 'Profesor') {

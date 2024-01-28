@@ -26,7 +26,14 @@ class UsuariosController extends Controller
         $carrerasDTO = $carrerasController->show();
 
         $roleController = new RoleController();
-        $rolesDTO = $roleController->findAll();
+        //obtenemos el rol del usuario autenticado
+        $rol = $roleController->findRole(auth()->user());
+        
+        // Filtrar roles según el rol del usuario logueado
+        $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
+            // Incluir el rol "Admin" solo si el usuario logueado tiene el rol "Admin"
+            return $rol === 'SuperAdmin' || $role->name !== 'Admin';
+        });
 
         return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
@@ -43,7 +50,8 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         // Crear el usuario en la base de datos
-        $user = UsuariosDTO::assignValues($request);
+        $user = new User();
+        $user = UsuariosDTO::assignValues($request, $user);
         $user->save();
 
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario creado exitosamente');
@@ -53,7 +61,7 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);
-        $usuario = self::assignValuesUpdate($request, $usuario);
+        $usuario = UsuariosDTO::assignValues($request, $usuario);
         $usuario->save();
 
         // Redireccionar con un mensaje de éxito
@@ -73,57 +81,4 @@ class UsuariosController extends Controller
 
         return view('administrador.actualizarUsuario', ['usuario' => $usuario, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
-
-    // Método estático para asignar valores de actualización
-    public static function assignValuesUpdate(Request $request, User $user): User
-    {
-        $user->name = $request->name;
-        $user->email = $request->email;
-
-        if ($request->input('password') !== '******') {
-            $user->password = bcrypt($request->input('password'));
-        }
-
-        $user->status = $request->input('status');
-        $user->id_carrera = self::assignIdC(RolesDTO::getNameRol($request->input('role')), $request->input('carrera'));
-        $user->id_rol = $request->input('role');
-
-        RolesDTO::assignRole($user);
-        return $user;
-    }
-
-    // Método estático para asignar ID de carrera según el rol
-    public static function assignIdC($role, $carrera): int
-    {
-        if ($role == 'Profesor') {
-            return $carrera;
-        } elseif ($role == 'Secretaria') {
-            return 10001; // Asignar el valor 2 para Secretaria
-        } else {
-            return 10000; // Asignar el valor 1 para Admin
-        }
-    }
-    
-    
-    
-    
-    public function updateStatus(Request $request, $id){
-    
-        $usuario = User::findOrFail($id);
-
-    // Verificar el estado actual del usuario
-        if ($usuario->status == 1) {
-        // Cambiar el estado a 'inactivo'
-            $usuario->status = 0;
-         } else {
-        // Cambiar el estado a 'activo'
-            $usuario->status = 1;
-        }
-
-        // Guardar los cambios en la base de datos
-        $usuario->save();
-        return redirect()->route('administrador-usuarios', ['id' => $usuario->id])->with('success', 'Estatus actualizado exitosamente');
-    
-    }
-
 }

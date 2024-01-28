@@ -17,7 +17,6 @@ class DatosController extends Controller
     {
         //
         return view('administrador.datos');
-
     }
 
     /**
@@ -93,19 +92,14 @@ class DatosController extends Controller
         }
 
         // Redirige a la vista "alumno" después de importar si no hay errores
-        return redirect()->route('alumno-inicio')->with('success','Importación exitosa');
+        return redirect()->route('alumno-inicio')->with('success', 'Importación exitosa');
     }
 
 
- public function borrarAlumnos()
+    public function borrarAlumnos()
     {
         Datos::truncate();
 
         return redirect()->route('alumno-inicio')->with('success', '¡Se borraron todos los registros de alumnos!');
     }
-
 }
-
-
-
-
