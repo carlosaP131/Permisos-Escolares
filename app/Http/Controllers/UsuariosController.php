@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Dtos\UsuariosDTO;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Dtos\RolesDTO;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Spatie\Permission\Contracts\Role;
 
 class UsuariosController extends Controller
 {
@@ -74,6 +71,7 @@ class UsuariosController extends Controller
     {
         $usuario = User::find($idUsuario);
         $usuario = new UsuariosDTO($usuario);
+        $usuario->status=$usuario->status==1 ? 1 : 0; 
         $carrerasController = new CarrerasController();
         $carrerasDTO = $carrerasController->show();
 

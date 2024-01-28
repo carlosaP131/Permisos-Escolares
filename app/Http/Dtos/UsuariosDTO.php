@@ -22,9 +22,7 @@ class UsuariosDTO
         $this->id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
-
-        $this->status = $user->status ? 1 : 0;
-        
+        $this->status = $user->status;
         $this->password = '******';
         $this->carrera_nombre = $user->carrera->nombre; // Accede al nombre de la carrera a través de la relación
         $this->rol_nombre = RolesDTO::getNameRol($user->id_rol);
