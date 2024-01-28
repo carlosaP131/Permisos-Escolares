@@ -24,7 +24,7 @@ class UsuariosController extends Controller
         $roleController = new RoleController();
         //obtenemos el rol del usuario autenticado
         $rol = $roleController->findRole(auth()->user());
-        
+
         // Filtrar roles según el rol del usuario logueado
         $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
             // Mostrar roles distintos de 'SuperAdmin' y 'Admin' si el usuario logueado es 'SuperAdmin'
@@ -71,18 +71,27 @@ class UsuariosController extends Controller
     {
         $usuario = User::find($idUsuario);
         $usuario = new UsuariosDTO($usuario);
-        $usuario->status=$usuario->status==1 ? 1 : 0; 
+        $usuario->status=$usuario->status==1 ? 1 : 0;
         $carrerasController = new CarrerasController();
         $carrerasDTO = $carrerasController->show();
 
         $roleController = new RoleController();
-        $rolesDTO = $roleController->findAll();
+        //obtenemos el rol del usuario autenticado
+        $rol = $roleController->findRole(auth()->user());
+
+        // Filtrar roles según el rol del usuario logueado
+        $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
+            // Mostrar roles distintos de 'SuperAdmin' y 'Admin' si el usuario logueado es 'SuperAdmin'
+            // Mostrar roles distintos de 'SuperAdmin' y 'Admin' si el usuario logueado es 'Admin'
+            return ($rol === 'SuperAdmin') ? $role->name !== 'SuperAdmin' : $role->name !== 'SuperAdmin' && $role->name !== 'Admin';
+        });
+
 
         return view('administrador.actualizarUsuario', ['usuario' => $usuario, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
 
     public function updateStatus(Request $request, $id){
-    
+
         $usuario = User::findOrFail($id);
 
     // Verificar el estado actual del usuario
@@ -97,6 +106,6 @@ class UsuariosController extends Controller
         // Guardar los cambios en la base de datos
         $usuario->save();
         return redirect()->route('administrador-usuarios', ['id' => $usuario->id])->with('success', 'Estatus actualizado exitosamente');
-    
+
     }
 }
