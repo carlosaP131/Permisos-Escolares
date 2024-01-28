@@ -31,8 +31,9 @@ class UsuariosController extends Controller
         
         // Filtrar roles según el rol del usuario logueado
         $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
-            // Incluir el rol "Admin" solo si el usuario logueado tiene el rol "Admin"
-            return $rol === 'SuperAdmin' || $role->name !== 'Admin';
+            // Mostrar roles distintos de 'SuperAdmin' y 'Admin' si el usuario logueado es 'SuperAdmin'
+            // Mostrar roles distintos de 'SuperAdmin' y 'Admin' si el usuario logueado es 'Admin'
+            return ($rol === 'SuperAdmin') ? $role->name !== 'SuperAdmin' : $role->name !== 'SuperAdmin' && $role->name !== 'Admin';
         });
 
         return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
