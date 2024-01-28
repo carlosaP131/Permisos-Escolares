@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <!-- Formulario para crear nuevo usuario -->
-                <form action="{{ route('crear-usuario') }}" method="POST">
+                <form action="{{ route('crear-usuario') }}" method="POST" id="myForm">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label"><i class="fas fa-user"></i> Nombre</label>
@@ -73,3 +73,23 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="modalTitulo" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMensaje"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"id="btnCerrarModal" >Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
