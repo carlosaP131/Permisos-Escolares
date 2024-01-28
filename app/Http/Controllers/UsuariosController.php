@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Dtos\UsuariosDTO;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Dtos\RolesDTO;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Spatie\Permission\Contracts\Role;
 
 class UsuariosController extends Controller
 {
@@ -43,7 +41,8 @@ class UsuariosController extends Controller
     public function store(Request $request)
     {
         // Crear el usuario en la base de datos
-        $user = UsuariosDTO::assignValues($request);
+        $user = new User();
+        $user = UsuariosDTO::assignValues($request, $user);
         $user->save();
 
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario creado exitosamente');
@@ -53,7 +52,7 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);
-        $usuario = self::assignValuesUpdate($request, $usuario);
+        $usuario = UsuariosDTO::assignValues($request, $usuario);
         $usuario->save();
 
         // Redireccionar con un mensaje de éxito
@@ -73,35 +72,4 @@ class UsuariosController extends Controller
 
         return view('administrador.actualizarUsuario', ['usuario' => $usuario, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
-
-    // Método estático para asignar valores de actualización
-    public static function assignValuesUpdate(Request $request, User $user): User
-    {
-        $user->name = $request->name;
-        $user->email = $request->email;
-
-        if ($request->input('password') !== '******') {
-            $user->password = bcrypt($request->input('password'));
-        }
-
-        $user->status = $request->input('status');
-        $user->id_carrera = self::assignIdC(RolesDTO::getNameRol($request->input('role')), $request->input('carrera'));
-        $user->id_rol = $request->input('role');
-
-        RolesDTO::assignRole($user);
-        return $user;
-    }
-
-    // Método estático para asignar ID de carrera según el rol
-    public static function assignIdC($role, $carrera): int
-    {
-        if ($role == 'Profesor') {
-            return $carrera;
-        } elseif ($role == 'Secretaria') {
-            return 10001; // Asignar el valor 2 para Secretaria
-        } else {
-            return 10000; // Asignar el valor 1 para Admin
-        }
-    }
-    
 }
