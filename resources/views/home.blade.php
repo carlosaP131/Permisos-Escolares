@@ -14,38 +14,42 @@
                 </div>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{route('home')}}"><span class="fa fa-user-circle mr-3"></span>
+                        <a href="{{ route('home') }}"><span class="fa fa-user-circle mr-3"></span>
                             @if (Auth::check())
                                 {{ Auth::user()->name }}
                             @endif
                         </a>
                     </li>
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" >
-                            <span class="fa fa-home mr-3"></span>Alumnos
-                        </a>
+                    @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse">
+                                <span class="fa fa-home mr-3"></span>Alumnos
+                            </a>
 
-                        <ul class="collapse nav flex-column ml-3" id="submenu1" data-bs-parent="#menu">
-                            <li>
-                                @can('alumno-inicio')
-                                    <a href="{{ route('alumno-inicio') }}">
-                                        <span class="fa fa-home mr-3"></span> Alumnos
-                                    </a>
-                                @endcan
-                            </li>
-                            <li class="w-100">
-                                @can('vista-cargar-excel')
-                                    <a href="{{ route('vista-cargar-excel') }}">
-                                        <span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos
-                                    </a>
-                                @endcan
-                            </li>
-                            <li>
-
-                                <a href="{{ route('solicitud') }}"><span class="fa fa-home mr-3"></span> Solicitudes</a>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul class="collapse nav flex-column ml-3" id="submenu1" data-bs-parent="#menu">
+                                <li>
+                                    @can('alumno-inicio')
+                                        <a href="{{ route('alumno-inicio') }}">
+                                            <span class="fa fa-home mr-3"></span> Alumnos
+                                        </a>
+                                    @endcan
+                                </li>
+                                <li class="w-100">
+                                    @can('vista-cargar-excel')
+                                        <a href="{{ route('vista-cargar-excel') }}">
+                                            <span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos
+                                        </a>
+                                    @endcan
+                                </li>
+                                <li>
+                                    @can('solicitudes-permiso')
+                                        <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-home mr-3"></span>
+                                            Solicitudes</a>
+                                    @endcan
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     <li>
                         @can('alumno-permisos')
                             <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
