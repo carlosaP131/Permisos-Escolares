@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Dtos\UsuariosDTO;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Dtos\RolesDTO;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Contracts\Role;
 
 class UsuariosController extends Controller
 {
@@ -24,7 +26,15 @@ class UsuariosController extends Controller
         $carrerasDTO = $carrerasController->show();
 
         $roleController = new RoleController();
-        $rolesDTO = $roleController->findAll();
+        $usuario = auth()->user();
+        foreach ($usuario->roles as $role) {
+            $rol= $role->name;
+        }
+        // Filtrar roles según el rol del usuario logueado
+        $rolesDTO = $roleController->findAll()->filter(function ($role) use ($rol) {
+            // Incluir el rol "Admin" solo si el usuario logueado tiene el rol "Admin"
+            return $rol === 'SuperAdmin' || $role->name !== 'Admin';
+        });
 
         return view('administrador.administradorUsuarios', ['usuarios' => $usuariosDTO, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
