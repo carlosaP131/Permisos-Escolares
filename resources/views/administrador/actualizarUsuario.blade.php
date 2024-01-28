@@ -35,23 +35,29 @@
             </div>
 
             <div class="mb-3">
-                        <label for="role" class="form-label"><i class="fas fa-user-tag"></i> Rol</label>
-                        <select name="role" id="role" class="custom-input" required
-                            onchange="toggleOptionsContainer()">
-                            @foreach ($roles as $role)
-                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <label for="role" class="form-label"><i class="fas fa-user-tag"></i> Rol</label>
+                <select name="role" id="role" class="custom-input" required onchange="toggleOptionsContainer()">
+                    @foreach ($roles as $rol)
+                    <option value="{{ $rol->id }}" @if($rol->name === $usuario->rol_nombre) selected @endif>
+                        {{ $rol->name }}
+                    </option>
+                    @endforeach
+                </select>
 
-                    <div class="mb-3" id="optionsContainer" style="display: none;">
-                        <label for="subject" class="form-label"><i class="fas fa-book"></i> Carrera</label>
-                        <select name="carrera" id="carrera" class="custom-input">
-                            @foreach ($carreras as $carrera)
-                                <option value="{{ $carrera->id }}">{{ $carrera->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+            </div>
+
+            <div class="mb-3" id="optionsContainer" style="display: none;">
+                <label for="subject" class="form-label"><i class="fas fa-book"></i> Carrera</label>
+                <select name="carrera" id="carrera" class="custom-input">
+                    @foreach ($carreras as $carrera)
+                    <option value="{{ $carrera->id }}" @if($carrera->nombre === $usuario->carrera_nombre) selected
+                        @endif>
+                        {{ $carrera->nombre }}
+                    </option>
+                    @endforeach
+                </select>
+
+            </div>
             <div class="mb-3">
                 <label for="status" class="form-label"><i class="fas fa-info-circle"></i>
                     Estatus</label>
@@ -64,4 +70,8 @@
             </button>
         </form>
     </div>
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/usuariosAdmin.js') }}"></script>
     @endsection

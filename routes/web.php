@@ -46,6 +46,7 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  */
 Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
+Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
 
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->Middleware('can:actualizar-permiso')->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->Middleware('can:permiso-destroy')->name('permiso-destroy');
@@ -53,7 +54,7 @@ Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middlew
 
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
 
-Route::patch('/update/{idUsuario}', [UsuariosController::class, 'update'])->name('actualizar-usuario');
+Route::post('/update/{idUsuario}', [UsuariosController::class, 'update'])->name('actualizar-usuario');
 
 Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->name('modal-update');
 
