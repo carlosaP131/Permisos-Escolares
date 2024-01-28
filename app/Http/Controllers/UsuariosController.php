@@ -82,4 +82,23 @@ class UsuariosController extends Controller
 
         return view('administrador.actualizarUsuario', ['usuario' => $usuario, 'carreras' => $carrerasDTO, 'roles' => $rolesDTO]);
     }
+
+    public function updateStatus(Request $request, $id){
+    
+        $usuario = User::findOrFail($id);
+
+    // Verificar el estado actual del usuario
+        if ($usuario->status == 1) {
+        // Cambiar el estado a 'inactivo'
+            $usuario->status = 0;
+         } else {
+        // Cambiar el estado a 'activo'
+            $usuario->status = 1;
+        }
+
+        // Guardar los cambios en la base de datos
+        $usuario->save();
+        return redirect()->route('administrador-usuarios', ['id' => $usuario->id])->with('success', 'Estatus actualizado exitosamente');
+    
+    }
 }
