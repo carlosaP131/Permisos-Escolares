@@ -39,7 +39,7 @@ class PermisosDTO
         $this->motivo = $permiso->motivo;
         $this->descripcion = $permiso->descripcion;
         $this->tipo = $permiso->tipo;
-        $this->editado = $permiso->editado;
+        $this->editado = $permiso->id_secretaria;
 
         // Acceso a propiedades del modelo relacionado Alumno
         $this->matricula = $permiso->Alumno->matricula;

@@ -61,8 +61,10 @@
             <div class="mb-3">
                 <label for="status" class="form-label"><i class="fas fa-info-circle"></i>
                     Estatus</label>
-                <input type="text" name="status" id="status" class="custom-input" value="{{ $usuario->status }}"
-                    required>
+                    <select name="status" id="status" class="custom-input" required>
+                        <option value="1" @if($usuario->status===1) selected @endif>Activo</option>
+                        <option value="0" @if($usuario->status===0) selected @endif>Inactivo</option>
+                    </select>
             </div>
 
             <button type="submit" class="btn btn-primary" style="background-color: #8B0000; border-color: #8B0000;">
