@@ -53,10 +53,9 @@ Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->Middlewa
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middleware('can:usuarios-destroy')->name('usuarios-destroy');
 
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
-
 Route::post('/update/{idUsuario}', [UsuariosController::class, 'update'])->name('actualizar-usuario');
-
 Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->name('modal-update');
+Route::post('/usuarios/{id}/update-status', [UsuariosController::class, 'updateStatus'])->name('update-status');
 
 /**
  * rutas para vargar los datos desde un archivo excel
