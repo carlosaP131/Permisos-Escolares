@@ -3,8 +3,8 @@
 @section('main')
     <link href="{{ asset('css/administrador.css') }}" rel="stylesheet">
     <div class="card">
-        <div class="card-header">
-            <i class="fas fa-user-plus"></i> Actualizar Usuario
+        <div class="card-header bg-white text-dark">
+            <i class="fas fa-user-plus">Actualizar Usuario</i>
         </div>
         <div class="card-body">
 
