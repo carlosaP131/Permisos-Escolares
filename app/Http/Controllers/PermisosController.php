@@ -25,7 +25,7 @@ class PermisosController extends Controller
         return view('secretaria.generarpermiso', ['alumno' => $alumno]);
     }
     /**
-     * Esta funcion se encarga de mostrar la paguina para actualizar los datos
+     * Esta funcion se encarga de mostrar la página para actualizar los datos
      * del permiso
      */
     public function edit($idPermiso)
@@ -46,8 +46,6 @@ class PermisosController extends Controller
     {
         // Buscamos al alumno por matrícula
         $alumno = Alumno::where('matricula', $request->matricula)->firstOrFail();
-
-
 
         // Creamos un nuevo permiso
         $permiso = new Permiso([
@@ -81,9 +79,6 @@ class PermisosController extends Controller
      */
     public function update(CrearPermisoRequest $request, $idPermiso)
     {
-
-
-
         /**
          * Búsqueda del permiso y seteo de valores para actualizar
          */
@@ -91,6 +86,7 @@ class PermisosController extends Controller
 
         $permiso->motivo = $request->motivo;
         $permiso->descripcion = $request->descripcion;
+        $permiso->id_secretaria = Auth::id();
         $permiso->tipo = $request->input('tipoPermiso');
 
         if ($request->input('tipoPermiso') == 'Dias') {
@@ -105,12 +101,6 @@ class PermisosController extends Controller
             $permiso->hora_inicio = $request->Hora_Inicial;
             $permiso->hora_fin = $request->Hora_Final;
         }
-
-        /**
-         * Revisar quien lo actualizó y guardarlo
-         */
-        $permiso->editado = "jose"; // Auth::user()->name;
-
         $permiso->save();
 
         return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
@@ -125,4 +115,42 @@ class PermisosController extends Controller
         return redirect()->route('alumno-permisos')->with('danger', 'Permiso eliminado
     Exitosamente');
     }
+
+    public function updateStatus(CrearPermisoRequest $request, $idPermiso)
+    {
+
+
+
+        /**
+         * Búsqueda del permiso y seteo de valores para actualizar
+         */
+        $permiso = Permiso::with('alumno')->find($idPermiso);
+
+        $permiso->status = $request->status;
+
+
+        $permiso->save();
+
+        return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
+    }
+
+
+    public function aceptarPermiso($id)
+    {
+        $permiso = Permiso::findOrFail($id);
+        $permiso->status = 'Aceptado';
+        $permiso->save();
+
+        return redirect()->back()->with('success', 'Permiso aceptado');
+    }
+
+    public function rechazarPermiso($id)
+    {
+        $permiso = Permiso::findOrFail($id);
+        $permiso->status = 'Rechazado';
+        $permiso->save();
+
+        return redirect()->back()->with('success', 'Permiso rechazado');
+    }
+
 }

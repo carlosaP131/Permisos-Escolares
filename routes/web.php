@@ -46,16 +46,15 @@ Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultar
  */
 Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
 Route::post('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
-Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->name('vista-permiso');
-
+Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->Middleware('vista-permiso')->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->Middleware('can:actualizar-permiso')->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->Middleware('can:permiso-destroy')->name('permiso-destroy');
-Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middleware('can:usuarios-destroy')->name('usuarios-destroy');
 
 Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
-Route::post('/update/{idUsuario}', [UsuariosController::class, 'update'])->name('actualizar-usuario');
-Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->name('modal-update');
-Route::post('/usuarios/{id}/update-status', [UsuariosController::class, 'updateStatus'])->name('update-status');
+Route::post('/update/{idUsuario}', [UsuariosController::class, 'update'])->Middleware('actualizar-usuario')->name('actualizar-usuario');
+Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middleware('can:usuarios-destroy')->name('usuarios-destroy');
+Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->Middleware('modal-update')->name('modal-update');
+Route::post('/usuarios/{id}/update-status', [UsuariosController::class, 'updateStatus'])->Middleware('update-status')->name('update-status');
 
 /**
  * rutas para vargar los datos desde un archivo excel
@@ -71,4 +70,10 @@ Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middl
 /**
  * Solicitudes
  */
-Route::get('/solicitudes', [App\Http\Controllers\HomeController::class, 'permission_solicitud'])->name('solicitud');
+Route::get('/solicitudes', [App\Http\Controllers\HomeController::class, 'permission_solicitud'])->Middleware('solicitudes-permiso')->name('solicitudes-permiso');
+
+// Ejemplo en web.php
+
+Route::put('/aceptar-permiso/{id}', [PermisosController::class, 'aceptarPermiso'])->name('aceptar-permiso');
+Route::put('/rechazar-permiso/{id}', [PermisosController::class, 'rechazarPermiso'])->name('rechazar-permiso');
+
