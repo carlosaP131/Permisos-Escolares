@@ -125,4 +125,42 @@ class PermisosController extends Controller
         return redirect()->route('alumno-permisos')->with('danger', 'Permiso eliminado
     Exitosamente');
     }
+
+    public function updateStatus(CrearPermisoRequest $request, $idPermiso)
+    {
+
+
+
+        /**
+         * Búsqueda del permiso y seteo de valores para actualizar
+         */
+        $permiso = Permiso::with('alumno')->find($idPermiso);
+
+        $permiso->status = $request->status;
+
+
+        $permiso->save();
+
+        return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
+    }
+
+
+    public function aceptarPermiso($id)
+    {
+        $permiso = Permiso::findOrFail($id);
+        $permiso->status = 'Aceptado';
+        $permiso->save();
+
+        return redirect()->back()->with('success', 'Permiso aceptado');
+    }
+
+    public function rechazarPermiso($id)
+    {
+        $permiso = Permiso::findOrFail($id);
+        $permiso->status = 'Rechazado';
+        $permiso->save();
+
+        return redirect()->back()->with('success', 'Permiso rechazado');
+    }
+
 }

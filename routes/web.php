@@ -72,3 +72,9 @@ Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middl
  * Solicitudes
  */
 Route::get('/solicitudes', [App\Http\Controllers\HomeController::class, 'permission_solicitud'])->name('solicitud');
+
+// Ejemplo en web.php
+
+Route::put('/aceptar-permiso/{id}', [PermisosController::class, 'aceptarPermiso'])->name('aceptar-permiso');
+Route::put('/rechazar-permiso/{id}', [PermisosController::class, 'rechazarPermiso'])->name('rechazar-permiso');
+
