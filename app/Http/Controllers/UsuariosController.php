@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Dtos\UsuariosDTO;
 use Illuminate\Http\Request;
 use App\Models\User;
-
 class UsuariosController extends Controller
 {
     // Método para consultar usuarios
@@ -59,9 +58,10 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);
+        $rol_previo= RoleController::findRole($usuario);
+        $usuario->removeRole($rol_previo); // Revoca el rol anterior para quitarle los permisos
         $usuario = UsuariosDTO::assignValues($request, $usuario);
         $usuario->save();
-
         // Redireccionar con un mensaje de éxito
         return redirect()->route('administrador-usuarios')->with('success', 'Usuario actualizado exitosamente');
     }
