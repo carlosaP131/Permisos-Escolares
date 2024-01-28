@@ -30,6 +30,7 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'alumno-inicio'])->syncRoles([$role1, $role2, $role3]);
                 Permission::create(['name' => 'alumno-permisos'])->syncRoles([$role1, $role2, $role3, $role4]);
                 Permission::create(['name' => 'administrador-usuarios'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'solicitudes-permiso'])->syncRoles([$role1, $role2]);
 
                 Permission::create(['name' => 'formulario-permiso'])->syncRoles([$role1, $role2,$role3]);
                 Permission::create(['name' => 'crear-permiso'])->syncRoles([$role1, $role2, $role3]);
@@ -40,9 +41,12 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'crear-usuario'])->syncRoles([$role1,$role2]);
                 Permission::create(['name' => 'actualizar-usuario'])->syncRoles([$role1,$role2]);
                 Permission::create(['name' => 'usuarios-destroy'])->syncRoles([$role1, $role2]);
-
+                Permission::create(['name' => 'modal-update'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'update-status'])->syncRoles([$role1, $role2]);
+                
                 Permission::create(['name' => 'vista-cargar-excel'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'poblar-alumnos'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'borrar-alumnos'])->syncRoles([$role1, $role2]);
+                
         }
 }
