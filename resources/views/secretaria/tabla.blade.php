@@ -27,8 +27,12 @@
                                     <th>Inicio</th>
                                     <th>Fin</th>
                                     <th>Estado</th>
-                                    <th>Eliminar</th>
-                                    <th>Editar</th>
+                                    @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+                                        <th>Eliminar</th>
+                                    @endif
+                                    @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
+                                        <th>Editar</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <!-- Cuerpo de la tabla con datos dinámicos -->
@@ -42,22 +46,31 @@
                                         <td>{{ $permiso->semestre }}</td>
                                         <td>{{ $permiso->grupo }}</td>
                                         <td>{{ $permiso->tipo }}</td>
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}</td>
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}</td>
+                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
+                                        </td>
+                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}
+                                        </td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>{{ $permiso->status }}</td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        <td>
-                                            <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm">Eliminar</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('vista-permiso', [$permiso->id]) }}"
-                                                class="btn btn-warning btn-sm">Editar</a>
-                                        </td>
+                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+                                            <td>
+                                                <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
+                                                    method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                                </form>
+                                            </td>
+                                        @endif
+                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
+                                            <td>
+                                                <a href="{{ route('vista-permiso', [$permiso->id]) }}"
+                                                    class="btn btn-warning btn-sm">Editar</a>
+                                            </td>
+                                        @endif
+
+
                                     </tr>
                                 @endforeach
                             </tbody>
