@@ -20,15 +20,13 @@
                                     <th>Matricula </th>
                                     <th>Nombre </th>
                                     <th>Carrera</th>
-                                    <th>Semestre</th>
                                     <th>Grupo</th>
                                     <th>Tipo</th>
                                     <th>Fecha</th>
                                     <th>Inicio</th>
                                     <th>Fin</th>
                                     <th>Estado</th>
-                                    <th>Eliminar</th>
-                                    <th>Editar</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <!-- Cuerpo de la tabla con datos dinámicos -->
@@ -38,9 +36,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
-                                        <td>{{ $permiso->carrera }}</td>
-                                        <td>{{ $permiso->semestre }}</td>
-                                        <td>{{ $permiso->grupo }}</td>
+                                        <td>{{ $permiso->carrera }}</td>                                        <td>{{ $permiso->grupo }}</td>
                                         <td>{{ $permiso->tipo }}</td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
                                         </td>
@@ -48,39 +44,50 @@
                                         </td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-{{ strtolower($permiso->status) }}" data-toggle="modal" data-target="#modal{{ $index }}">{{ $permiso->status }}</button>
+                                            <button class="btn btn-sm btn-{{ strtolower($permiso->status) }}"
+                                                data-toggle="modal"
+                                                data-target="#modal{{ $index }}">{{ $permiso->status }}</button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="modal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="modal{{ $index }}" tabindex="-1"
+                                                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Detalles del Permiso</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Detalles del
+                                                                Permiso</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p><strong>Motivo:</strong> {{ $permiso->motivo }}</p>
-                                                            <p><strong>Descripción:</strong> {{ $permiso->descripcion }}</p>
+                                                            <p><strong>Descripción:</strong> {{ $permiso->descripcion }}
+                                                            </p>
                                                             <!-- Otro contenido que desees mostrar en la ventana flotante -->
                                                             <p><strong>Estado:</strong> {{ $permiso->status }}</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cerrar</button>
 
                                                             <!-- Botón "Aceptar" -->
-                                                            <form action="{{ route('aceptar-permiso', [$permiso->id]) }}" method="POST" style="display: inline;">
+                                                            <form action="{{ route('aceptar-permiso', [$permiso->id]) }}"
+                                                                method="POST" style="display: inline;">
                                                                 @method('PUT')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-success">Aceptar</button>
                                                             </form>
 
                                                             <!-- Botón "Rechazar" -->
-                                                            <form action="{{ route('rechazar-permiso', [$permiso->id]) }}" method="POST" style="display: inline;">
+                                                            <form action="{{ route('rechazar-permiso', [$permiso->id]) }}"
+                                                                method="POST" style="display: inline;">
                                                                 @method('PUT')
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-danger">Rechazar</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Rechazar</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -88,17 +95,26 @@
                                             </div>
                                         </td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        <td>
+                                        
+                                         <td class="d-flex flex-row">
+
                                             <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button class="btn btn-danger btn-sm">Eliminar</button>
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </form>
+
+                                            <form action="{{ route('vista-permiso', [$permiso->id]) }}" method="GET"
+                                                style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning">
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                </button>
                                             </form>
                                         </td>
-                                        <td>
-                                            <a href="{{ route('vista-permiso', [$permiso->id]) }}"
-                                                class="btn btn-warning btn-sm">Editar</a>
-                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

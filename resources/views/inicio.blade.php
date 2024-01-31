@@ -2,8 +2,7 @@
 @section('main')
     <div class="container mt-1">
         <div class="text-center">
-            <img src="{{ asset('/imagen/img_inicio/banner_unsis.png') }}" class="d-block mx-auto " alt="Banner">
-            <h1 style="color: rgb(134, 40, 40)">Sistema de Permisos UNSIS</h1>
+            <h1 style="color: rgb(77, 25, 25)">Sistema de Permisos</h1>
         </div>
     </div>
 
