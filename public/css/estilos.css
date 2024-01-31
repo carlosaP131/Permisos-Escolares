@@ -1,13 +1,13 @@
 /* Estilos del body*/
-
-body {
+body{
+    background-color: #dfdddd;
+}
+.body-login {
     background-attachment: fixed;
     background-image: url(../imagen/fondo.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-
 }
 
 /* Estilos del card*/
