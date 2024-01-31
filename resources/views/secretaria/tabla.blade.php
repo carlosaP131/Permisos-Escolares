@@ -65,8 +65,14 @@
                                         @endif
                                         @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
                                             <td>
-                                                <a href="{{ route('vista-permiso', [$permiso->id]) }}"
-                                                    class="btn btn-warning btn-sm">Editar</a>
+                                                <form action="{{ route('vista-permiso', [$permiso->id]) }}">
+                                                    @csrf
+                                                    @method('post')
+                                                    <button type="submit" class="btn btn-warning btn-sm"
+                                                    {{ ($permiso->status == 'Aceptado' || $permiso->status == 'Rechazado') && auth()->user()->hasAnyRole('Secretaria') ? 'disabled' : '' }}>
+                                                    Editar
+                                                    </button>
+                                                </form>
                                             </td>
                                         @endif
 
