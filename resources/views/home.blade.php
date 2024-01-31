@@ -30,7 +30,7 @@
                                 <li>
                                     @can('alumno-inicio')
                                         <a href="{{ route('alumno-inicio') }}">
-                                            <span class="fa fa-home mr-3"></span> Alumnos
+                                            <span class="fa fa-home mr-3"></span>Alumnos
                                         </a>
                                     @endcan
                                 </li>
@@ -52,14 +52,13 @@
                     @endif
                     <li>
                         @can('alumno-permisos')
-                            <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>
-                                Permisos</a>
+                            <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>Permisos</a>
                         @endcan
 
                     </li>
                     <li>
                         @can('administrador-usuarios')
-                            <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span> Usuarios</a>
+                            <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span>Usuarios</a>
                         @endcan
                     </li>
                     <li>

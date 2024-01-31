@@ -26,11 +26,8 @@
                                     <th>Inicio</th>
                                     <th>Fin</th>
                                     <th>Estado</th>
-                                    @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-                                        <th>Eliminar</th>
-                                    @endif
                                     @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
-                                        <th>Editar</th>
+                                        <th>Acciones</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -41,7 +38,8 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
-                                        <td>{{ $permiso->carrera }}</td>                                        <td>{{ $permiso->grupo }}</td>
+                                        <td>{{ $permiso->carrera }}</td>
+                                        <td>{{ $permiso->grupo }}</td>
                                         <td>{{ $permiso->tipo }}</td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
                                         </td>
@@ -50,29 +48,29 @@
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>{{ $permiso->status }}</td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-                                            <td>
+                                        <td class="d-flex flex-row">
+                                            @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
                                                 <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
                                                     method="POST">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                                                    <button type="submit" class="btn btn-danger">
+
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
                                                 </form>
-                                            </td>
-                                        @endif
-                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
-                                            <td>
+                                            @endif
+                                            @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
                                                 <form action="{{ route('vista-permiso', [$permiso->id]) }}">
                                                     @csrf
                                                     @method('post')
-                                                    <button type="submit" class="btn btn-warning btn-sm"
-                                                    {{ ($permiso->status == 'Aceptado' || $permiso->status == 'Rechazado') && auth()->user()->hasAnyRole('Secretaria') ? 'disabled' : '' }}>
-                                                    Editar
+                                                    <button type="submit" class="btn btn-warning">
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
                                                     </button>
                                                 </form>
-                                            </td>
-                                        @endif
-
+                                            @endif
+                                        </td>
 
                                     </tr>
                                 @endforeach

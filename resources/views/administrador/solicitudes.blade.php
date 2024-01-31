@@ -36,7 +36,8 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
-                                        <td>{{ $permiso->carrera }}</td>                                        <td>{{ $permiso->grupo }}</td>
+                                        <td>{{ $permiso->carrera }}</td>
+                                        <td>{{ $permiso->grupo }}</td>
                                         <td>{{ $permiso->tipo }}</td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
                                         </td>
@@ -95,8 +96,8 @@
                                             </div>
                                         </td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        
-                                         <td class="d-flex flex-row">
+
+                                        <td class="d-flex flex-row">
 
                                             <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
                                                 @method('DELETE')
