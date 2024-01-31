@@ -1,0 +1,46 @@
+/**
+Fondo sobre el cual se muestra todo el contenido
+*/
+.wrapper,.d-flex{
+    background-color: #dfdddd;
+}
+
+/**
+menú de opciones
+*/
+#sidebar{
+    background: rgb(14, 19, 27);
+}
+/**
+botones que se muestran en todas las páginas
+*/
+.btn{
+    background: none;
+    color: black;
+    border: 1px solid rgba(255, 255, 255, 0.1)
+}
+.btn:hover{
+    border-color: rgb(75, 35, 252);
+    background: rgba(164, 164, 255, 0.692);
+    color: blue;
+    text-shadow: 2px;
+}
+
+/*
+boton secundarios, encabezado de las tablas
+*/
+.btn-secondary {
+    color: black;
+}
+
+/**
+Estilos para la tabla
+*/
+
+.table-dark{
+    background: solid rgb(255, 255, 255);
+}
+
+.sorting, .sorting_asc{
+    background: rgb(255, 255, 255);
+}

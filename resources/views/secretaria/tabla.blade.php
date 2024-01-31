@@ -20,7 +20,6 @@
                                     <th>Matricula </th>
                                     <th>Nombre </th>
                                     <th>Carrera</th>
-                                    <th>Semestre</th>
                                     <th>Grupo</th>
                                     <th>Tipo</th>
                                     <th>Fecha</th>
@@ -42,9 +41,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
-                                        <td>{{ $permiso->carrera }}</td>
-                                        <td>{{ $permiso->semestre }}</td>
-                                        <td>{{ $permiso->grupo }}</td>
+                                        <td>{{ $permiso->carrera }}</td>                                        <td>{{ $permiso->grupo }}</td>
                                         <td>{{ $permiso->tipo }}</td>
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
                                         </td>
