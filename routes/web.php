@@ -31,7 +31,7 @@ Route::get('/', function () {
  * 2. Muestra a todos los alumnos en la base de datos
  * 3. Muestra los permisos filtrado por roles
  */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->Middleware('can:home')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->Middleware('can:alumno-inicio')->name('alumno-inicio');
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->Middleware('can:alumno-permisos')->name('alumno-permisos');
 Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultarUsuario'])->Middleware('can:administrador-usuarios')->name('administrador-usuarios');
