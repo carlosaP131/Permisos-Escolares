@@ -1,14 +1,11 @@
 /**
-Fondo sobre el cual se muestra todo el contenido
-*/
-
-
-/**
 menú de opciones
 */
 #sidebar{
     background: rgb(14, 19, 27);
+   
 }
+
 /**
 botones que se muestran en todas las páginas
 */
@@ -40,5 +37,7 @@ Estilos para la tabla
 }
 
 .sorting, .sorting_asc{
-    background: rgb(255, 255, 255);
+    background: rgb(182, 41, 41);
 }
+
+
