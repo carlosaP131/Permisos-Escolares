@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('descripcion', 200);
             $table->string('tipo', 30);
             //$table->string('editado', 25);
-            $table->bigInteger('id_secretaria');
+            $table->integer('id_secretaria');
             $table->foreign('id_secretaria')->references('id')->on('users')->onDelete('cascade');
             
-            $table->bigInteger('id_alumno');
+            $table->integer('id_alumno');
             $table->foreign('id_alumno')->references('id')->on('alumnos')->onDelete('cascade');
         
             // Nuevos campos para manejar el tiempo según el tipo de permiso
