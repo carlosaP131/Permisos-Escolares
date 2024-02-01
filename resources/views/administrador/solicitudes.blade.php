@@ -5,7 +5,7 @@
     <body class="page-content">
 
         <!-- Inicio de la tabla de datos -->
-        <div class="container">
+        <div class="container2">
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif

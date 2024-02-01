@@ -5,7 +5,7 @@
     <body class="page-content">
 
         <!-- Inicio de la tabla de datos -->
-        <div class="container">
+        <div class="container1">
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
@@ -48,7 +48,7 @@
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>{{ $permiso->status }}</td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        <td class="d-flex flex-row">
+                                        <td  class="d-flex flex-row flex-grow-1">
                                             @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
                                                 <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
                                                     method="POST">

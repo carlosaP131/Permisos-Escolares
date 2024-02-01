@@ -6,6 +6,18 @@ Fondo sobre el cual se muestra todo el contenido
 /**
 menú de opciones
 */
+.container1{
+    width: 1200px;
+    margin: auto;
+
+}
+
+.container2{
+    width: 1300px;
+    margin: auto;
+
+}
+
 #sidebar{
     background: rgb(14, 19, 27);
 }
