@@ -17,24 +17,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- DataTables CSS -->
-    <link rel="stylesheet" href="{{ secure_asset('css/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{asset('css/datatables.min.css') }}">
 
     <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('css/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Estilos para las vistas de secretaria -->
-    <link href="{{ secure_asset('css/secretaria.css') }}" rel="stylesheet">
-    <script src="{{ secure_asset('js/secretaria.js') }}"></script>
+    <link href="{{asset('css/secretaria.css') }}" rel="stylesheet">
+    <script src="{{asset('js/secretaria.js') }}"></script>
 
     <!-- login -->
-    <link href="{{ secure_asset('css/estilos.css') }}" rel="stylesheet">
+    <link href="{{asset('css/estilos.css') }}" rel="stylesheet">
 
     <!-- Estilos para las vistas de administrador -->
-    <link href="{{ secure_asset('css/administrador.css') }}">
+    <link href="{{asset('css/administrador.css') }}">
     <!-- Colores botones -->
-    <link href="{{ secure_asset('css/botones.css') }}" rel="stylesheet">
+    <link href="{{asset('css/botones.css') }}" rel="stylesheet">
 
 </head>
 
