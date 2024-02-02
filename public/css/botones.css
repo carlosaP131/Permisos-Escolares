@@ -3,7 +3,7 @@ menú de opciones
 */
 #sidebar{
     background: rgb(14, 19, 27);
-   
+
 }
 
 /**
@@ -39,5 +39,6 @@ Estilos para la tabla
 .sorting, .sorting_asc{
     background: rgb(182, 41, 41);
 }
+
 
 
