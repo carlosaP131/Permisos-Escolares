@@ -35,7 +35,7 @@
                                     <tr>
                                         <td>{{ $alumno->id }}</td>
                                         <td>{{ $alumno->matricula }}</td>
-                                        <td>{{ $alumno->nombre . " " . $alumno->apellido }}</td>
+                                        <td>{{ $alumno->nombre . ' ' . $alumno->apellido }}</td>
                                         <td>{{ $alumno->carrera }}</td>
                                         <td>{{ $alumno->grupo }}</td>
                                         <td>
@@ -52,32 +52,34 @@
                 </div>
             </div>
         </div>
-        <!-- resources/views/tu_vista.blade.php -->
-        <div class="container container-center">
-            <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
+        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+            <div class="container container-center">
+                <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
 
-        </div>
+            </div>
 
-        <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
-            aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de borrar alumnos?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Formulario para crear nuevo usuario -->
-                        <form action="{{ route('borrar-alumnos') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Confirmar</button>
-                        </form>
+            <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
+                aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de borrar alumnos?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Formulario para crear nuevo usuario -->
+                            <form action="{{ route('borrar-alumnos') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Confirmar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
+
 
         <!-- Fin de la tabla de datos -->
     </body>
