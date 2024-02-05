@@ -34,7 +34,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alumno', [App\Http\Controllers\HomeController::class, 'student'])->Middleware('can:alumno-inicio')->name('alumno-inicio');
 Route::get('/permiso', [App\Http\Controllers\HomeController::class, 'permission'])->Middleware('can:alumno-permisos')->name('alumno-permisos');
-Route::get('/users', [App\Http\Controllers\UsuariosController::class, 'consultarUsuario'])->Middleware('can:administrador-usuarios')->name('administrador-usuarios');
+Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'consultarUsuario'])->Middleware('can:administrador-usuarios')->name('administrador-usuarios');
 
 /**
  * Rutas para interactuar con permisos enel diguiente orden
@@ -63,8 +63,8 @@ Route::post('/usuarios/{id}/update-status', [UsuariosController::class, 'updateS
  *      que ejecuta la acción de poblar la base y redireccciona a la vista principal de alumnos
  * 3.- Ruta para borrar los datos de alumnos
  */
-Route::get('/data', [DatosController::class, 'index'])->Middleware('can:vista-cargar-excel')->name('vista-cargar-excel');
-Route::post('/data', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
+Route::get('/datos', [DatosController::class, 'index'])->Middleware('can:vista-cargar-excel')->name('vista-cargar-excel');
+Route::post('/datos', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
 Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
 /**

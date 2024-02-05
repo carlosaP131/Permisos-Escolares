@@ -33,20 +33,20 @@
                                 <li>
                                     @can('alumno-inicio')
                                         <a href="{{ route('alumno-inicio') }}">
-                                            <span class="fa fa-home mr-3"></span>Alumnos
+                                            <span class="fa fa-graduation-cap mr-3"></span>Alumnos
                                         </a>
                                     @endcan
                                 </li>
                                 <li class="w-100">
                                     @can('vista-cargar-excel')
                                         <a href="{{ route('vista-cargar-excel') }}">
-                                            <span class="fa fa-sticky-note mr-3"></span>Cargar Alumnos
+                                            <span class="fa fa-file-excel-o mr-3"></span>Cargar Alumnos
                                         </a>
                                     @endcan
                                 </li>
                                 <li>
                                     @can('solicitudes-permiso')
-                                        <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-home mr-3"></span>
+                                        <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-bell-o mr-3"></span>
                                             Solicitudes</a>
                                     @endcan
                                 </li>
