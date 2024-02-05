@@ -16,9 +16,8 @@
                         </div>
 
                         <div class="card-body"> <!-- Cuerpo de la tarjeta -->
-                            <form method="POST" action="{{ route('login') }}"> <!-- Formulario POST para iniciar sesión -->
-                                @csrf <!-- Token CSRF de Laravel -->
-
+                            <form method="POST" action="{{ route('login.custom') }}">
+                                @csrf
                                 <!-- Campo para el correo electrónico -->
                                 <div class="row mb-3">
                                     <label for="email" class="col-md-4 col-form-label text-md-end">

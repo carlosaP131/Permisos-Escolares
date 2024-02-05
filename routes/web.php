@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DatosController;
+//use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,8 @@ use App\Http\Controllers\DatosController;
 */
 
 // Rutas para la autenticación
-Auth::routes();
+Route::post('/login/custom', [App\Http\Controllers\Auth\LoginController::class,'validateUserAndRedirect'])->name('login.custom');
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 // Ruta principal, muestra la vista de registro de autenticación
 Route::get('/', function () {

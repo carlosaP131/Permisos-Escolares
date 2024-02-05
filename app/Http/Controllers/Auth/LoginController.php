@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function validateUserAndRedirect(Request $request)
+    {
+        // Validar las credenciales del usuario
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // El usuario existe en la base de datos, redirigirlo a la vista de inicio
+            return redirect($this->redirectTo);
+        }
+
+        // Si las credenciales no son válidas, redirigirlo de nuevo al formulario de inicio de sesión
+        return redirect('login')->withErrors(['auth.failed' => 'Credenciales incorrectas']);
+    }
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/');
     }
 }
