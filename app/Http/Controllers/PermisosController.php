@@ -15,7 +15,7 @@ class PermisosController extends Controller
 {
 
     /**
-     * Esta función se encarga de mostrar la paguina para generar permisos con
+     * Esta función se encarga de mostrar la página para generar permisos con
      * los datos solamente del alumno
      */
     public function formulario($id)
@@ -25,7 +25,7 @@ class PermisosController extends Controller
         return view('secretaria.generarpermiso', ['alumno' => $alumno]);
     }
     /**
-     * Esta funcion se encarga de mostrar la página para actualizar los datos
+     * Esta función se encarga de mostrar la página para actualizar los datos
      * del permiso
      */
     public function edit($idPermiso)
@@ -40,7 +40,7 @@ class PermisosController extends Controller
     }
 
     /**
-     * Esta funcion sirve para crear un permio se le inyectan los datos
+     * Esta función sirve para crear un permio se le inyectan los datos
      */
     public function store(CrearPermisoRequest $request)
     {
@@ -74,8 +74,8 @@ class PermisosController extends Controller
 
 
     /**
-     * Esta funcion se encarga de actualizar los permisos tiene la misma logica que
-     *  la funcion store pero con la exepcion de que este carga el permiso
+     * Esta función se encarga de actualizar los permisos tiene la misma logica
+     * que la función store pero con la exepcion de que este carga el permiso
      */
     public function update(CrearPermisoRequest $request, $idPermiso)
     {
@@ -106,7 +106,9 @@ class PermisosController extends Controller
         return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
     }
 
-
+    /**
+     * Eliminar el permiso 
+     */
 
     public function destroy($id)
     {
@@ -115,7 +117,9 @@ class PermisosController extends Controller
         return redirect()->route('alumno-permisos')->with('danger', 'Permiso eliminado
     Exitosamente');
     }
-
+    /**
+     * Actualizar el estatus del permiso si es aceptado o rechazado
+     */
     public function updateStatus(CrearPermisoRequest $request, $idPermiso)
     {
 
@@ -134,7 +138,9 @@ class PermisosController extends Controller
         return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');
     }
 
-
+    /**
+     * Función para aceptar el permiso segun los parametros establecidos
+     */
     public function aceptarPermiso($id)
     {
         $permiso = Permiso::findOrFail($id);
@@ -143,7 +149,9 @@ class PermisosController extends Controller
 
         return redirect()->back()->with('success', 'Permiso aceptado');
     }
-
+    /**
+     * Función para rechazar el permiso
+     */
     public function rechazarPermiso($id)
     {
         $permiso = Permiso::findOrFail($id);
