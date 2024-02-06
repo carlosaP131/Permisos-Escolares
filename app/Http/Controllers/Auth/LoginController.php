@@ -51,7 +51,7 @@ class LoginController extends Controller
         }
 
         // Si las credenciales no son válidas, redirigirlo de nuevo al formulario de inicio de sesión
-        return redirect('login')->withErrors(['auth.failed' => 'Credenciales incorrectas']);
+        return redirect('/')->withErrors(['auth.failed' => 'Credenciales incorrectas']);
     }
     public function logout(Request $request)
     {

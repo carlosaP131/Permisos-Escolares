@@ -16,7 +16,7 @@
                         </div>
 
                         <div class="card-body"> <!-- Cuerpo de la tarjeta -->
-                            <form method="POST" action="{{ route('login.custom') }}">
+                            <form method="get" action="{{ route('login.custom') }}">
                                 @csrf
                                 <!-- Campo para el correo electrónico -->
                                 <div class="row mb-3">

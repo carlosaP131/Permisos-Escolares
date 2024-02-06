@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth;
 */
 
 // Rutas para la autenticación
-Route::post('/login/custom', [App\Http\Controllers\Auth\LoginController::class,'validateUserAndRedirect'])->name('login.custom');
+Route::get('/login/custom', [App\Http\Controllers\Auth\LoginController::class,'validateUserAndRedirect'])->name('login.custom');
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 // Ruta principal, muestra la vista de registro de autenticación
