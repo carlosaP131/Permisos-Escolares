@@ -75,7 +75,7 @@
 
                                                             <!-- Botón "Aceptar" -->
                                                             <form action="{{ route('aceptar-permiso', [$permiso->id]) }}"
-                                                                method="POST" style="display: inline;">
+                                                                method="GET" style="display: inline;">
                                                                 @method('PUT')
                                                                 @csrf
                                                                 <button type="submit"
@@ -84,7 +84,7 @@
 
                                                             <!-- Botón "Rechazar" -->
                                                             <form action="{{ route('rechazar-permiso', [$permiso->id]) }}"
-                                                                method="POST" style="display: inline;">
+                                                                method="GET" style="display: inline;">
                                                                 @method('PUT')
                                                                 @csrf
                                                                 <button type="submit"
@@ -99,7 +99,7 @@
 
                                         <td class="d-flex flex-row">
 
-                                            <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="POST">
+                                            <form action="{{ route('permiso-destroy', [$permiso->id]) }}" method="GET">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">

@@ -12,7 +12,7 @@
             </div>
             <!-- Cuerpo del modal con el formulario de creación de usuario -->
             <div class="modal-body">
-                <form action="{{ route('crear-usuario') }}" method="POST" id="myForm">
+                <form action="{{ route('crear-usuario') }}" method="GET" id="myForm">
                     @csrf
                     <!-- Campos para nombre, correo electrónico y contraseña -->
                     <div class="mb-3">

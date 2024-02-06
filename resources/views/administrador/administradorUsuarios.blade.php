@@ -51,18 +51,18 @@
                                     <!-- Botón de estado (activo o inactivo) -->
                                     <td>
                                         @if ($usuario->status == 'activo')
-                                            <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="post">
+                                            <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="get">
                                                 @csrf
-                                                @method('post')
+                                                @method('get')
                                                 <button type="submit" class="btn btn-success"
                                                     {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>
                                                     Activo
                                                 </button>
                                             </form>
                                         @else
-                                            <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="post">
+                                            <form action="{{ route('update-status', ['id' => $usuario->id]) }}" method="get">
                                                 @csrf
-                                                @method('post')
+                                                @method('get')
                                                 <button type="submit" class="btn btn-danger"
                                                     {{ $usuario->name == 'SuperAdmin' || $usuario->id == 1 ? 'disabled' : '' }}>
                                                     Inactivo
@@ -73,7 +73,7 @@
 
                                     <!-- Botones de acciones (eliminar y actualizar) -->
                                     <td class="d-flex flex-row">
-                                        <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="POST">
+                                        <form action="{{ route('usuarios-destroy', [$usuario->id]) }}" method="GET">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger"

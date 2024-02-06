@@ -70,7 +70,7 @@
                         </div>
                         <div class="modal-body">
                             <!-- Formulario para crear nuevo usuario -->
-                            <form action="{{ route('borrar-alumnos') }}" method="POST">
+                            <form action="{{ route('borrar-alumnos') }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Confirmar</button>
                             </form>
