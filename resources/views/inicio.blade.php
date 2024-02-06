@@ -9,7 +9,7 @@
 
     <div class="container mt-3 w-50">
         <div class="text-center">
-            <img src="{{asset('imagen/img_inicio/ESCUDO UNSIS 720 PPP.png') }}" class="d-block mx-auto w-50"
+            <img src="{{secure_asset('imagen/img_inicio/ESCUDO UNSIS 720 PPP.png') }}" class="d-block mx-auto w-50"
                 alt="Banner">
         </div>
     </div>

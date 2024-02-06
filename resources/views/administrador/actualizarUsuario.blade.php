@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('main')
-<link href="{{ asset('css/administrador.css') }}" rel="stylesheet">
+<link href="{{ secure_asset('css/administrador.css') }}" rel="stylesheet">
 
 <!-- Card para actualizar usuario -->
 <div class="card">
@@ -98,8 +98,8 @@
     </div>
 
     <!-- Scripts y librerías externas -->
-    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/usuariosAdmin.js') }}"></script>
+    <script src="{{ secure_asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ secure_asset('js/popper.min.js') }}"></script>
+    <script src="{{ secure_asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('js/usuariosAdmin.js') }}"></script>
 @endsection

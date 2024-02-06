@@ -4,7 +4,7 @@
 <body class="page-content">
 
     <!-- Enlace a la hoja de estilo personalizada -->
-    <link href="{{ asset('css/administrador.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/administrador.css') }}" rel="stylesheet">
 
     <!-- Contenedor principal -->
     <div class="container">
@@ -110,10 +110,10 @@
     @yield('update')
 
     <!-- Scripts de Bootstrap y jQuery (importante que jQuery se cargue antes de Bootstrap) -->
-    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/usuariosAdmin.js') }}"></script>
+    <script src="{{ secure_asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ secure_asset('js/popper.min.js') }}"></script>
+    <script src="{{ secure_asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('js/usuariosAdmin.js') }}"></script>
     <!-- Agrega aquí tus otros scripts si los tienes -->
 
 </body>

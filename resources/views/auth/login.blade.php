@@ -10,7 +10,7 @@
                     <div class="card"> <!-- Tarjeta Bootstrap -->
                         <div class="card-header text-center"> <!-- Encabezado de la tarjeta -->
                             <h4>
-                                <img src="{{ asset('imagen/logo.png') }}"
+                                <img src="{{ secure_asset('imagen/logo.png') }}"
                                     style="width: 200px; height: 200px; margin-right: 10px;">
                             </h4>
                         </div>
