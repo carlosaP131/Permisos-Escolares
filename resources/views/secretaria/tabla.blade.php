@@ -51,7 +51,7 @@
                                         <td  class="d-flex flex-row flex-grow-1">
                                             @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
                                                 <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
-                                                    method="GET">
+                                                    method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">

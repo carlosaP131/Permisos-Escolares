@@ -48,16 +48,16 @@ Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'consul
  * 5. Ruta que elimina el permiso en la base de datos
  */
 Route::get('/formulario/{id}', [PermisosController::class, 'formulario'])->Middleware('can:formulario-permiso')->name('formulario-permiso');
-Route::get('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
+Route::post('/generar', [PermisosController::class, 'store'])->Middleware('can:crear-permiso')->name('crear-permiso');
 Route::get('/formularioUpdate/{idPermiso}', [PermisosController::class, 'edit'])->Middleware('can:vista-permiso')->name('vista-permiso');
 Route::patch('/update/{idPermiso}', [PermisosController::class, 'update'])->Middleware('can:actualizar-permiso')->name('actualizar-permiso');
 Route::delete('/permiso/{id}', [PermisosController::class, 'destroy'])->Middleware('can:permiso-destroy')->name('permiso-destroy');
 
-Route::get('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
-Route::get('/update/{idUsuario}', [UsuariosController::class, 'update'])->Middleware('can:actualizar-usuario')->name('actualizar-usuario');
+Route::post('/crearUsuarios', [UsuariosController::class, 'store'])->Middleware('can:crear-usuario')->name('crear-usuario');
+Route::post('/update/{idUsuario}', [UsuariosController::class, 'update'])->Middleware('can:actualizar-usuario')->name('actualizar-usuario');
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->Middleware('can:usuarios-destroy')->name('usuarios-destroy');
 Route::get('/update/{idUsuario}', [UsuariosController::class, 'modalUpdate'])->Middleware('can:modal-update')->name('modal-update');
-Route::get('/usuarios/{id}/update-status', [UsuariosController::class, 'updateStatus'])->Middleware('can:update-status')->name('update-status');
+Route::post('/usuarios/{id}/update-status', [UsuariosController::class, 'updateStatus'])->Middleware('can:update-status')->name('update-status');
 
 /**
  * rutas para vargar los datos desde un archivo excel
@@ -67,9 +67,9 @@ Route::get('/usuarios/{id}/update-status', [UsuariosController::class, 'updateSt
  * 3.- Ruta para borrar los datos de alumnos
  */
 Route::get('/datos', [DatosController::class, 'index'])->Middleware('can:vista-cargar-excel')->name('vista-cargar-excel');
-Route::get('/datos', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
+Route::post('/datos', [DatosController::class, 'importar'])->Middleware('can:poblar-alumnos')->name('poblar-alumnos');
 
-Route::get('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
+Route::post('/borrar-alumnos', [DatosController::class, 'borrarAlumnos'])->Middleware('can:borrar-alumnos')->name('borrar-alumnos');
 /**
  * Solicitudes
  */

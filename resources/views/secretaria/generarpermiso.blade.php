@@ -3,7 +3,7 @@
     {{-- Form para generar un permiso --}}
     <div class="formulario-permiso container p-5 my-5  text-dark">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
         <h2>Generar Permiso</h2>
-        <form action="{{ route('crear-permiso') }}" method="GET">
+        <form action="{{ route('crear-permiso') }}" method="POST">
             @csrf
             @error('motivo')
                 <h6 class="alert alert-danger">{{ $message }}</h6>
