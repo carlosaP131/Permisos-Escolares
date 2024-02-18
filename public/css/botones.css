@@ -21,7 +21,7 @@ menú de opciones
 /**
 botones que se muestran en todas las páginas
 */
-.btn{
+.btn, .btn:disabled{
     background: none;
     color: black;
     border: 1px solid rgba(255, 255, 255, 0.1)
@@ -53,3 +53,13 @@ Estilos para la tabla
     background: rgb(182, 41, 41);
 }
 
+
+.align-icons {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+
+  
+  
+    

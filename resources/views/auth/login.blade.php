@@ -10,13 +10,13 @@
                     <div class="card"> <!-- Tarjeta Bootstrap -->
                         <div class="card-header text-center"> <!-- Encabezado de la tarjeta -->
                             <h4>
-                                <img src="{{ secure_asset('imagen/logo.png') }}"
+                                <img src="{{ asset('imagen/logo.png') }}"
                                     style="width: 200px; height: 200px; margin-right: 10px;">
                             </h4>
                         </div>
 
                         <div class="card-body"> <!-- Cuerpo de la tarjeta -->
-                            <form method="get" action="{{ route('login.custom') }}">
+                            <form method="post" action="{{ route('login.custom') }}">
                                 @csrf
                                 <!-- Campo para el correo electrónico -->
                                 <div class="row mb-3">

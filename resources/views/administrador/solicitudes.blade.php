@@ -5,7 +5,7 @@
     <body class="page-content">
 
         <!-- Inicio de la tabla de datos -->
-        <div class="container2">
+        <div class="container">
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @endif
@@ -21,10 +21,6 @@
                                     <th>Nombre </th>
                                     <th>Carrera</th>
                                     <th>Grupo</th>
-                                    <th>Tipo</th>
-                                    <th>Fecha</th>
-                                    <th>Inicio</th>
-                                    <th>Fin</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -38,12 +34,6 @@
                                         <td>{{ $permiso->nombre }}</td>
                                         <td>{{ $permiso->carrera }}</td>
                                         <td>{{ $permiso->grupo }}</td>
-                                        <td>{{ $permiso->tipo }}</td>
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
-                                        </td>
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}
-                                        </td>
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>
                                             <button class="btn btn-sm btn-{{ strtolower($permiso->status) }}"
                                                 data-toggle="modal"
@@ -65,6 +55,14 @@
                                                         <div class="modal-body">
                                                             <p><strong>Motivo:</strong> {{ $permiso->motivo }}</p>
                                                             <p><strong>Descripción:</strong> {{ $permiso->descripcion }}
+                                                            </p>
+                                                            <p><strong>Tipo:</strong> {{ $permiso->tipo }}
+                                                            </p>
+                                                            <p><strong>Fecha:</strong> {{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->fechaInicio }}
+                                                            </p>
+                                                            <p><strong>Inicio:</strong> {{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}
+                                                            </p>
+                                                            <p><strong>Fin:</strong> {{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}
                                                             </p>
                                                             <!-- Otro contenido que desees mostrar en la ventana flotante -->
                                                             <p><strong>Estado:</strong> {{ $permiso->status }}</p>

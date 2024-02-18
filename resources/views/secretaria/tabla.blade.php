@@ -48,29 +48,30 @@
                                         <td>{{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}</td>
                                         <td>{{ $permiso->status }}</td>
                                         <!-- Formulario para eliminar un permiso -->
-                                        <td  class="d-flex flex-row flex-grow-1">
-                                            @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-                                                <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
-                                                    method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">
-
-                                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                                    </button>
-                                                </form>
-                                            @endif
-                                            @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
-                                                <form action="{{ route('vista-permiso', [$permiso->id]) }}">
-                                                    @csrf
-                                                    @method('post')
-                                                    <button type="submit" class="btn btn-warning">
-                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        </td>
+                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
+                                            <td class="align-icons" style="display: flex;">
+                                                @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+                                                    <form action="{{ route('permiso-destroy', [$permiso->id]) }}"
+                                                        method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                                @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
+                                                    <form action="{{ route('vista-permiso', [$permiso->id]) }}">
+                                                        @csrf
+                                                        @method('post')
+                                                        <button type="submit" class="btn btn-warning"
+                                                            {{ auth()->user()->hasRole('Secretaria') &&($permiso->status == 'Aceptado' || $permiso->status == 'Rechazado')? 'disabled': '' }}>
+                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                        @endif
 
                                     </tr>
                                 @endforeach

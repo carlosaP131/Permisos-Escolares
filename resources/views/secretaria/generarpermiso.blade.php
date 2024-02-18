@@ -167,7 +167,7 @@
                 </div>{{-- Termina seccion de Descripción --}}
                 <div class="d-flex justify-content-between  ">
                     <a href="{{ route('alumno-inicio') }}" class="btn btn-danger mb-2 mt-1">Cancelar</a>
-                    <button type="submit" class="btn btn-primary ml-5 mt-2  ">Generar Permiso</button>
+                    <button type="submit" class="btn btn-success ml-5 mt-2  ">Generar Permiso</button>
 
                 </div>
 
