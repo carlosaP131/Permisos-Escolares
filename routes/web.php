@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\PeriodosController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\Auth;
 
@@ -80,3 +81,8 @@ Route::get('/solicitudes', [App\Http\Controllers\HomeController::class, 'permiss
 Route::put('/aceptar-permiso/{id}', [PermisosController::class, 'aceptarPermiso'])->Middleware('can:aceptar-permiso')->name('aceptar-permiso');
 Route::put('/rechazar-permiso/{id}', [PermisosController::class, 'rechazarPermiso'])->Middleware('can:rechazar-permiso')->name('rechazar-permiso');
 
+//gestión de Periodos
+Route::get('/periodos', [PeriodosController::class, 'index'])->Middleware('can:administrador-periodos')->name('administrador-periodos');
+Route::post('/crearPeriodo', [PeriodosController::class, 'store'])->Middleware('can:crear-periodo')->name('crear-periodo');
+Route::post('/updatePeriodo/{id}', [PeriodosController::class, 'update'])->Middleware('can:actualizar-periodo')->name('actualizar-periodo');
+Route::delete('/periodo/{id}', [PeriodosController::class, 'destroy'])->Middleware('can:periodo-destroy')->name('periodo-destroy');
