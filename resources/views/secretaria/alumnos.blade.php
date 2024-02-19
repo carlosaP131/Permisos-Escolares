@@ -52,33 +52,6 @@
                 </div>
             </div>
         </div>
-        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-            <div class="container container-center">
-                <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
-
-            </div>
-
-            <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
-                aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de borrar alumnos?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Formulario para borrar a todos los alumnos-->
-                            <form action="{{ route('borrar-alumnos') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Confirmar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
 
 
         <!-- Fin de la tabla de datos -->

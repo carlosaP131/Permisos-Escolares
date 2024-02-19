@@ -15,7 +15,7 @@
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <a>
-                            <img src="{{ asset('/imagen/logo1.png') }}" style="margin-left: 30px;" >
+                            <img src="{{ asset('/imagen/logo1.png') }}" style="margin-left: 30px;">
                         </a>
                         <a href="{{ route('home') }}"><span class="fa fa-user-circle mr-3"></span>
                             @if (Auth::check())
@@ -45,6 +45,38 @@
                                     @endcan
                                 </li>
                                 <li>
+                                    @can('borrar-alumnos')
+                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+                                            <a href="#" data-toggle="modal" data-target="#crearUsuarioModal">
+                                                <span class="fa fa-trash mr-3"></span> Borrar Alumnos
+                                            </a>
+
+                                            <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de
+                                                                borrar alumnos?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Formulario para borrar a todos los alumnos-->
+                                                            <form action="{{ route('borrar-alumnos') }}" method="POST">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Confirmar</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endcan
+                                </li>
+                                <li>
                                     @can('solicitudes-permiso')
                                         <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-bell-o mr-3"></span>
                                             Solicitudes</a>
@@ -55,13 +87,19 @@
                     @endif
                     <li>
                         @can('alumno-permisos')
-                            <a href="{{ route('alumno-permisos') }}"><span class="fas fa-file-signature mr-3"></span>Permisos</a>
+                            <a href="{{ route('alumno-permisos') }}"><span
+                                    class="fas fa-file-signature mr-3"></span>Permisos</a>
                         @endcan
 
                     </li>
                     <li>
                         @can('administrador-usuarios')
                             <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span>Usuarios</a>
+                        @endcan
+                    </li>
+                    <li>
+                        @can('administrador-usuarios')
+                            <a href="{{ route('administrador-periodos') }}"><span class="fa fa-clock mr-3"></span>Periodos</a>
                         @endcan
                     </li>
                     <li>
@@ -85,15 +123,15 @@
             </div>
         </div>
         <!-- Inclusión de scripts -->
-        <script src="{{asset('js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{asset('js/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{asset('js/datatables.min.js') }}"></script>
-        <script src="{{asset('js/pdfmake.min.js') }}"></script>
-        <script src="{{asset('js/vfs_fonts.js') }}"></script>
-        <script src="{{asset('js/custom.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/datatables.min.js') }}"></script>
+        <script src="{{ asset('js/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
-        <script src="{{asset('js/popper.js') }}"></script>
-        <script src="{{asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/popper.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 @endsection

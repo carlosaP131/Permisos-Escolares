@@ -32,7 +32,7 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'administrador-usuarios'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'solicitudes-permiso'])->syncRoles([$role1, $role2]);
 
-                Permission::create(['name' => 'formulario-permiso'])->syncRoles([$role1, $role2,$role3]);
+                Permission::create(['name' => 'formulario-permiso'])->syncRoles([$role1, $role2, $role3]);
                 Permission::create(['name' => 'crear-permiso'])->syncRoles([$role1, $role2, $role3]);
                 Permission::create(['name' => 'vista-permiso'])->syncRoles([$role1, $role2, $role3]);
                 Permission::create(['name' => 'actualizar-permiso'])->syncRoles([$role1, $role2, $role3]);
@@ -42,15 +42,19 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'rechazar-permiso'])->syncRoles([$role1, $role2]);
 
 
-                Permission::create(['name' => 'crear-usuario'])->syncRoles([$role1,$role2]);
-                Permission::create(['name' => 'actualizar-usuario'])->syncRoles([$role1,$role2]);
+                Permission::create(['name' => 'crear-usuario'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'actualizar-usuario'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'usuarios-destroy'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'modal-update'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'update-status'])->syncRoles([$role1, $role2]);
-                
+
                 Permission::create(['name' => 'vista-cargar-excel'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'poblar-alumnos'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'borrar-alumnos'])->syncRoles([$role1, $role2]);
-                
+
+                Permission::create(['name' => 'administrador-periodos'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'crear-periodo'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'actualizar-periodo'])->syncRoles([$role1, $role2]);
+                Permission::create(['name' => 'periodo-destroy'])->syncRoles([$role1, $role2]);
         }
 }

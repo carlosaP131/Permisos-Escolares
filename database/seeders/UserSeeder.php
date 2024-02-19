@@ -16,11 +16,11 @@ class UserSeeder extends Seeder
     {
         // Crear un usuario por defecto
         try {
-            if (!User::where('email', 'usuario@ejemplo.co')->exists()) {
+            if (!User::where('email', 'superadmin@admin.com')->exists()) {
                 User::create([
-                    'name' => 'oscar',
-                    'email' => 'usuario@ejemplo.com',
-                    'password' => bcrypt('12121212'),
+                    'name' => 'SuperAdmin',
+                    'email' => 'superadmin@admin.com',
+                    'password' => bcrypt('4dMin@pas5wd'),
                     'status' => 1,
                     'id_carrera' => 10000,
                     'id_rol' => 1,
