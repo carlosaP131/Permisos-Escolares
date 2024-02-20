@@ -42,6 +42,22 @@ class PeriodosController extends Controller
         return redirect()->route('administrador-periodos')->with('success', 'Periodo eliminado correctamente');
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nombrePeriodo' => 'required|string',
+            'fechaInicio' => 'required|date',
+            'fechaFin' => 'required|date|after_or_equal:fechaInicio',
+        ]);
 
-    
+        $periodo = Periodo::findOrFail($id);
+
+        $periodo->update([
+            'nombre' => $request->input('nombrePeriodo'),
+            'fecha_inicial' => $request->input('fechaInicio'),
+            'fecha_final' => $request->input('fechaFin'),
+        ]);
+
+        return back()->with('success', 'Periodo actualizado correctamente');
+    }
 }

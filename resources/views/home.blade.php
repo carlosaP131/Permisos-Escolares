@@ -45,35 +45,37 @@
                                     @endcan
                                 </li>
                                 <li>
-    @can('borrar-alumnos')
-        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-            <a href="#" data-toggle="modal" data-target="#borrarAlumnosModal">
-                <span class="fa fa-trash mr-3"></span> Borrar Alumnos
-            </a>
+                                    @can('borrar-alumnos')
+                                        @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
+                                            <a href="#" data-toggle="modal" data-target="#borrarAlumnosModal">
+                                                <span class="fa fa-trash mr-3"></span> Borrar Alumnos
+                                            </a>
 
-            <div class="modal fade" id="borrarAlumnosModal" tabindex="-1" role="dialog"
-                aria-labelledby="borrarAlumnosModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="borrarAlumnosModalLabel">¿Está seguro de borrar alumnos?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Formulario para borrar a todos los alumnos-->
-                            <form action="{{ route('borrar-alumnos') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Confirmar</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-    @endcan
-</li>
+                                            <div class="modal fade" id="borrarAlumnosModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="borrarAlumnosModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="borrarAlumnosModalLabel">¿Está seguro de
+                                                                borrar alumnos?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Formulario para borrar a todos los alumnos-->
+                                                            <form action="{{ route('borrar-alumnos') }}" method="POST">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Confirmar</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endcan
+                                </li>
 
                                 <li>
                                     @can('solicitudes-permiso')

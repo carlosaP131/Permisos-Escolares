@@ -22,7 +22,7 @@ use App\Http\Controllers\Auth;
 // Rutas para la autenticación
 Route::post('/login/custom', [App\Http\Controllers\Auth\LoginController::class,'validateUserAndRedirect'])->name('login.custom');
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 // Ruta principal, muestra la vista de registro de autenticación
 Route::get('/', function () {
     return view('auth.login');
@@ -85,3 +85,4 @@ Route::put('/rechazar-permiso/{id}', [PermisosController::class, 'rechazarPermis
 Route::get('/periodos', [PeriodosController::class, 'consultarPeriodo'])->Middleware('can:administrador-periodos')->name('administrador-periodos');
 Route::post('/crearPeriodo', [PeriodosController::class, 'store'])->Middleware('can:crear-periodo')->name('crear-periodo');
 Route::delete('/periodo/{id}', [PeriodosController::class, 'destroy'])->Middleware('can:periodo-destroy')->name('periodo-destroy');
+Route::put('/updatePeriodo/{id}', [PeriodosController::class, 'update'])->Middleware('can:actualizar-periodo')->name('actualizar-periodo');
