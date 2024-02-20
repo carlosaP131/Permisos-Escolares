@@ -47,16 +47,16 @@
                                 <li>
                                     @can('borrar-alumnos')
                                         @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
-                                            <a href="#" data-toggle="modal" data-target="#crearUsuarioModal">
+                                            <a href="#" data-toggle="modal" data-target="#borrarAlumnosModal">
                                                 <span class="fa fa-trash mr-3"></span> Borrar Alumnos
                                             </a>
 
-                                            <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="crearUsuarioModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="borrarAlumnosModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="borrarAlumnosModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="crearUsuarioModalLabel">¿Esta seguro de
+                                                            <h5 class="modal-title" id="borrarAlumnosModalLabel">¿Está seguro de
                                                                 borrar alumnos?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -76,6 +76,7 @@
                                         @endif
                                     @endcan
                                 </li>
+
                                 <li>
                                     @can('solicitudes-permiso')
                                         <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-bell-o mr-3"></span>
