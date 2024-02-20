@@ -82,7 +82,6 @@ Route::put('/aceptar-permiso/{id}', [PermisosController::class, 'aceptarPermiso'
 Route::put('/rechazar-permiso/{id}', [PermisosController::class, 'rechazarPermiso'])->Middleware('can:rechazar-permiso')->name('rechazar-permiso');
 
 //gestión de Periodos
-Route::get('/periodos', [PeriodosController::class, 'index'])->Middleware('can:administrador-periodos')->name('administrador-periodos');
+Route::get('/periodos', [PeriodosController::class, 'consultarPeriodo'])->Middleware('can:administrador-periodos')->name('administrador-periodos');
 Route::post('/crearPeriodo', [PeriodosController::class, 'store'])->Middleware('can:crear-periodo')->name('crear-periodo');
-Route::post('/updatePeriodo/{id}', [PeriodosController::class, 'update'])->Middleware('can:actualizar-periodo')->name('actualizar-periodo');
 Route::delete('/periodo/{id}', [PeriodosController::class, 'destroy'])->Middleware('can:periodo-destroy')->name('periodo-destroy');
