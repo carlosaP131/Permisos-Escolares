@@ -7,6 +7,10 @@ use App\Models\Periodo;
 
 class PeriodosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function consultarPeriodo()
     {
         // Consulta todos los periodos

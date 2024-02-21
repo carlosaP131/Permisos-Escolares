@@ -42,6 +42,10 @@ class LoginController extends Controller
 
     public function validateUserAndRedirect(Request $request)
     {
+        if ($request->method() !== 'POST') {
+            // Si la solicitud no es de tipo POST, redirigir o manejar el error según tus necesidades
+            return back();
+        }
         // Validar las credenciales del usuario
         $credentials = $request->only('email', 'password');
 

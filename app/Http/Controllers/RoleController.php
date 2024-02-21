@@ -10,6 +10,10 @@ use PhpParser\Node\Expr\Cast\String_;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Función para buscar todos los roles en la BD y retornarlos como un array
      */
@@ -27,9 +31,10 @@ class RoleController extends Controller
         return $rolesDTO;
     }
 
-    public static function findRole(User $usuario):String{
+    public static function findRole(User $usuario): String
+    {
         foreach ($usuario->roles as $role) {
-            $rol= $role->name;
+            $rol = $role->name;
         }
         return $rol;
     }

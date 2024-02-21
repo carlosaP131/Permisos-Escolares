@@ -8,6 +8,10 @@ use App\Models\User;
 
 class UsuariosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Consulta y devuelve la información de todos los usuarios, junto con roles y carreras.
      *
