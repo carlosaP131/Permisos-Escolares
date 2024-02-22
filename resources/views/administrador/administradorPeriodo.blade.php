@@ -90,7 +90,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Agrega aquí los campos del formulario para actualizar un periodo -->
+                        <!-- los campos del formulario para actualizar un periodo -->
                         <form id="editarPeriodoForm" action="{{ route('actualizar-periodo', ['id' => '0']) }}"
                             method="POST">
                             @method('PUT')
@@ -98,15 +98,15 @@
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-group">
                                 <label for="nombrePeriodo">Nombre del Período:</label>
-                                <input type="text" id="nombrePeriodo" name="nombrePeriodo" class="form-control" required>
+                                <input type="text" id="nombrePeriodo" name="nombrePeriodo" class="custom-input" required>
                             </div>
                             <div class="form-group">
                                 <label for="fechaInicio">Fecha de Inicio:</label>
-                                <input type="date" id="fechaInicio" name="fechaInicio" class="form-control" required>
+                                <input type="date" id="fechaInicio" name="fechaInicio" class="custom-input" required>
                             </div>
                             <div class="form-group">
                                 <label for="fechaFin">Fecha de Fin:</label>
-                                <input type="date" id="fechaFin" name="fechaFin" class="form-control" required>
+                                <input type="date" id="fechaFin" name="fechaFin" class="custom-input" required>
                             </div>
                             <input type="hidden" id="periodoId" name="periodoId" value="">
                             <button type="submit" class="btn btn-primary">

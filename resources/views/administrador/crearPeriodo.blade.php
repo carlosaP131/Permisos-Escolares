@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Agrega aquí los campos del formulario para crear un nuevo periodo -->
+                <!-- Campos del formulario para crear un nuevo periodo -->
                 <form action="{{ route('crear-periodo') }}" method="POST">
                     @csrf
                     <div class="form-group">
