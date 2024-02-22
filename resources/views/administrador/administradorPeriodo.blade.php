@@ -90,7 +90,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Agrega aquí los campos del formulario para actualizar un periodo -->
+                        <!-- los campos del formulario para actualizar un periodo -->
                         <form id="editarPeriodoForm" action="{{ route('actualizar-periodo', ['id' => '0']) }}"
                             method="POST">
                             @method('PUT')
