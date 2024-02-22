@@ -13,6 +13,10 @@ use App\Models\User;
 
 class PermisosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Esta función se encarga de mostrar la página para generar permisos con
@@ -21,7 +25,7 @@ class PermisosController extends Controller
     public function formulario($id)
     {
         $alumno = alumno::find($id); //obtenemos los datos apartir del id del
-        $alumno=new AlumnosDTO($alumno);
+        $alumno = new AlumnosDTO($alumno);
         return view('secretaria.generarpermiso', ['alumno' => $alumno]);
     }
     /**
@@ -35,7 +39,7 @@ class PermisosController extends Controller
 
         // Accedemos al alumno relacionado
         $alumno = $permiso->alumno;
-        $alumno=new AlumnosDTO($alumno);
+        $alumno = new AlumnosDTO($alumno);
         return view('secretaria.actualizarpermiso', ['alumno' => $alumno, 'permiso' => $permiso]);
     }
 
@@ -53,7 +57,7 @@ class PermisosController extends Controller
             'motivo' => $request->motivo,
             'descripcion' => $request->descripcion,
             'tipo' => $request->input('tipoPermiso'),
-            'id_secretaria' => Auth::id() ,
+            'id_secretaria' => Auth::id(),
         ]);
 
         // Validaciones adicionales dependiendo del tipo de permiso
@@ -160,5 +164,4 @@ class PermisosController extends Controller
 
         return redirect()->back()->with('success', 'Permiso rechazado');
     }
-
 }

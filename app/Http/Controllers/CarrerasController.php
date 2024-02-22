@@ -9,8 +9,12 @@ use App\Models\Carrera;
 
 class CarrerasController extends Controller
 {
-    
-    public function show(){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function show()
+    {
         $carreras = Carrera::all();
         $carrerasDTO = collect();
         foreach ($carreras as $carrera) {

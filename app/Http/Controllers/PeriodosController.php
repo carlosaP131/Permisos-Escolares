@@ -7,13 +7,18 @@ use App\Models\Periodo;
 
 class PeriodosController extends Controller
 {
-    // Consulta todos los periodos y los muestra en una vista
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+        // Consulta todos los periodos y los muestra en una vista
+
     public function consultarPeriodo()
     {
-        // Consulta todos los periodos en la base de datos
+        // Consulta todos los periodos
         $periodos = Periodo::all();
 
-        // Devuelve la vista 'administrador.administradorPeriodo' con los periodos
+        // Devuelve la vista con los datos
         return view('administrador.administradorPeriodo', ['periodos' => $periodos]);
     }
 
@@ -38,7 +43,8 @@ class PeriodosController extends Controller
         return redirect()->route('administrador-periodos')->with('success', 'Periodo creado correctamente');
     }
 
-    // Elimina un periodo específico por su ID
+        // Elimina un periodo específico por su ID
+
     public function destroy($id)
     {
         // Busca el periodo por su ID
@@ -74,4 +80,5 @@ class PeriodosController extends Controller
         // Redirige de vuelta con un mensaje de éxito
         return back()->with('success', 'Periodo actualizado correctamente');
     }
+
 }

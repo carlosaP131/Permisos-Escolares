@@ -16,7 +16,7 @@
                             <!-- Encabezado de la tabla -->
                             <thead class="table-dark">
                                 <tr>
-                                    <th>Id</th>
+                                    <th>Folio</th>
                                     <th>Matricula </th>
                                     <th>Nombre </th>
                                     <th>Carrera</th>
@@ -29,7 +29,7 @@
                             <tbody>
                                 @foreach ($permisos as $index => $permiso)
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $permiso->id }}</td>
                                         <td>{{ $permiso->matricula }}</td>
                                         <td>{{ $permiso->nombre }}</td>
                                         <td>{{ $permiso->carrera }}</td>
