@@ -201,17 +201,18 @@
         </div>
 
         @if (session('success'))
-            <div class="alert alert-success">
+            <div id="success-message" class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
         @if (session('error'))
-            <div class="alert alert-danger">
+            <div id="danger-message" class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
 
-
+    <script src="{{ asset('js/mensajes.js') }}"></script>
     </body>
 @endsection
+
