@@ -49,7 +49,7 @@
                                             <form action="{{ route('periodo-destroy', [$periodo->id]) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger">
+                                                <button type="submit" class="btn btn-danger" {{ $periodo->nombre == 'Todos' ? 'disabled' : '' }}>
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </button>
                                             </form>
@@ -58,7 +58,7 @@
                                                 data-target="#editarPeriodoModal" data-id="{{ $periodo->id }}"
                                                 data-nombre="{{ $periodo->nombre }}"
                                                 data-fecha-inicio="{{ $periodo->fecha_inicial }}"
-                                                data-fecha-fin="{{ $periodo->fecha_final }}">
+                                                data-fecha-fin="{{ $periodo->fecha_final }}" {{ $periodo->nombre == 'Todos' ? 'disabled' : '' }}>
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </button>
 
@@ -121,9 +121,6 @@
         <!-- Inclusión del modal de creación de usuario -->
         @include('administrador/crearPeriodo')
         <!-- Scripts de Bootstrap y jQuery (importante que jQuery se cargue antes de Bootstrap) -->
-        <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
-        <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/periodo.js') }}"></script>
 
     </body>

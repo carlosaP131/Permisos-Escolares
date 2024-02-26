@@ -94,15 +94,22 @@
 
                     </li>
                     <li>
-                        @can('administrador-usuarios')
-                            <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span>Usuarios</a>
+                        @can('historial-periodos')
+                            <a href="{{ route('historial-periodos', ['nombrePeriodo' => 'Todos']) }}"><span
+                                    class="fas fa-book-open mr-3"></span>historial</a>
+                        @endcan
+                    </li>
+                    <li>
+                        @can('administrador-periodos')
+                            <a href="{{ route('administrador-periodos') }}"><span class="fa fa-clock mr-3"></span>Periodos</a>
                         @endcan
                     </li>
                     <li>
                         @can('administrador-usuarios')
-                            <a href="{{ route('administrador-periodos') }}"><span class="fa fa-clock mr-3"></span>Periodos</a>
+                            <a href="{{ route('administrador-usuarios') }}"><span class="fa fa-users mr-3"></span>Usuarios</a>
                         @endcan
                     </li>
+
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
