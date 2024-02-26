@@ -6,7 +6,7 @@ use App\Http\Dtos\PermisosDTO;
 use App\Http\Dtos\AlumnosDTO;
 use App\Models\Permiso;
 use App\Models\Alumno;
-
+use App\Models\Periodo;
 
 class HomeController extends Controller
 {
@@ -44,7 +44,16 @@ class HomeController extends Controller
 
     public function permission()
     {
-        $permisos = Permiso::all();
+        $periodoController = new PeriodosController();
+
+        $fechasFiltro = $periodoController->obtenerFechasFiltroUltimoPeriodo();
+        $fechaInicioFiltro = $fechasFiltro['fechaInicioFiltro'];
+        $fechaFinFiltro = $fechasFiltro['fechaFinFiltro'];
+        // Obtener los permisos en el rango de fechas
+        $permisos = Permiso::whereBetween('fecha_inicio', [$fechaInicioFiltro, $fechaFinFiltro])
+            ->orWhereBetween('fecha_fin', [$fechaInicioFiltro, $fechaFinFiltro])
+            ->get(); 
+
         $permisosDTO = collect();
 
         $usuario = auth()->user(); //obtenemos el usuario autenticado
@@ -67,6 +76,7 @@ class HomeController extends Controller
                 }
             }
         } else {
+
             foreach ($permisos as $permiso) {
                 $permisosDTO->push(new PermisosDTO($permiso));
             }
@@ -76,7 +86,17 @@ class HomeController extends Controller
     }
     public function permission_solicitud()
     {
-        $permisos = Permiso::all();
+        $periodoController = new PeriodosController();
+
+        $fechasFiltro = $periodoController->obtenerFechasFiltroUltimoPeriodo();
+
+        $fechaInicioFiltro = $fechasFiltro['fechaInicioFiltro'];
+        $fechaFinFiltro = $fechasFiltro['fechaFinFiltro'];
+
+        // Obtener los permisos en el rango de fechas
+        $permisos = Permiso::whereBetween('fecha_inicio', [$fechaInicioFiltro, $fechaFinFiltro])
+            ->orWhereBetween('fecha_fin', [$fechaInicioFiltro, $fechaFinFiltro])
+            ->get();
 
         // Crear una colección de PermisoDTO
         $permisosDTO = collect();

@@ -11,7 +11,7 @@ class PeriodosController extends Controller
     {
         $this->middleware('auth');
     }
-        // Consulta todos los periodos y los muestra en una vista
+    // Consulta todos los periodos y los muestra en una vista
 
     public function consultarPeriodo()
     {
@@ -32,7 +32,23 @@ class PeriodosController extends Controller
             'fecha_final' => 'required|date|after_or_equal:fecha_inicial',
         ]);
 
-        // Crea un nuevo periodo con la información de la solicitud
+        // Verifica solapamiento de fechas con periodos existentes
+        if ($this->verificarSolapamiento($request)) {
+            return redirect()->route('administrador-periodos')->with('danger', 'Se ha encontrado un periodo existente que comparte fechas con el nuevo periodo.');
+        }
+
+        // Verifica periodo activo que incluye la fecha actual
+        if ($this->verificarPeriodoActivo()) {
+
+            return redirect()->route('administrador-periodos')->with('danger', 'Ya hay un periodo activo.');
+        }
+
+        // Verifica si hay un periodo mayor a la fecha actual
+        if ($this->verificarPeriodoMasReciente()) {
+            return redirect()->route('administrador-periodos')->with('danger', 'Ya hay un periodo mayor a la fecha actual.');
+        }
+
+        // Crea un nuevo periodo
         Periodo::create([
             'nombre' => $request->input('nombre'),
             'fecha_inicial' => $request->input('fecha_inicial'),
@@ -43,7 +59,35 @@ class PeriodosController extends Controller
         return redirect()->route('administrador-periodos')->with('success', 'Periodo creado correctamente');
     }
 
-        // Elimina un periodo específico por su ID
+    // Verifica solapamiento de fechas con periodos existentes
+    private function verificarSolapamiento(Request $request)
+    {
+        return Periodo::where(function ($query) use ($request) {
+            $query->whereBetween('fecha_inicial', [$request->input('fecha_inicial'), $request->input('fecha_final')])
+                ->orWhereBetween('fecha_final', [$request->input('fecha_inicial'), $request->input('fecha_final')]);
+        })->exists();
+    }
+
+    // Verifica periodo activo que incluye la fecha actual
+    private function verificarPeriodoActivo()
+    {
+        $fechaActual = now();
+        return Periodo::where('fecha_inicial', '<=', $fechaActual)
+            ->where('fecha_final', '>=', $fechaActual)
+            ->exists();
+    }
+
+    // Verifica si hay un periodo mayor a la fecha actual
+    private function verificarPeriodoMasReciente()
+    {
+        $fechaActual = now();
+        $periodoMasReciente = Periodo::find(Periodo::max('id'));
+
+        return $periodoMasReciente && $fechaActual < $periodoMasReciente->fecha_inicial;
+    }
+
+
+    // Elimina un periodo específico por su ID
 
     public function destroy($id)
     {
@@ -81,4 +125,42 @@ class PeriodosController extends Controller
         return back()->with('success', 'Periodo actualizado correctamente');
     }
 
+    public function obtenerFechasFiltroUltimoPeriodo()
+    {
+        
+        // Obtener el último periodo registrado
+        $ultimoPeriodo = Periodo::whereNotNull('fecha_final')->orderByDesc('fecha_final')->first();
+        // Inicializar las fechas de filtro con valores por defecto
+        $fechaInicioFiltro = now();
+        $fechaFinFiltro = now();
+        
+        // Verificar si hay un último periodo activo
+        if ($ultimoPeriodo && now() >= $ultimoPeriodo->fecha_inicial && now() <= $ultimoPeriodo->fecha_final) {
+            
+            $fechaInicioFiltro = $ultimoPeriodo->fecha_inicial;
+            $fechaFinFiltro = $ultimoPeriodo->fecha_final;
+        } elseif ($ultimoPeriodo) {
+            
+            // Si no hay un periodo activo, filtrar por la fecha de fin del último periodo
+            $fechaInicioFiltro = $ultimoPeriodo->fecha_final;
+            $fechaFinFiltro = now();
+            $numeroPeriodos=Periodo::count();
+            
+            if ($fechaInicioFiltro > $fechaFinFiltro && $numeroPeriodos > 2) {
+                $periodoAnterior = Periodo::skip($numeroPeriodos - 2)->take(1)->first();
+                $fechaInicioFiltro = $periodoAnterior->fecha_final;
+            }elseif($fechaInicioFiltro > $fechaFinFiltro && $numeroPeriodos == 2){
+                $fechaInicioFiltro = now();
+                $fechaFinFiltro =  $ultimoPeriodo->fecha_final;
+            }
+            
+        }
+        $fechaInicioFiltro = $fechaInicioFiltro instanceof \Carbon\Carbon ? $fechaInicioFiltro : \Carbon\Carbon::parse($fechaInicioFiltro);
+        $fechaFinFiltro = $fechaFinFiltro instanceof \Carbon\Carbon ? $fechaFinFiltro : \Carbon\Carbon::parse($fechaFinFiltro);
+
+        return [
+            'fechaInicioFiltro' => $fechaInicioFiltro->toDateString(),
+            'fechaFinFiltro' => $fechaFinFiltro->toDateString(),
+        ];
+    }
 }

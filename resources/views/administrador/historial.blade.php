@@ -27,23 +27,27 @@
                             <!-- Encabezado de la tabla -->
                             <thead class="table-dark">
                                 <tr>
-                                    <th>Folio</th>
-                                    <th>Matricula </th>
-                                    <th>Tipo </th>
-                                    <th>Fecha</th>
-                                    <th>Ver</th>
+                                    <tr>
+                                        <th>Folio</th>
+                                        <th>Matricula </th>
+                                        <th>Nombre </th>
+                                        <th>Carrera</th>
+                                        <th>Grupo</th>
+                                        <th>Ver</th>
+                                    </tr>
                                 </tr>
                             </thead>
                             <!-- Cuerpo de la tabla con datos dinámicos -->
                             <tbody>
                                 @foreach ($permisosHistorial as $index => $permiso)
                                     <tr>
-                                        <td>{{ $permiso->folio }}</td>
+                                        <td>{{ $permiso->id }}</td>
                                         <td>{{ $permiso->matricula }}</td>
-                                        <td>{{ $permiso->tipo }}</td>
+                                        <td>{{ $permiso->nombre }}</td>
+                                        <td>{{ $permiso->carrera }}</td>
+                                        <td>{{ $permiso->grupo }}</td>
 
-                                        <td>{{ $permiso->tipo === 'Dias' ? $permiso->fecha_inicio : $permiso->fecha_inicio }}
-                                        </td>
+                                        
                                         <td>
                                             <button class="btn btn-sm btn-{{ strtolower($permiso->status) }}"
                                                 data-toggle="modal" data-target="#modal{{ $index }}">ver</button>
@@ -68,13 +72,13 @@
                                                             <p><strong>Tipo:</strong> {{ $permiso->tipo }}
                                                             </p>
                                                             <p><strong>Fecha:</strong>
-                                                                {{ $permiso->fecha_inicio }}
+                                                                {{ $permiso->fechaInicio }}
                                                             </p>
                                                             <p><strong>Inicio:</strong>
-                                                                {{ $permiso->tipo === 'Dias' ? $permiso->fecha_inicio : $permiso->hora_inicio }}
+                                                                {{ $permiso->tipo === 'Dias' ? $permiso->fechaInicio : $permiso->horaInicio }}
                                                             </p>
                                                             <p><strong>Fin:</strong>
-                                                                {{ $permiso->tipo === 'Dias' ? $permiso->fecha_fin : $permiso->hora_fin }}
+                                                                {{ $permiso->tipo === 'Dias' ? $permiso->fechaFin : $permiso->horaFin }}
                                                             </p>
                                                             <!-- Otro contenido que desees mostrar en la ventana flotante -->
                                                             <p><strong>Status:</strong> {{ $permiso->status }}</p>

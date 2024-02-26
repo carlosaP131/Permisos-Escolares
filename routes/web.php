@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\PeriodosController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\PermisoController;
 
 /*
@@ -88,4 +89,4 @@ Route::delete('/periodo/{id}', [PeriodosController::class, 'destroy'])->Middlewa
 Route::put('/updatePeriodo/{id}', [PeriodosController::class, 'update'])->Middleware('can:actualizar-periodo')->name('actualizar-periodo');
 
 //gestión de historial
-Route::get('/permisosHistorial/{nombrePeriodo}', [PermisoController::class, 'consultarPorPeriodo'])->Middleware('can:historial-periodos')->name('historial-periodos');
+Route::get('/permisosHistorial/{nombrePeriodo}', [HistorialController::class, 'consultarPorPeriodo'])->Middleware('can:historial-periodos')->name('historial-periodos');
