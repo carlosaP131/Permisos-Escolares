@@ -56,5 +56,8 @@ class RoleSeeder extends Seeder
                 Permission::create(['name' => 'crear-periodo'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'actualizar-periodo'])->syncRoles([$role1, $role2]);
                 Permission::create(['name' => 'periodo-destroy'])->syncRoles([$role1, $role2]);
+
+                Permission::create(['name' => 'historial-periodos'])->syncRoles([$role1, $role2]);
+
         }
 }
