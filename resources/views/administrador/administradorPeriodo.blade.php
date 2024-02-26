@@ -122,6 +122,7 @@
         @include('administrador/crearPeriodo')
         <!-- Scripts de Bootstrap y jQuery (importante que jQuery se cargue antes de Bootstrap) -->
         <script src="{{ asset('js/periodo.js') }}"></script>
+        <script src="{{ asset('js/mensajes.js') }}"></script>
 
     </body>
 @endsection
