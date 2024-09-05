@@ -39,12 +39,12 @@
             <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
                 <div class="row">
                     <div class="col">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Centro de salud</label>
                         <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre"
                             value="{{ $alumno->nombre }}" readonly>
                     </div>
                     <div class="col">
-                        <label for="matricula">Matricula</label>
+                        <label for="matricula">Encargado</label>
                         <input type="text" class="form-control" placeholder="Ingrese la Matricula" name="matricula"
                             value="{{ $alumno->matricula }}" readonly>
                     </div>
@@ -53,7 +53,7 @@
             <div class="mb-3 mt-3 ">{{-- Inicia div del select carrera tiene 8 opciones --}}
                 <div class="row">
                     <div class="col">
-                        <label for="sel1" class="form-label">Carrera:</label>
+                        <label for="sel1" class="form-label">ubicación:</label>
                         <select class="form-select " id="carrera" name="carrera" disabled>
                             <option>{{ $alumno->carrera }}</option>
 
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col">
                         {{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
-                        <label for="sel1" class="form-label">Grupo:</label>
+                        <label for="sel1" class="form-label">telefono:</label>
                         <select class="form-select " id="grupo" name="grupo" disabled>
                             <option>{{ $alumno->semestre . $alumno->grupo }}</option>
                         </select>
@@ -71,13 +71,13 @@
                 <div class="mb-3">{{-- Inicia el div de la seccion de seleccion del año y de el ciclo escolar --}}
                     <div class="row">
                         <div class="col">
-                            <label for="Semestre_anio">Año</label>
+                            <label for="Semestre_anio">nombre antiviperino</label>
                             <input type="text" class="form-control" placeholder="Ingrese el semestre"
                                 name="Semestre_anio" value="{{ date('Y') }} " readonly>
 
                         </div>
                         <div class="col">
-                            <label for="sellist1">Ciclo</label>
+                            <label for="sellist1">tipo de antiviperino</label>
                             <select class="form-select" id="Semestre_ciclo" name="ciclo" disabled>
                                 <option>A</option>
                                 <option>B</option>
@@ -89,7 +89,7 @@
 
                 <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
                                                                                              solo se mostrara si en carrera se selecciona Enfermeria Odontologia u Medicina --}}
-                    <label for="especialidad" class="form-label">Grupo</label>
+                    <label for="especialidad" class="form-label">cantidad en stok</label>
                     <select class="form-select" id="especialidad" name="especialidad">
 
                     </select>
@@ -97,7 +97,7 @@
 
 
                 <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
-                    <label for="sellist1">Tipo de Permiso:</label>
+                    <label for="sellist1">fecha de caducidad:</label>
                     <select class="form-select" id="Dias_horas" name="tipoPermiso" onchange="toggleInputs()">
                         <option value="Dias">Días</option>
                         <option value="Horas">Horas</option>

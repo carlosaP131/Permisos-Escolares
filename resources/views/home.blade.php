@@ -15,7 +15,7 @@
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <a>
-                            <img src="{{ asset('/imagen/logo1.png') }}" style="margin-left: 30px;" >
+                           
                         </a>
                         <a href="{{ route('home') }}"><span class="fa fa-user-circle mr-3"></span>
                             @if (Auth::check())
@@ -25,8 +25,8 @@
                     </li>
                     @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin', 'Secretaria'))
                         <li>
-                            <a href="#submenu1" data-bs-toggle="collapse">
-                                <span class="fa fa-home mr-3"></span>Alumnos
+                            <a href="{{ route('alumno-inicio') }}" data-bs-toggle="collapse">
+                                <span class="fa fa-home mr-3"></span>centros de salud
                             </a>
 
                             <ul class="collapse nav flex-column ml-3" id="submenu1" data-bs-parent="#menu">

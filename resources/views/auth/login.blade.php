@@ -10,8 +10,7 @@
                     <div class="card"> <!-- Tarjeta Bootstrap -->
                         <div class="card-header text-center"> <!-- Encabezado de la tarjeta -->
                             <h4>
-                                <img src="{{ secure_asset('imagen/logo.png') }}"
-                                    style="width: 200px; height: 200px; margin-right: 10px;">
+                            logo
                             </h4>
                         </div>
 
@@ -72,7 +71,7 @@
                                 <!-- Botón para enviar el formulario -->
                                 <div class="row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-info rounded">
+                                        <button type="submit" class="btn btn-success rounded">
                                             <i class="fas fa-sign-in-alt"></i> {{ __('Ingresar') }}
                                         </button>
                                     </div>
