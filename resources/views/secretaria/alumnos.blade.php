@@ -40,8 +40,7 @@
                                         <td>{{ $alumno->grupo }}</td>
                                         <td>
                                             <form action="{{ route('formulario-permiso', [$alumno->id]) }}">
-                                                <button class="btn btn-warning btn-sm" type="submit">Generar
-                                                    Permiso</button>
+                                                <button class="btn btn-warning btn-sm" type="submit">Registrar antiviperino</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -54,7 +53,7 @@
         </div>
         @if (auth()->user()->hasAnyRole('SuperAdmin', 'Admin'))
             <div class="container container-center">
-                <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar alumnos</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#crearUsuarioModal">Borrar centros de salud</button>
 
             </div>
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app-name', 'Permisos Alumnos') }}</title>
+    <title>{{ config('app-name', 'Sistema de inventario de Antiviperinos') }}</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,24 +17,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- DataTables CSS -->
-    <link rel="stylesheet" href="{{secure_asset('css/datatables.min.css') }}">
+    <link rel="stylesheet" href="{{ ('css/datatables.min.css') }}">
 
     <!-- Estilos Personalizados -->
-    <link rel="stylesheet" href="{{secure_asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ ('css/style.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Estilos para las vistas de secretaria -->
-    <link href="{{secure_asset('css/secretaria.css') }}" rel="stylesheet">
-    <script src="{{secure_asset('js/secretaria.js') }}"></script>
+    <link href="{{ ('css/secretaria.css') }}" rel="stylesheet">
+    <script src="{{ ('js/secretaria.js') }}"></script>
 
     <!-- login -->
-    <link href="{{secure_asset('css/estilos.css') }}" rel="stylesheet">
+    <link href="{{ ('css/estilos.css') }}" rel="stylesheet">
 
     <!-- Estilos para las vistas de administrador -->
-    <link href="{{secure_asset('css/administrador.css') }}">
+    <link href="{{ ('css/administrador.css') }}">
     <!-- Colores botones -->
-    <link href="{{secure_asset('css/botones.css') }}" rel="stylesheet">
+    <link href="{{ ('css/botones.css') }}" rel="stylesheet">
 
 </head>
 
