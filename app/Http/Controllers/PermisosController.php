@@ -56,16 +56,6 @@ class PermisosController extends Controller
             'id_secretaria' => Auth::id() ,
         ]);
 
-        // Validaciones adicionales dependiendo del tipo de permiso
-        if ($request->input('tipoPermiso') == 'Dias') {
-            $permiso->fecha_inicio = $request->Fecha_Inicial;
-            $permiso->fecha_fin = $request->Fecha_Final;
-        } else {
-            $permiso->fecha_inicio = $request->Fecha_Horas;
-            $permiso->hora_inicio = $request->Hora_Inicial;
-            $permiso->hora_fin = $request->Hora_Final;
-        }
-
         // Guardamos el permiso utilizando la relación definida en el modelo Alumno
         $alumno->permisos()->save($permiso);
 
@@ -89,18 +79,7 @@ class PermisosController extends Controller
         $permiso->id_secretaria = Auth::id();
         $permiso->tipo = $request->input('tipoPermiso');
 
-        if ($request->input('tipoPermiso') == 'Dias') {
-
-            // Asignamos valores para permisos por días
-            $permiso->fecha_inicio = $request->Fecha_Inicial;
-            $permiso->fecha_fin = $request->Fecha_Final;
-        } else {
-
-            // Asignamos valores para permisos por horas
-            $permiso->fecha_inicio = $request->Fecha_Horas;
-            $permiso->hora_inicio = $request->Hora_Inicial;
-            $permiso->hora_fin = $request->Hora_Final;
-        }
+      
         $permiso->save();
 
         return redirect()->route('alumno-permisos')->with('success', 'Permiso Actualizado Exitosamente');

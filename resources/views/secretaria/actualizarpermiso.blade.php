@@ -11,24 +11,7 @@
             @error('descripcion')
                 <h6 class="alert alert-danger">{{ $message }}</h6>
             @enderror
-            @error('tipo')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Inicial')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Final')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Horas')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Hora_Inicial')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Hora_Final')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
+           
             @method('PATCH')
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>

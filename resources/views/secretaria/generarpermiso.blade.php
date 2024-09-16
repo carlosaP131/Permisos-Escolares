@@ -1,7 +1,7 @@
 @extends('home')
+
 @section('main')
-    {{-- Form para generar un permiso --}}
-    <div class="formulario-permiso container p-5 my-5  text-dark">{{-- Inicia el contenedor donde se almacenaran todos los elementos del form --}}
+    <div class="formulario-permiso container p-5 my-5  text-dark">
         <h2>Generar Permiso</h2>
         <form action="{{ route('crear-permiso') }}" method="POST">
             @csrf
@@ -11,24 +11,8 @@
             @error('descripcion')
                 <h6 class="alert alert-danger">{{ $message }}</h6>
             @enderror
-            @error('tipoPermiso')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Inicial')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Final')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Fecha_Horas')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Hora_Inicial')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
-            @error('Hora_Final')
-                <h6 class="alert alert-danger">{{ $message }}</h6>
-            @enderror
+          
+          
             @if (session('success'))
                 <h6 class="alert alert-success">{{ session('success') }}</h6>
             @else
@@ -36,7 +20,7 @@
 
 
 
-            <div class="mb-3 mt-3">{{-- Inicia div para los inputs de nombre y matricula --}}
+            <div class="mb-3 mt-3">
                 <div class="row">
                     <div class="col">
                         <label for="nombre">Centro de salud</label>
@@ -49,8 +33,8 @@
                             value="{{ $alumno->matricula }}" readonly>
                     </div>
                 </div>
-            </div>{{-- Termina div de los inputs nombre y matricula --}}
-            <div class="mb-3 mt-3 ">{{-- Inicia div del select carrera tiene 8 opciones --}}
+            </div>
+            <div class="mb-3 mt-3 ">
                 <div class="row">
                     <div class="col">
                         <label for="sel1" class="form-label">ubicación:</label>
@@ -60,15 +44,15 @@
                         </select>
                     </div>
                     <div class="col">
-                        {{-- Inicia div del select semestre las opciones seran dinamicas dependiendo del ciclo escolar seleccionado --}}
+                        
                         <label for="sel1" class="form-label">telefono:</label>
                         <select class="form-select " id="grupo" name="grupo" disabled>
                             <option>{{ $alumno->semestre . $alumno->grupo }}</option>
                         </select>
-                        {{-- Termina el div del select semestre --}}
+                        
                     </div>
-                </div>{{-- Termina div del select carrera --}}
-                <div class="mb-3">{{-- Inicia el div de la seccion de seleccion del año y de el ciclo escolar --}}
+                </div>
+                <div class="mb-3">
                     <div class="row">
                         <div class="col">
                             <label for="Semestre_anio">nombre antiviperino</label>
@@ -85,7 +69,7 @@
                             </select>
                         </div>
                     </div>
-                </div>{{-- Termina select de la seccion de año y ciclo --}}
+                </div>
 
                 <div class="mb-3 mt-3" id="especialidadContainer" style="display: none;">{{-- Inicia div de la seleccion del grupo esta seccion estara oculta solo
                                                                                              solo se mostrara si en carrera se selecciona Enfermeria Odontologia u Medicina --}}
@@ -93,69 +77,13 @@
                     <select class="form-select" id="especialidad" name="especialidad">
 
                     </select>
-                </div>{{-- Termina el div de la seleccion de grupo --}}
+                </div>
 
 
-                <div class="mb-3 mt-3">{{-- Inicia div de la seleccion de tipo de permiso --}}
+                <div class="mb-3 mt-3">
                     <label for="sellist1">fecha de caducidad:</label>
-                    <select class="form-select" id="Dias_horas" name="tipoPermiso" onchange="toggleInputs()">
-                        <option value="Dias">Días</option>
-                        <option value="Horas">Horas</option>
-                    </select>
-                </div>{{-- Termina div de la seleccion de tipo de permiso --}}
-                {{-- Estas secciones estaran ocultas mientras no se seleccione una opcion en Tipo de permiso si se selecciona dias se mostrara la siguiente
-                    si no y se selecciona horas se mostrara el siguiente --}}
+                    <input class="form-control" type="text" id="comment" name="motivo" required/> 
 
-                <div class="mb-3 pd-1" id="dateRangeInputs" style="display: none;">
-                    <div class="col">
-                        <label for="Rango_Dias">Rango de dias</label>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="Fechini">Inicio:</label>
-
-                            <input type="date" class="form-control" placeholder="" name="Fecha_Inicial">
-
-                        </div>
-                        <div class="col">
-                            <label for="Fechfin">Fin:</label>
-
-                            <input type="date" class="form-control" placeholder="" name="Fecha_Final">
-                        </div>
-                    </div>
-                </div>
-
-                <div id="additionalInputs" style="display: none;">
-                    <label for="additionalLabel">Rango Horas:</label>
-                    <div class="col">
-                        <label for="">Fecha:</label> <input type="date" class="form-control" placeholder=""
-                            name="Fecha_Horas">
-                    </div>
-
-                    <div class="mb-3 mt-3">
-                        <label for="">Horas:</label>
-                        <div class="row">
-                            <div class="col">
-
-                                <label for="horaini">Inicio:</label>
-                                <div class="cs-form">
-                                    <input type="time" class="form-control" value="10:05 AM" name="Hora_Inicial" />
-                                </div>
-
-                            </div>
-
-                            <div class="col">
-
-                                <label for="horafin">Fin:</label>
-                                <div class="cs-form">
-
-                                    <input type="time" class="form-control" value="10:05 AM" name="Hora_Final" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- Termina el div de las secciones de rango de dias u horas --}}
                 <label for="comment">Motivo u Observaciones:</label>
                 <div class="mb-3 mt-3">{{-- Inicia la seccion de motivo u observaciones --}}
 

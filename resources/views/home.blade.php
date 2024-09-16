@@ -28,28 +28,15 @@
                                 <span class="fa fa-home mr-3"></span>centros de salud
                             </a>
 
-                            <ul class="collapse nav flex-column ml-3" id="submenu1" data-bs-parent="#menu">
-                                <li>
-                                    @can('alumno-inicio')
-                                        <a href="{{ route('alumno-inicio') }}">
-                                            <span class="fa fa-graduation-cap mr-3"></span>Alumnos
-                                        </a>
-                                    @endcan
-                                </li>
                                 <li class="w-100">
                                     @can('vista-cargar-excel')
                                         <a href="{{ route('vista-cargar-excel') }}">
-                                            <span class="fa fa-file-excel-o mr-3"></span>Cargar Alumnos
+                                            <span class="fa fa-file-excel-o mr-3"></span>Cargar centros de salud
                                         </a>
                                     @endcan
                                 </li>
-                                <li>
-                                    @can('solicitudes-permiso')
-                                        <a href="{{ route('solicitudes-permiso') }}"><span class="fa fa-bell-o mr-3"></span>
-                                            Solicitudes</a>
-                                    @endcan
-                                </li>
-                            </ul>
+                              
+                        
                         </li>
                     @endif
                     <li>
